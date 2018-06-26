@@ -63,7 +63,7 @@ Library.prototype.getRandomBook = function() {
     return null;
   }
   return this.bookShelf[Math.floor(Math.random() * this.bookShelf.length)];
-  
+
   // Purpose: Return a random book object from your books array
   // Return: book object if you find a book, null if there are no books
 }
@@ -81,6 +81,10 @@ Library.prototype.getAuthors = function () {
 Library.prototype.getRandomAuthorName = function() {
   // Purpose: Retrieves a random author name from your books collection
   // Return: string author name, null if no books exist
+  if (this.bookShelf.length === 0) {
+    return null;
+  }
+  return this.getRandomBook().author;
 }
 
 // Book Listing
@@ -123,4 +127,5 @@ document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary.addBook(book5);
   window.gLibrary.removeBookByAuthor("Jack London");
   window.gLibrary.getRandomBook();
+  window.gLibrary.getRandomAuthorName();
 });
