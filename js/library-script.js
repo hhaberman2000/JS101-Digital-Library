@@ -1,131 +1,224 @@
-// Book
-// A book must be an object
-// A book object must have the following properties:
-//   ○title - string representing the title of the book
-//   ○author - string representing the authors name
-//   ○numberOfPages - number representing the total page numbers
-//   ○publishDate - javascript date object representing the date the book was published
+
 
 
 var Library = function(){
 this.bookShelf = new Array();
-}
+  }
 
-var Book = function(booktitle, author, numberOfPages, publishDate){
-  this.booktitle = booktitle;
-  this.author = author;
-  this.numberOfPages = numberOfPages;
-  this.publishDate = new Date(publishDate);
- }
-
+var Book = function(args){
+   this.bookTitle = args.bookTitle;
+   this.author = args.author;
+   this.numberOfPages = args.numberOfPages;
+   this.publishDate = new Date(args.publishDate);
+  }
 
 Library.prototype.addBook = function(book) {
   // Purpose: Add a book object to your books array.
   // Return:boolean true if it is not already added, false if it is already added.
+   this.hasBooks = false;
    for ( var i=0; i < this.bookShelf.length; i++) {
-      if (this.bookShelf[i].booktitle.indexOf(book.booktitle) > -1) {
+      if (this.bookShelf[i].bookTitle === book.bookTitle) {
         console.log("Book title has already been added.");
-        return false;
+        return this.hasBooks;
         }
       }
     this.bookShelf.push(book);
-    return true;
-  }
+    return this.hasBooks=true;
+  };
 
-Library.prototype.removeBookTitle = function(Title){
+Library.prototype.removeBookTitle = function(titleToRemove){
   // Purpose: Remove book from from the books array by its title.
   // Return:boolean true if the book(s) were removed, false if no books match
   for ( var i=0; i < this.bookShelf.length; i++) {
-     if (this.bookShelf[i].booktitle === Title) {
+     if (this.bookShelf[i].bookTitle.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
        this.bookShelf.splice(i,1);
        return true;
        }
      }
-   console.log("Book title is not in library.");
+     console.log("Book title is not in library.");
    return false;
  };
 
 Library.prototype.removeBookByAuthor = function(authorName){
-// Purpose: Remove a specific book from your books array by the author name.
-// Return: booleantrue if the book(s) were removed, false if no books match
+// // Purpose: Remove a specific book from your books array by the author name.
+// // Return: booleantrue if the book(s) were removed, false if no books match
   for ( var i=0; i < this.bookShelf.length; i++) {
-    if (this.bookShelf[i].author === authorName) {
+    if (this.bookShelf[i].author.toLowerCase().search(authorName.toLowerCase())> -1) {
       this.bookShelf.splice(i,1);
       return true;
       }
     }
-    console.log("Book title is not in library.");
+    console.log("This Author is not in library.");
     return false;
 };
 
 Library.prototype.getRandomBook = function() {
-  if (this.bookShelf.length === 0) {
-    return null;
-  }
-  return this.bookShelf[Math.floor(Math.random() * this.bookShelf.length)];
-
   // Purpose: Return a random book object from your books array
   // Return: book object if you find a book, null if there are no books
-}
+  if (this.bookShelf.length === 0) {
+    return null;
+    }
+   return this.bookShelf[Math.floor(Math.random() * this.bookShelf.length)];
+  };
 
-Library.prototype.getBookByTitle = function(title) {
-  // Purpose: Return all books that completely or partially matches the string title passed into the function
-  // Return: array of book objects if you find books with matching titles, empty array if no books are found
-}
+Library.prototype.getBookByTitle = function(titleString) {
+//   // Purpose: Return all books that completely or partially matches the string title passed into the function
+//   // Return: array of book objects if you find books with matching titles, empty array if no books are found.
+  var booksByTitle = [];
+  for ( var i=0; i < this.bookShelf.length; i++) {
+      if (this.bookShelf[i].bookTitle.toLowerCase().search(titleString.toLowerCase())> -1) {
+       booksByTitle.push(this.bookShelf[i]);
+       }
+     }
+    return booksByTitle;
+  };
+
+Library.prototype.getBooksByAuthor = function (authorString) {
+  // Purpose: Finds all books where the author’s name partially or completely match-es the authorName argument passed to the function.
+  // Return:array of books if you find books with match authors, empty array if no books match
+  var booksByAuthor = [];
+  for ( var i=0; i < this.bookShelf.length; i++) {
+      if (this.bookShelf[i].author.toLowerCase().search(authorString.toLowerCase())> -1) {
+       booksByAuthor.push(this.bookShelf[i]);
+       }
+     }
+    return booksByAuthor;
+  };
+
+Library.prototype.addBooks = function (books) {
+   // Purpose: Takes multiple books, in the form of an array of book objects, and adds the objects to your books array.
+  // Return:  number of books successfully added, 0 if no books were added
+  var newBooksCounter = 0;
+  for ( var i=0; i < addBooksArray.length; i++) {
+       this.addBook(books[i]);
+       if (this.hasBooks) {
+         newBooksCounter++;
+        }
+      }
+     return newBooksCounter;
+   };
 
 Library.prototype.getAuthors = function () {
-  // Return:array of books if you find books with match authors, empty array if no books match○addBooks(books)Purpose: Takes multiple books, in the form of an array of book objects, and adds the objects to your books array.
-  // Return: number number of books successfully added, 0 if no books were added ○getAuthors()
-}
+// Purpose: Find the distinct authors’ names from all books in your library.
+// Return: array of strings the names of all distinct authors, empty array if no books exist or if no authors exist.
+  var allAuthors = [];
+  for (var i=0; i < this.bookShelf.length; i++) {
+    allAuthors.push(this.bookShelf[i].author);
+  }
+  return allAuthors;
+};
 
 Library.prototype.getRandomAuthorName = function() {
   // Purpose: Retrieves a random author name from your books collection
-  // Return: string author name, null if no books exist
+ // Return: string author name, null if no books exist
   if (this.bookShelf.length === 0) {
     return null;
   }
   return this.getRandomBook().author;
 }
 
-// Book Listing
+// multiple Book Listing
 
-// var gBookOne = new Book( {
-//   title : "IT",
-//   author : "Stephen King",
-//   numberOfPages: "330",
-//   publishDate : "Janurary 12 1980"
-// });
-//
-// var gBookTwo= new Book( {
-//   title : "Life of PI",
-//   author : "Yann Martel",
-//   numberOfPages : "280",
-//   publishDate : "September 12 2001"
-// });
-//
-// var gBookThree = new Book( {
-//   title : "Lord of the Flies",
-//   author : "William Golding",
-//   numberOfPages : "260",
-//   publishDate : "August 12 1954"
-// });
+var gBook1 = new Book( {
+  bookTitle : "IT",
+  author : "Stephen King",
+  numberOfPages: 1138,
+  publishDate : "Janurary 12 1980"
+});
 
+var gBook2= new Book( {
+  bookTitle : "Life of PI",
+  author : "Yann Martel",
+  numberOfPages : 280,
+  publishDate : "September 12 2001"
+});
 
+var  gBook3 = new Book( {
+  bookTitle : "Lord of the Flies",
+  author : "William Golding",
+  numberOfPages : 260,
+  publishDate : "August 12 1954"
+});
 
+var gBook4= new Book ({
+  bookTitle : "For Whom The Bell Tolls",
+  author : "Ernest Hemingway",
+  numberOfPages : 320,
+  publishDate : "Janurary 14 1950"
+});
+
+var gBook5= new Book ({
+  bookTitle : "2001 A Space Odyssey",
+  author : "Authur C Clarke ",
+  numberOfPages : 510,
+  publishDate : "February 20 1969"
+});
+
+var gBook6= new Book ({
+  bookTitle : "The Grapes Of Wrath",
+  author : "John Steinbeck ",
+  numberOfPages : 275,
+  publishDate : "March 23 1939"
+});
+
+var gBook7= new Book ({
+  bookTitle : "Of Mice and Men",
+  author : "John Steinbeck ",
+  numberOfPages : 195,
+  publishDate : "April 10 1937"
+});
+
+var gBook8= new Book ({
+  bookTitle : "A Friend Of The Earth",
+  author : "T C Boyle ",
+  numberOfPages : 290,
+  publishDate : "March 11 2000"
+});
+
+var gBook9= new Book ({
+  bookTitle : "Drop City",
+  author : "T C Boyle ",
+  numberOfPages : 310,
+  publishDate : "March 11 2003"
+});
+
+var gBook10= new Book ({
+  bookTitle : "Tortilla Curtain",
+  author : "T C Boyle ",
+  numberOfPages : 366,
+  publishDate : "March 30 1995"
+});
+
+var gBook11= new Book ({
+  bookTitle : "The Great Gatsby",
+  author : "F Scott Fitzgerald ",
+  numberOfPages : 366,
+  publishDate : "September 13 1925"
+});
+
+var gBook12= new Book ({
+  bookTitle : "Moby Dick",
+  author : "Herman Melville ",
+  numberOfPages : 896,
+  publishDate : "August 30 1851"
+});
+
+//Multiple Book Listing Array.
+
+var addBooksArray = [gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
 
 document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary = new Library();
-  window.book1 = new Book("IT", "Stephen King", 1138, "11-08-1983");
-  window.book2 = new Book("For Whom The Bell Tolls", "Hemingway", 345, "01-25-1934");
-  window.book3 = new Book("White Fang", "Jack London", 211, "11-08-1905");
-  window.book4 = new Book("IT", "Stephen King", 1138, "11-08-1983");
-  window.book5 = new Book("Life of Pi", "Yann Martel", 330, "09-08-2001");
-  window.gLibrary.addBook(book1);
-  window.gLibrary.addBook(book2);
-  window.gLibrary.addBook(book3);
-  window.gLibrary.addBook(book4);
-  window.gLibrary.addBook(book5);
-  window.gLibrary.removeBookByAuthor("Jack London");
-  window.gLibrary.getRandomBook();
-  window.gLibrary.getRandomAuthorName();
-});
+  window.gLibrary.addBook(gBook1);
+  window.gLibrary.addBook(gBook2);
+  window.gLibrary.addBook(gBook3);
+  window.gLibrary.addBook(gBook4);
+  window.gLibrary.addBooks(addBooksArray);
+  window.gLibrary.removeBookByAuthor("Boyle");
+  // window.gLibrary.getRandomBook();
+  // window.gLibrary.getRandomAuthorName();
+  // window.gLibrary.getBookByTitle("x");
+  // window.gLibrary.getBooksByAuthor("Boyle");
+
+  //window.gLibrary.getAuthors();
+ });
