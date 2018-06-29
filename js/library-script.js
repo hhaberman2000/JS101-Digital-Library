@@ -12,6 +12,10 @@ var Book = function(args){
    this.publishDate = new Date(args.publishDate);
   }
 
+  // var libraryStorage = function (){
+  //   this.myStorage = window.localStorgae;
+  // };
+
 Library.prototype.addBook = function(book) {
   // Purpose: Add a book object to your books array.
   // Return:boolean true if it is not already added, false if it is already added.
@@ -23,6 +27,8 @@ Library.prototype.addBook = function(book) {
         }
       }
     this.bookShelf.push(book);
+    this.setLocalStorage();
+    console.log( book + "title has already been added.");
     return this.hasBooks=true;
   };
 
@@ -32,6 +38,8 @@ Library.prototype.removeBookTitle = function(titleToRemove){
   for ( var i=0; i < this.bookShelf.length; i++) {
      if (this.bookShelf[i].bookTitle.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
        this.bookShelf.splice(i,1);
+       localStorage.setItem('book', JSON.stringify(this.bookShelf));
+       console.log("Title" + titleToRemove + "has been removed.");
        return true;
        }
      }
@@ -45,6 +53,7 @@ Library.prototype.removeBookByAuthor = function(authorName){
   for ( var i=0; i < this.bookShelf.length; i++) {
     if (this.bookShelf[i].author.toLowerCase().search(authorName.toLowerCase())> -1) {
       this.bookShelf.splice(i,1);
+      localStorage.setItem('book', JSON.stringify(this.bookShelf));
       return true;
       }
     }
@@ -58,7 +67,9 @@ Library.prototype.getRandomBook = function() {
   if (this.bookShelf.length === 0) {
     return null;
     }
-   return this.bookShelf[Math.floor(Math.random() * this.bookShelf.length)];
+    // localStorage.getItem('book', JSON.stringify(this.bookShelf));
+    return this.bookShelf[Math.floor(Math.random() * this.bookShelf.length)];
+
   };
 
 Library.prototype.getBookByTitle = function(titleString) {
@@ -116,6 +127,29 @@ Library.prototype.getRandomAuthorName = function() {
   }
   return this.getRandomBook().author;
 }
+
+Library.prototype.setLocalStorage = function () {
+  localStorage.setItem('book', JSON.stringify(this.bookShelf));
+  return true;
+};
+
+var getLocalStorage = function () {
+  var parsedArray=[];
+  var getBooks = JSON.parse(localStorage.getItem("book"));
+  console.log(getBooks);
+   for (var i=0; i < getBooks.length; i++ ) {
+     //parsedArray.push(getBooks[i].bookTitle, getBooks[i].author, getBooks[i].numberOfPages, getBooks[i].publishDate);
+     var bookFromStorage = new Book ({//(bookTitle, author, numberOfPages, publishDate)
+        bookTitle : getBooks[i].bookTitle,
+        author : getBooks[i].author,
+        numberOfPages : getBooks[i].numberOfPages,
+        publishDate : new Date(getBooks[i].publishDate),
+      });
+      //parsedArray.push(bookFromStorage);
+      parsedArray.push(bookFromStorage);
+    }
+   return parsedArray;
+};
 
 // multiple Book Listing
 
@@ -209,12 +243,20 @@ var addBooksArray = [gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, g
 
 document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary = new Library();
-  window.gLibrary.addBook(gBook1);
-  window.gLibrary.addBook(gBook2);
-  window.gLibrary.addBook(gBook3);
-  window.gLibrary.addBook(gBook4);
-  window.gLibrary.addBooks(addBooksArray);
-  window.gLibrary.removeBookByAuthor("Boyle");
+  //window.gLibrary = getLocalStorage(parsedArray);
+    // if ( parsedArray.length === 0) {
+    //   console.log("Local Storage is empty");
+    // }
+    // else {
+  window.getLocalStorage();
+    //   }
+  // getLocalStorage();
+  // window.gLibrary.addBook(gBook1);
+  // window.gLibrary.addBook(gBook2);
+  // window.gLibrary.addBook(gBook3);
+  // window.gLibrary.addBook(gBook4);
+  // window.gLibrary.addBooks(addBooksArray);
+  // window.gLibrary.removeBookByAuthor("Boyle");
   // window.gLibrary.getRandomBook();
   // window.gLibrary.getRandomAuthorName();
   // window.gLibrary.getBookByTitle("x");
