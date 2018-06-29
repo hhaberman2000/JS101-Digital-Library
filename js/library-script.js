@@ -1,6 +1,4 @@
 
-
-
 var Library = function(){
 this.bookShelf = new Array();
   }
@@ -11,10 +9,6 @@ var Book = function(args){
    this.numberOfPages = args.numberOfPages;
    this.publishDate = new Date(args.publishDate);
   }
-
-  // var libraryStorage = function (){
-  //   this.myStorage = window.localStorgae;
-  // };
 
 Library.prototype.addBook = function(book) {
   // Purpose: Add a book object to your books array.
@@ -114,13 +108,13 @@ Library.prototype.getAuthors = function () {
 // Return: array of strings the names of all distinct authors, empty array if no books exist or if no authors exist.
   var allAuthors = [];
   for (var i=0; i < this.bookShelf.length; i++) {
-    allAuthors.push(this.bookShelf[i].author);
-  }
-  return allAuthors;
+      allAuthors.push(this.bookShelf[i].author);
+    }
+    return allAuthors;
 };
 
 Library.prototype.getRandomAuthorName = function() {
-  // Purpose: Retrieves a random author name from your books collection
+// Purpose: Retrieves a random author name from your books collection
  // Return: string author name, null if no books exist
   if (this.bookShelf.length === 0) {
     return null;
@@ -133,22 +127,18 @@ Library.prototype.setLocalStorage = function () {
   return true;
 };
 
-var getLocalStorage = function () {
-  var parsedArray=[];
+Library.prototype.getLocalStorage = function () {
   var getBooks = JSON.parse(localStorage.getItem("book"));
-  console.log(getBooks);
    for (var i=0; i < getBooks.length; i++ ) {
-     //parsedArray.push(getBooks[i].bookTitle, getBooks[i].author, getBooks[i].numberOfPages, getBooks[i].publishDate);
-     var bookFromStorage = new Book ({//(bookTitle, author, numberOfPages, publishDate)
+     var bookFromStorage = new Book ({
         bookTitle : getBooks[i].bookTitle,
         author : getBooks[i].author,
         numberOfPages : getBooks[i].numberOfPages,
         publishDate : new Date(getBooks[i].publishDate),
       });
-      //parsedArray.push(bookFromStorage);
-      parsedArray.push(bookFromStorage);
+      this.bookShelf.push(bookFromStorage);
     }
-   return parsedArray;
+   return true;
 };
 
 // multiple Book Listing
@@ -157,84 +147,84 @@ var gBook1 = new Book( {
   bookTitle : "IT",
   author : "Stephen King",
   numberOfPages: 1138,
-  publishDate : "Janurary 12 1980"
+  publishDate : "1980"
 });
 
 var gBook2= new Book( {
   bookTitle : "Life of PI",
   author : "Yann Martel",
   numberOfPages : 280,
-  publishDate : "September 12 2001"
+  publishDate : "2001"
 });
 
 var  gBook3 = new Book( {
   bookTitle : "Lord of the Flies",
   author : "William Golding",
   numberOfPages : 260,
-  publishDate : "August 12 1954"
+  publishDate : "1954"
 });
 
 var gBook4= new Book ({
   bookTitle : "For Whom The Bell Tolls",
   author : "Ernest Hemingway",
   numberOfPages : 320,
-  publishDate : "Janurary 14 1950"
+  publishDate : "1950"
 });
 
 var gBook5= new Book ({
   bookTitle : "2001 A Space Odyssey",
   author : "Authur C Clarke ",
   numberOfPages : 510,
-  publishDate : "February 20 1969"
+  publishDate : "1969"
 });
 
 var gBook6= new Book ({
   bookTitle : "The Grapes Of Wrath",
   author : "John Steinbeck ",
   numberOfPages : 275,
-  publishDate : "March 23 1939"
+  publishDate : "1939"
 });
 
 var gBook7= new Book ({
   bookTitle : "Of Mice and Men",
   author : "John Steinbeck ",
   numberOfPages : 195,
-  publishDate : "April 10 1937"
+  publishDate : "1937"
 });
 
 var gBook8= new Book ({
   bookTitle : "A Friend Of The Earth",
   author : "T C Boyle ",
   numberOfPages : 290,
-  publishDate : "March 11 2000"
+  publishDate : "2000"
 });
 
 var gBook9= new Book ({
   bookTitle : "Drop City",
   author : "T C Boyle ",
   numberOfPages : 310,
-  publishDate : "March 11 2003"
+  publishDate : "2003"
 });
 
 var gBook10= new Book ({
   bookTitle : "Tortilla Curtain",
   author : "T C Boyle ",
   numberOfPages : 366,
-  publishDate : "March 30 1995"
+  publishDate : "1995"
 });
 
 var gBook11= new Book ({
   bookTitle : "The Great Gatsby",
   author : "F Scott Fitzgerald ",
   numberOfPages : 366,
-  publishDate : "September 13 1925"
+  publishDate : "1925"
 });
 
 var gBook12= new Book ({
   bookTitle : "Moby Dick",
   author : "Herman Melville ",
   numberOfPages : 896,
-  publishDate : "August 30 1851"
+  publishDate : "1851"
 });
 
 //Multiple Book Listing Array.
@@ -248,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //   console.log("Local Storage is empty");
     // }
     // else {
-  window.getLocalStorage();
+  window.gLibrary.getLocalStorage();
     //   }
   // getLocalStorage();
   // window.gLibrary.addBook(gBook1);
