@@ -3,7 +3,6 @@
 // this.bookShelf = new Array();
 //   }
 
-
 //Singleton
 (function ()  {
   var instance;
