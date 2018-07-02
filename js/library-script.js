@@ -1,7 +1,20 @@
+//Not Singleton
+// var Library = function(){
+// this.bookShelf = new Array();
+//   }
 
-var Library = function(){
-this.bookShelf = new Array();
+
+//Singleton
+(function ()  {
+  var instance;
+  Library= function() {
+    if (instance) {
+      return instance;
+    }
+    instance = this;
+    this.bookShelf= new Array();
   }
+})();
 
 var Book = function(args){
    this.bookTitle = args.bookTitle;
@@ -22,7 +35,6 @@ Library.prototype.addBook = function(book) {
       }
     this.bookShelf.push(book);
     this.setLocalStorage();
-    console.log( book + "title has already been added.");
     return this.hasBooks=true;
   };
 
@@ -141,6 +153,36 @@ Library.prototype.getLocalStorage = function () {
    return true;
 };
 
+Library.prototype.searchBooks = function (searchString) {
+
+  var searchResult = [];
+  if (parseInt(searchString)>0) {
+    var numberString = parseInt(searchString);
+    for ( var i=0; i < this.bookShelf.length; i++){
+      if (this.bookShelf[i].numberOfPages == numberString) {
+       searchResult.push(this.bookShelf[i]);
+      }
+      if (this.bookShelf[i].publishDate == numberString) {
+       searchResult.push(this.bookShelf[i]);
+      }
+    }
+  }
+
+  for ( var i=0; i < this.bookShelf.length; i++) {
+      if (this.bookShelf[i].bookTitle.toLowerCase().search(searchString.toLowerCase())> -1) {
+       searchResult.push(this.bookShelf[i]);
+       }
+      if (this.bookShelf[i].author.toLowerCase().search(searchString.toLowerCase())> -1) {
+        searchResult.push(this.bookShelf[i]);
+      }
+
+
+    }
+    return searchResult;
+};
+
+
+
 // multiple Book Listing
 
 var gBook1 = new Book( {
@@ -233,24 +275,17 @@ var addBooksArray = [gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, g
 
 document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary = new Library();
-  //window.gLibrary = getLocalStorage(parsedArray);
-    // if ( parsedArray.length === 0) {
-    //   console.log("Local Storage is empty");
-    // }
-    // else {
-  window.gLibrary.getLocalStorage();
-    //   }
-  // getLocalStorage();
-  // window.gLibrary.addBook(gBook1);
-  // window.gLibrary.addBook(gBook2);
-  // window.gLibrary.addBook(gBook3);
-  // window.gLibrary.addBook(gBook4);
+  window.gLibrary2 = new Library();
+  window.gLibrary.addBook(gBook1);
+  window.gLibrary.addBook(gBook2);
+  window.gLibrary.addBook(gBook3);
+  window.gLibrary2.addBook(gBook4);
   // window.gLibrary.addBooks(addBooksArray);
   // window.gLibrary.removeBookByAuthor("Boyle");
   // window.gLibrary.getRandomBook();
   // window.gLibrary.getRandomAuthorName();
   // window.gLibrary.getBookByTitle("x");
   // window.gLibrary.getBooksByAuthor("Boyle");
-
   //window.gLibrary.getAuthors();
+  window.gLibrary.searchBooks("320");
  });
