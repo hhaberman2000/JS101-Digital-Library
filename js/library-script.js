@@ -73,14 +73,12 @@ Library.prototype.getRandomBook = function() {
   if (this.bookShelf.length === 0) {
     return null;
     }
-    // localStorage.getItem('book', JSON.stringify(this.bookShelf));
     return this.bookShelf[Math.floor(Math.random() * this.bookShelf.length)];
-
   };
 
 Library.prototype.getBookByTitle = function(titleString) {
-//   // Purpose: Return all books that completely or partially matches the string title passed into the function
-//   // Return: array of book objects if you find books with matching titles, empty array if no books are found.
+  // Purpose: Return all books that completely or partially matches the string title passed into the function
+  // Return: array of book objects if you find books with matching titles, empty array if no books are found.
   var booksByTitle = [];
   for ( var i=0; i < this.bookShelf.length; i++) {
       if (this.bookShelf[i].bookTitle.toLowerCase().search(titleString.toLowerCase())> -1) {
@@ -104,7 +102,7 @@ Library.prototype.getBooksByAuthor = function (authorString) {
 
 Library.prototype.addBooks = function (books) {
    // Purpose: Takes multiple books, in the form of an array of book objects, and adds the objects to your books array.
-  // Return:  number of books successfully added, 0 if no books were added
+   // Return:  number of books successfully added, 0 if no books were added
   var newBooksCounter = 0;
   for ( var i=0; i < addBooksArray.length; i++) {
        this.addBook(books[i]);
@@ -126,7 +124,7 @@ Library.prototype.getAuthors = function () {
 };
 
 Library.prototype.getRandomAuthorName = function() {
-// Purpose: Retrieves a random author name from your books collection
+ // Purpose: Retrieves a random author name from your books collection
  // Return: string author name, null if no books exist
   if (this.bookShelf.length === 0) {
     return null;
@@ -153,35 +151,70 @@ Library.prototype.getLocalStorage = function () {
    return true;
 };
 
-Library.prototype.searchBooks = function (searchString) {
-
+Library.prototype.searchBooksAuthorPagesDate = function (sBook, sAuthor, sPages, sDate) {
   var searchResult = [];
-  if (parseInt(searchString)>0) {
-    var numberString = parseInt(searchString);
-    for ( var i=0; i < this.bookShelf.length; i++){
-      if (this.bookShelf[i].numberOfPages == numberString) {
-       searchResult.push(this.bookShelf[i]);
+    if (sBook  != "#" && sAuthor === "#" && sPages === "#" && sDate === "#") {
+        for ( var i=0; i < this.bookShelf.length; i++) {
+          if (this.bookShelf[i].bookTitle.toLowerCase().search(sBook.toLowerCase())> -1) {
+            searchResult.push(this.bookShelf[i]);
+          }
+        }
       }
-      if (this.bookShelf[i].publishDate == numberString) {
-       searchResult.push(this.bookShelf[i]);
+
+    if (sBook  === "#" && sAuthor !== "#" && sPages === "#" && sDate === "#") {
+      for ( var i=0; i < this.bookShelf.length; i++) {
+        // if (this.bookShelf[i].author.toLowerCase() === sAuthor.toLowerCase()) {
+      if (this.bookShelf[i].author.toLowerCase().search(sAuthor.toLowerCase())> -1) {
+          searchResult.push(this.bookShelf[i])
+        }
       }
     }
-  }
 
-  for ( var i=0; i < this.bookShelf.length; i++) {
-      if (this.bookShelf[i].bookTitle.toLowerCase().search(searchString.toLowerCase())> -1) {
-       searchResult.push(this.bookShelf[i]);
-       }
-      if (this.bookShelf[i].author.toLowerCase().search(searchString.toLowerCase())> -1) {
-        searchResult.push(this.bookShelf[i]);
+    if (sBook  === "#" && sAuthor !== "#" && sPages !== "#" && sDate === "#") {
+        sPages = parseInt(sPages);
+        if ( sPages <= 0) {
+          console.log("Book pages must be greater than zero.");
+        } else {
+          for ( var i=0; i < this.bookShelf.length; i++) {
+            if(this.bookShelf[i].numberOfPages <= sPages && this.bookShelf[i].author.toLowerCase().search(sAuthor.toLowerCase())> -1) {
+              searchResult.push(this.bookShelf[i]);
+            }
+          }
+        }
       }
 
+      if (sBook  === "#" && sAuthor === "#" && sPages !== "#" && sDate === "#") {
+          sPages = parseInt(sPages);
+          if ( sPages <= 0) {
+            console.log("Book pages must be greater than zero.");
+          } else {
+            for ( var i=0; i < this.bookShelf.length; i++) {
+              if(this.bookShelf[i].numberOfPages <= sPages) {
+                searchResult.push(this.bookShelf[i]);
+              }
+            }
+          }
+        }
 
-    }
-    return searchResult;
+    if (sBook  === "#" && sAuthor === "#" && sPages === "#" && sDate !== "#") {
+          var convertDate = Date.parse(sDate);
+          for ( var i=0; i < this.bookShelf.length; i++) {
+            if(Date.parse(this.bookShelf[i].publishDate) <= convertDate) {
+            searchResult.push(this.bookShelf[i]);
+            }
+          }
+        }
+
+        if (sBook  === "#" && sAuthor !== "#" && sPages === "#" && sDate !== "#") {
+              var convertDate = Date.parse(sDate);
+              for ( var i=0; i < this.bookShelf.length; i++) {
+                if(this.bookShelf[i].author.toLowerCase().search(sAuthor.toLowerCase())> -1 && Date.parse(this.bookShelf[i].publishDate) <= convertDate) {
+                searchResult.push(this.bookShelf[i]);
+                }
+              }
+            }
+  return searchResult;
 };
-
-
 
 // multiple Book Listing
 
@@ -280,12 +313,12 @@ document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary.addBook(gBook2);
   window.gLibrary.addBook(gBook3);
   window.gLibrary2.addBook(gBook4);
-  // window.gLibrary.addBooks(addBooksArray);
+  window.gLibrary.addBooks(addBooksArray);
   // window.gLibrary.removeBookByAuthor("Boyle");
   // window.gLibrary.getRandomBook();
   // window.gLibrary.getRandomAuthorName();
   // window.gLibrary.getBookByTitle("x");
   // window.gLibrary.getBooksByAuthor("Boyle");
   //window.gLibrary.getAuthors();
-  window.gLibrary.searchBooks("320");
+  window.gLibrary.searchBooksAuthorPagesDate("#","boyle","#","2001");
  });
