@@ -40,30 +40,43 @@ Library.prototype.addBook = function(book) {
 Library.prototype.removeBookTitle = function(titleToRemove){
   // Purpose: Remove book from from the books array by its title.
   // Return:boolean true if the book(s) were removed, false if no books match
+  var remTitleArray = [];
   for ( var i=0; i < this.bookShelf.length; i++) {
      if (this.bookShelf[i].bookTitle.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
        this.bookShelf.splice(i,1);
        localStorage.setItem('book', JSON.stringify(this.bookShelf));
        console.log("Title" + titleToRemove + "has been removed.");
-       return true;
+       remTitleArray.push(this.bookShelf[i]);
+       i--;
        }
      }
-     console.log("Book title is not in library.");
-   return false;
+     if (remTitleArray.length > 0) {
+      return true;
+    } else {
+        console.log("Book title is not in library.");
+        return false;
+      }
  };
 
 Library.prototype.removeBookByAuthor = function(authorName){
 // // Purpose: Remove a specific book from your books array by the author name.
-// // Return: booleantrue if the book(s) were removed, false if no books match
+// // Return: booleantrue if the book(s) were removed, false if no books match.
+  var remBookAuthArray = [];
   for ( var i=0; i < this.bookShelf.length; i++) {
+    console.log(this.bookShelf[i].author);
     if (this.bookShelf[i].author.toLowerCase().search(authorName.toLowerCase())> -1) {
+      remBookAuthArray.push(this.bookShelf[i]);
       this.bookShelf.splice(i,1);
+      i--;
       localStorage.setItem('book', JSON.stringify(this.bookShelf));
-      return true;
       }
     }
+    if (remBookAuthArray.length > 0) {
+        return true;
+      } else {
     console.log("This Author is not in library.");
     return false;
+  }
 };
 
 Library.prototype.getRandomBook = function() {
@@ -227,34 +240,121 @@ Library.prototype.searchBooksAuthorPagesDate = function (sBook, sAuthor, sPages,
   return searchResult;
 };
 
+// multiple Book Listing
+
+var gBook1 = new Book( {
+  bookTitle : "IT",
+  author : "Stephen King",
+  numberOfPages: 1138,
+  publishDate : "1980"
+});
+
+var gBook2= new Book( {
+  bookTitle : "Life of PI",
+  author : "Yann Martel",
+  numberOfPages : 280,
+  publishDate : "2001"
+});
+
+var  gBook3 = new Book( {
+  bookTitle : "Lord of the Flies",
+  author : "William Golding",
+  numberOfPages : 260,
+  publishDate : "1954"
+});
+
+var gBook4= new Book ({
+  bookTitle : "For Whom The Bell Tolls",
+  author : "Ernest Hemingway",
+  numberOfPages : 320,
+  publishDate : "1950"
+});
+
+var gBook5= new Book ({
+  bookTitle : "2001 A Space Odyssey",
+  author : "Authur C Clarke ",
+  numberOfPages : 510,
+  publishDate : "1969"
+});
+
+var gBook6= new Book ({
+  bookTitle : "The Grapes Of Wrath",
+  author : "John Steinbeck ",
+  numberOfPages : 275,
+  publishDate : "1939"
+});
+
+var gBook7= new Book ({
+  bookTitle : "Of Mice and Men",
+  author : "John Steinbeck ",
+  numberOfPages : 195,
+  publishDate : "1937"
+});
+
+var gBook8= new Book ({
+  bookTitle : "A Friend Of The Earth",
+  author : "T C Boyle ",
+  numberOfPages : 290,
+  publishDate : "2000"
+});
+
+var gBook9= new Book ({
+  bookTitle : "Drop City",
+  author : "T C Boyle ",
+  numberOfPages : 310,
+  publishDate : "2003"
+});
+
+var gBook10= new Book ({
+  bookTitle : "Tortilla Curtain",
+  author : "T C Boyle ",
+  numberOfPages : 366,
+  publishDate : "1995"
+});
+
+var gBook11= new Book ({
+  bookTitle : "The Great Gatsby",
+  author : "F Scott Fitzgerald ",
+  numberOfPages : 366,
+  publishDate : "1925"
+});
+
+var gBook12= new Book ({
+  bookTitle : "Moby Dick",
+  author : "Herman Melville ",
+  numberOfPages : 896,
+  publishDate : "1851"
+});
+
+var addBooksArray = [ gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
 
 document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary = new Library();
   window.gLibrary2 = new Library();
-  var gBook1 = new Book ({bookTitle : "IT", author : "Stephen King", numberOfPages :1138, publishDate :"1980"});
-  var gBook2= new Book ({bookTitle :"Life of PI", author :"Yann Martel", numberOfPages :280, publishDate :"2001"});
-  var gBook3 = new Book ({bookTitle :"Lord of the Flies", author :"William Golding", numberOfPages :260, publishDate :"1954"});
-  var gBook4 = new Book ({bookTitle :"For Whom The Bell Tolls", author :"Ernest Hemingway",numberOfPages : 320, publishDate : "1950"});
-  var gBook5 = new Book ({bookTitle :"2001 A Space Odyssey", author :"Authur C Clarke ", numberOfPages :510, publishDate : "1969"});
-  var gBook6 = new Book ({bookTitle :"The Grapes Of Wrath", author :"John Steinbeck ", numberOfPages :275, publishDate :"1939"});
-  var gBook7 = new Book ({bookTitle :"Of Mice and Men", author :"John Steinbeck ", numberOfPages :195, publishDate : "1937"});
-  var gBook8 = new Book ({bookTitle :"A Friend Of The Earth", author :"T C Boyle ", numberOfPages :290, publishDate :"2000"});
-  var gBook9= new Book ({bookTitle :"Drop City", author :"T C Boyle ", numberOfPages :310, publishDate : "2003"});
-  var gBook10 = new Book ({bookTitle :"Tortilla Curtain", author :"T C Boyle ", numberOfPages :366, publishDate :"1995"});
-  var gBook11 = new Book  ({bookTitle :"The Great Gatsby", author :"The Great Gatsby ", numberOfPages :366, publishDate :"1925"});
-  var gBook12 = new Book ({bookTitle :"Moby Dick", author :"Herman Melville ", numberOfPages :896, publishDate :"1851"});
-  var addBooksArray = [gBook1, gBook2, gBook3, gBook4, gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
+  // var gBook1 = new Book ({bookTitle : "IT", author : "Stephen King", numberOfPages :1138, publishDate :"1980"});
+  // var gBook2= new Book ({bookTitle :"Life of PI", author :"Yann Martel", numberOfPages :280, publishDate :"2001"});
+  // var gBook3 = new Book ({bookTitle :"Lord of the Flies", author :"William Golding", numberOfPages :260, publishDate :"1954"});
+  // var gBook4 = new Book ({bookTitle :"For Whom The Bell Tolls", author :"Ernest Hemingway",numberOfPages : 320, publishDate : "1950"});
+  // var gBook5 = new Book ({bookTitle :"2001 A Space Odyssey", author :"Authur C Clarke ", numberOfPages :510, publishDate : "1969"});
+  // var gBook6 = new Book ({bookTitle :"The Grapes Of Wrath", author :"John Steinbeck ", numberOfPages :275, publishDate :"1939"});
+  // var gBook7 = new Book ({bookTitle :"Of Mice and Men", author :"John Steinbeck ", numberOfPages :195, publishDate : "1937"});
+  // var gBook8 = new Book ({bookTitle :"A Friend Of The Earth", author :"T C Boyle ", numberOfPages :290, publishDate :"2000"});
+  // var gBook9= new Book ({bookTitle :"Drop City", author :"T C Boyle ", numberOfPages :310, publishDate : "2003"});
+  // var gBook10 = new Book ({bookTitle :"Tortilla Curtain", author :"T C Boyle ", numberOfPages :366, publishDate :"1995"});
+  // var gBook11 = new Book  ({bookTitle :"The Great Gatsby", author :"The Great Gatsby ", numberOfPages :366, publishDate :"1925"});
+  // var gBook12 = new Book ({bookTitle :"Moby Dick", author :"Herman Melville ", numberOfPages :896, publishDate :"1851"});
+  // var addBooksArray = [ gBook5, gBook6, gBook7];
   window.gLibrary.addBooks(addBooksArray);
-  // window.gLibrary.addBook(gBook1);
-  // window.gLibrary.addBook(gBook2);
-  // window.gLibrary.addBook(gBook3);
-  // window.gLibrary.addBook(gBook4);
+  window.gLibrary.addBook(gBook1);
+  window.gLibrary.addBook(gBook2);
+  window.gLibrary.addBook(gBook3);
+  window.gLibrary.addBook(gBook4);
 
   // window.gLibrary.removeBookByAuthor("Boyle");
   // window.gLibrary.getRandomBook();
   // window.gLibrary.getRandomAuthorName();
   // window.gLibrary.getBookByTitle("x");
-  // window.gLibrary.getBooksByAuthor("Boyle");
+  window.gLibrary.getBooksByAuthor("Boyle");
   // window.gLibrary.getAuthors();
   window.gLibrary.searchBooksAuthorPagesDate("#","boyle","#","2001");
  });
