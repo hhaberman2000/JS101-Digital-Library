@@ -218,93 +218,93 @@ Library.prototype.searchBooksAuthorPagesDate = function (sBook, sAuthor, sPages,
 
 // multiple Book Listing
 
-var gBook1 = new Book( {
-  bookTitle : "IT",
-  author : "Stephen King",
-  numberOfPages: 1138,
-  publishDate : "1980"
-});
-
-var gBook2= new Book( {
-  bookTitle : "Life of PI",
-  author : "Yann Martel",
-  numberOfPages : 280,
-  publishDate : "2001"
-});
-
-var  gBook3 = new Book( {
-  bookTitle : "Lord of the Flies",
-  author : "William Golding",
-  numberOfPages : 260,
-  publishDate : "1954"
-});
-
-var gBook4= new Book ({
-  bookTitle : "For Whom The Bell Tolls",
-  author : "Ernest Hemingway",
-  numberOfPages : 320,
-  publishDate : "1950"
-});
-
-var gBook5= new Book ({
-  bookTitle : "2001 A Space Odyssey",
-  author : "Authur C Clarke ",
-  numberOfPages : 510,
-  publishDate : "1969"
-});
-
-var gBook6= new Book ({
-  bookTitle : "The Grapes Of Wrath",
-  author : "John Steinbeck ",
-  numberOfPages : 275,
-  publishDate : "1939"
-});
-
-var gBook7= new Book ({
-  bookTitle : "Of Mice and Men",
-  author : "John Steinbeck ",
-  numberOfPages : 195,
-  publishDate : "1937"
-});
-
-var gBook8= new Book ({
-  bookTitle : "A Friend Of The Earth",
-  author : "T C Boyle ",
-  numberOfPages : 290,
-  publishDate : "2000"
-});
-
-var gBook9= new Book ({
-  bookTitle : "Drop City",
-  author : "T C Boyle ",
-  numberOfPages : 310,
-  publishDate : "2003"
-});
-
-var gBook10= new Book ({
-  bookTitle : "Tortilla Curtain",
-  author : "T C Boyle ",
-  numberOfPages : 366,
-  publishDate : "1995"
-});
-
-var gBook11= new Book ({
-  bookTitle : "The Great Gatsby",
-  author : "F Scott Fitzgerald ",
-  numberOfPages : 366,
-  publishDate : "1925"
-});
-
-var gBook12= new Book ({
-  bookTitle : "Moby Dick",
-  author : "Herman Melville ",
-  numberOfPages : 896,
-  publishDate : "1851"
-});
+// var gBook1 = new Book( {
+//   bookTitle : "IT",
+//   author : "Stephen King",
+//   numberOfPages: 1138,
+//   publishDate : "1980"
+// });
+//
+// var gBook2= new Book( {
+//   bookTitle : "Life of PI",
+//   author : "Yann Martel",
+//   numberOfPages : 280,
+//   publishDate : "2001"
+// });
+//
+// var  gBook3 = new Book( {
+//   bookTitle : "Lord of the Flies",
+//   author : "William Golding",
+//   numberOfPages : 260,
+//   publishDate : "1954"
+// });
+//
+// var gBook4= new Book ({
+//   bookTitle : "For Whom The Bell Tolls",
+//   author : "Ernest Hemingway",
+//   numberOfPages : 320,
+//   publishDate : "1950"
+// });
+//
+// var gBook5= new Book ({
+//   bookTitle : "2001 A Space Odyssey",
+//   author : "Authur C Clarke ",
+//   numberOfPages : 510,
+//   publishDate : "1969"
+// });
+//
+// var gBook6= new Book ({
+//   bookTitle : "The Grapes Of Wrath",
+//   author : "John Steinbeck ",
+//   numberOfPages : 275,
+//   publishDate : "1939"
+// });
+//
+// var gBook7= new Book ({
+//   bookTitle : "Of Mice and Men",
+//   author : "John Steinbeck ",
+//   numberOfPages : 195,
+//   publishDate : "1937"
+// });
+//
+// var gBook8= new Book ({
+//   bookTitle : "A Friend Of The Earth",
+//   author : "T C Boyle ",
+//   numberOfPages : 290,
+//   publishDate : "2000"
+// });
+//
+// var gBook9= new Book ({
+//   bookTitle : "Drop City",
+//   author : "T C Boyle ",
+//   numberOfPages : 310,
+//   publishDate : "2003"
+// });
+//
+// var gBook10= new Book ({
+//   bookTitle : "Tortilla Curtain",
+//   author : "T C Boyle ",
+//   numberOfPages : 366,
+//   publishDate : "1995"
+// });
+//
+// var gBook11= new Book ({
+//   bookTitle : "The Great Gatsby",
+//   author : "F Scott Fitzgerald ",
+//   numberOfPages : 366,
+//   publishDate : "1925"
+// });
+//
+// var gBook12= new Book ({
+//   bookTitle : "Moby Dick",
+//   author : "Herman Melville ",
+//   author : 896,
+//   publishDate : "1851"
+// });
 
 //Multiple Book Listing Array.
 
-var addBooksArray = [gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
+// var addBooksArray = [gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
 
 document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary = new Library();
@@ -312,13 +312,26 @@ document.addEventListener("DOMContentLoaded", function() {
   window.gLibrary.addBook(gBook1);
   window.gLibrary.addBook(gBook2);
   window.gLibrary.addBook(gBook3);
-  window.gLibrary2.addBook(gBook4);
-  window.gLibrary.addBooks(addBooksArray);
+  window.gLibrary.addBook(gBook4);
+  // window.gLibrary.addBooks(addBooksArray);
   // window.gLibrary.removeBookByAuthor("Boyle");
   // window.gLibrary.getRandomBook();
   // window.gLibrary.getRandomAuthorName();
   // window.gLibrary.getBookByTitle("x");
   // window.gLibrary.getBooksByAuthor("Boyle");
   //window.gLibrary.getAuthors();
+  var gBook1 = new Book ({bookTitle : "IT"; author :"Stephen King"; numberOfPages :1138; publishDate :"1980"});
+  var gBook2= new Book ({"Life of PI", "Yann Martel", 280, "2001"});
+  var gBook3 = new Book ({"Lord of the Flies", "William Golding", 260, "1954"});
+  var gBook4 = new Book ("For Whom The Bell Tolls", "Ernest Hemingway", 320, "1950");
+  var gBook5 = new Book ( "2001 A Space Odyssey", "Authur C Clarke ", 510, "1969");
+  var gBook6 = new Book ("The Grapes Of Wrath", "John Steinbeck ", 275, "1939");
+  var gBook7 = new Book ("Of Mice and Men", "John Steinbeck ", 195, "1937");
+  var gBook8 = new Book ("A Friend Of The Earth", "T C Boyle ", 290, "2000");
+  var gBook9= new Book ("Drop City", "T C Boyle ", 310, "2003");
+  var gBook10 = new Book ("Tortilla Curtain", "T C Boyle ", 366, "1995");
+  var gBook11 = new Book  ("The Great Gatsby", "The Great Gatsby ", 366, "1925");
+  var gBook12 = new Book ("Moby Dick", "Herman Melville ", 896, "1851");
+  var addBooksArray = [gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
   window.gLibrary.searchBooksAuthorPagesDate("#","boyle","#","2001");
  });
