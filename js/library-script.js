@@ -3,7 +3,6 @@
 // this.bookShelf = new Array();
 //   }
 
-
 //Singleton
 (function ()  {
   var instance;
@@ -142,7 +141,7 @@ Library.prototype.setLocalStorage = function () {
 
 Library.prototype.getLocalStorage = function () {
   // Purpose: Retrieves books from local storage.
-  // Return: string author name, null if no books exist
+  // Return: true
   var getBooks = JSON.parse(localStorage.getItem("book"));
    for (var i=0; i < getBooks.length; i++ ) {
      var bookFromStorage = new Book ({
@@ -176,7 +175,6 @@ Library.prototype.searchBooksAuthorPagesDate = function (sBook, sAuthor, sPages,
 
     if (sBook  === "#" && sAuthor !== "#" && sPages === "#" && sDate === "#") {
       for ( var i=0; i < this.bookShelf.length; i++) {
-        // if (this.bookShelf[i].author.toLowerCase() === sAuthor.toLowerCase()) {
       if (this.bookShelf[i].author.toLowerCase().search(sAuthor.toLowerCase())> -1) {
           searchResult.push(this.bookShelf[i])
         }
@@ -257,6 +255,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // window.gLibrary.getRandomAuthorName();
   // window.gLibrary.getBookByTitle("x");
   // window.gLibrary.getBooksByAuthor("Boyle");
-  //window.gLibrary.getAuthors();
-  // window.gLibrary.searchBooksAuthorPagesDate("#","boyle","#","2001");
+  // window.gLibrary.getAuthors();
+  window.gLibrary.searchBooksAuthorPagesDate("#","boyle","#","2001");
  });
