@@ -229,8 +229,8 @@ var gBook4= new Book ({
 
 var gBook5= new Book ({
   bookTitle : "2001 A Space Odyssey",
-  author : "Authur C Clarke ",
-  numberOfPages : 510,
+  author : "Authur C. Clarke ",
+  numberOfPages : 221,
   publishDate : "1969"
 });
 
@@ -250,7 +250,7 @@ var gBook7= new Book ({
 
 var gBook8= new Book ({
   bookTitle : "A Friend Of The Earth",
-  author : "T C Boyle ",
+  author : "T. C. Boyle ",
   numberOfPages : 290,
   publishDate : "2000"
 });
@@ -263,7 +263,7 @@ var gBook9= new Book ({
 });
 
 var gBook10= new Book ({
-  bookTitle : "Tortilla Curtain",
+  bookTitle : "The Tortilla Curtain",
   author : "T C Boyle ",
   numberOfPages : 366,
   publishDate : "1995"

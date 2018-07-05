@@ -10,6 +10,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- <link href="http://wenzhixin.net.cn/p/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" /> -->
+
+   <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet" />
+   <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.bootstrap.min.css" rel="stylesheet" />
+   <link href="http://protostrap.com/Assets/gv/css/gv.bootstrap-form.css" rel="stylesheet" type="text/css" />
 
 
   </head>
@@ -40,7 +47,11 @@
               <h2 class="my-library-styles">My Library</h2>
             </div>
             <div class="col-md-3">
-              <button type="button" class="search-catalog">Search Book Catalog</button>
+              <!-- <button type="button" class="search-catalog">Search Book Catalog</button> -->
+              <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+                <input type="text" placeholder="Search Books.." name="search2">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
             </div>
           </div>
         </div>
@@ -70,70 +81,398 @@
                 </button>
             </div>
             <div class="col-md-2">
-              <button type="button">Remove Books</button>
+              <button type="button" class="btn" data-toggle="modal" data-target="#remove-books-modal">Remove Books</button>
             </div>
             <div class="col-md-2">
-              <button type="button">Show All Books</button>
+              <button type="button" class="btn" data-toggle="modal" data-target="#show-all-books-modal">Show All Books</button>
             </div>
             <div class="col-md-2">
-              <button type="button">Book Suggestions</button>
+              <button type="button" class="btn" data-toggle="modal" data-target="#show-book-suggestion-modal">Book Suggestions</button>
             </div>
             <div class="col-md-2">
-              <button type="button">Show All Authors</button>
+              <button type="button" class="btn" data-toggle="modal" data-target="#show-all-authors-modal">Show All Authors</button>
             </div>
             <div class="col-md-2">
-              <button type="button">Author Suggestions</button>
+              <button type="button" class="btn" data-toggle="modal" data-target="#author-suggestion-modal">Author Suggestions</button>
             </div>
           </div>
     </div>
-</section>
+    </section>
 
-<!-- Add Books Modal -->
-<div class="modal" id="add-books-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <!-- Add Books Modal -->
+  <div class="modal" id="add-books-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Books</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Add Books</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate> -->
+              <!-- Book Title -->
+              <div class="form-group">
+                  <label class="control-label" for="field2">Book Title*</label>
+                <div class="controls">
+                    <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                    <!-- <span id="errId5" class="error"></span> -->
+                  </div>
+              </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="title">Title*</label>
-          <input type="text" class="form-control" id="AddBookTitle" placeholder="Enter Title" name="AddBookTitle">
+              <!-- Author -->
+            <div class="form-group">
+                <label class="control-label" for="field2">Author*</label>
+                <div class="controls">
+                    <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                    <!-- <span id="errId5" class="error"></span> -->
+                  </div>
+            </div>
+
+            <div class="row">
+              <!-- Number of Pages -->
+               <div class="col-md-4">
+                 <div class="form-group">
+                    <label class="control-label" for="field4">Number of Pages:</label>
+                    <div class="controls">
+                        <span class="k-widget k-numerictextbox form-control" style=""><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value form-control k-input" tabindex="0" aria-disabled="false" aria-readonly="false" style="display: inline-block;" data-parsley-errors-container="#errId6"><input id="field4" value="" type="text" class="form-control k-input" data-role="numeric" data-format="integer" role="spinbutton" aria-valuenow="" aria-disabled="false" aria-readonly="false" data-error-container="#errfield4" style="display: none;" data-parsley-errors-container="#errId6"><span class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span><span id="errId6" class="error">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                <!-- Published Date -->
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label" for="field3">Published Date:</label>
+                      <div class="controls">
+                        <span class="k-widget k-datepicker k-header form-control" style="">
+                          <span class="k-picker-wrap k-state-default">
+                            <input id="field3" type="text" class="form-control k-input" data-role="date" role="textbox" aria-haspopup="true" aria-expanded="false" aria-owns="field3_dateview" aria-disabled="false" aria-readonly="false" aria-label="Current focused date is null" data-error-container="#errfield3" style="width: 100%;" data-parsley-errors-container="#errId7">
+                            <span unselectable="on" class="k-select" role="button" aria-controls="field3_dateview">
+                              <span unselectable="on" class="k-icon k-i-calendar">select</span>
+                            </span>
+                          </span>
+                        </span>
+                          <span id="errId7" class="error"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Rating -->
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label control-label-left" for="field5">Star Rating:</label>
+                        <div class="controls">
+                          <select id="field5" class="form-control" data-role="select" data-parsley-errors-container="#errId8">
+                              <option value="Option 1">1 Star - Rotten</option>
+                              <option value="Option 2">2 Stars - Bad</option>
+                              <option value="Option 3">3 Stars - Average</option>
+                              <option value="Option 4">4 Stars - Good</option>
+                              <option value="Option 4">5 Stars - Excellent</option>
+                          </select>
+                          <span id="errId8" class="error"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- end of row -->
+                <!-- Browse for Book Cover Image-->
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label class="control-label" for="field17">Upload a Book Cover:</label>
+                          <button id="button8" type="button" class="btn btn-default" name="Book Cover">Browse.</button>
+                        </div>
+                      </div>
+
+                  <!-- Synopsis-->
+                      <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="control-label" for="field17">Synopsis:</label>
+                              <div class="controls">
+                                  <textarea id="field17" rows="3" class="form-control k-textbox" data-role="textarea" data-parsley-errors-container="#errId9"></textarea>
+                                  <span id="errId9" class="error"></span>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <!-- Queue books to add -->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label" for="field17">Create book queue:</label>
+                            <button id="button14" type="button" class="btn btn-default">Queue Book.. </button>
+                          </div>
+                        </div>
+                        <!-- Add queued books to library -->
+                        <div class="col-md-6">
+                          <div class="form-group pull-right">
+                            <label class="control-label" for="field17">0 Book(s) in queue to add:</label>
+                            <button id="button16" type="button" class="btn btn-default">Add Books To Library</button>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- modal body end-->
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+  <!-- Remove Books Modal -->
+  <div class="modal" id="remove-books-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Remove Books</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate> -->
+              <!-- Remove Book Title -->
+              <div class="form-group">
+                  <label class="control-label" for="field2">Remove By Title</label>
+                <div class="controls">
+                    <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                    <!-- <span id="errId5" class="error"></span> -->
+                  </div>
+              </div>
+
+              <!-- Author -->
+            <div class="form-group">
+                <label class="control-label" for="field2">Remove By Author</label>
+                <div class="controls">
+                    <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                    <!-- <span id="errId5" class="error"></span> -->
+                  </div>
+            </div>
+
+            <!-- Remove books Button -->
+            <!-- <div class="col-md-6"> -->
+              <div class="form-group pull-right">
+                <button id="button16" type="button" class="btn btn-default">Remove Books</button>
+              </div>
+
+            </div>
+          </form>
         </div>
       </div>
-
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="author">Author*</label>
-          <input type="text" class="form-control" id="AddBookTitle" placeholder="Enter Author" name="AddBookTitle">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-        </div>
-
-        <div class="col-md-4">
-        </div>
-
-        <div class="col-md-4">
-        </div>
-
-      </div>
-
-      <!-- Modal footer -->
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div> -->
-
     </div>
+  <!-- Show all books modal -->
+  <div class="modal" id="show-all-books-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title">All Books</p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Book titles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>IT</td>
+                </tr>
+                <tr>
+                  <td>Life of PI</td>
+                </tr>
+                <tr>
+                  <td>Lord of the Flies</td>
+                </tr>
+                <tr>
+                  <td>For Whom The Bell Tolls</td>
+                </tr>
+                <tr>
+                  <td>2001 A Space Odyssey</td>
+                </tr>
+                <tr>
+                  <td>The Grapes Of Wrath</td>
+                </tr>
+                <tr>
+                  <td>Of Mice and Men</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+
+        </div>
+      </div>
   </div>
-</div>
+  <!-- Book suggestions modal -->
+  <div class="modal" id="show-book-suggestion-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title">2001 A Space Odyssey by Authur C. Clarke</p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+                <div class="row">
+                  <img class="2001Space-image" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg">
+                </div>
+                <div class="row">
+                  <p>2001: A Space Odyssey is a 1968 science fiction novel
+                  by British writer Arthur C. Clarke. It was developed
+                  concurrently with Stanley Kubrick's film version and
+                  published after the release of the film. Clarke and Kubrick
+                  worked on the book together, but eventually only Clarke
+                  ended up as the official author. The story is based in part
+                  on various short stories by Clarke</p>
+                </div>
+                <div class="row">
+                  221 Pages
+                </div>
+                <div class="row">
+                  Published: 1968
+                </div>
+                <div class="row">
+                  <img class="5star-image" src="assets/5-stars-rating.png">
+                </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <!-- Show all authors modal -->
+  <div class="modal" id="show-all-authors-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title">All Authors</p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Authors</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Stephen King</td>
+                </tr>
+                <tr>
+                  <td>Yann Martel</td>
+                </tr>
+                <tr>
+                  <td>William Golding</td>
+                </tr>
+                <tr>
+                  <td>Ernest Hemingway</td>
+                </tr>
+                <tr>
+                  <td>Authur C. Clarke</td>
+                </tr>
+                <tr>
+                  <td>John Steinbeck</td>
+                </tr>
+                <tr>
+                  <td>T. C. Boyle</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+
+        </div>
+      </div>
+  </div>
+  <!-- Author suggestions modal -->
+  <div class="modal" id="author-suggestion-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title">Author Suggestion</p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Books by T. C. Boyle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="row">
+                      <img class="A-friend-image" src="assets/a-friend-of-the-earth.jpg">A Friend Of The Earth
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="row">
+                      <img class="Tortilla-image" src="assets/Tortilla-curtain.jpg">The Tortilla Curtain
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="drop-city-image" src="assets/drop-city.jpg">Drop City
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+
+        </div>
+      </div>
+  </div>
+
+
+
+
+<script src="http://cdn.kendostatic.com/2014.1.318/js/jquery.min.js"></script>
+    <script src="http://protostrap.com/Assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- <script src="http://wenzhixin.net.cn/p/bootstrap-table/src/bootstrap-table.js" type="text/javascript"></script> -->
+
+    <script src="http://protostrap.com/Assets/inputmask/js/jquery.inputmask.js" type="text/javascript"></script>
+    <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.all.min.js"></script>
+    <script src="http://protostrap.com/Assets/parsely/parsley.extend.js" type="text/javascript"></script>
+    <script src="http://protostrap.com/Assets/parsely/2.0/parsley.js" type="text/javascript"></script>
+    <script src="http://protostrap.com/Assets/download.js" type="text/javascript"></script>
+    <script src="http://protostrap.com/Assets/protostrap.js" type="text/javascript"></script>
 
   </body>
 </html>
