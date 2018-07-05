@@ -17,10 +17,14 @@
    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet" />
    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.bootstrap.min.css" rel="stylesheet" />
    <link href="http://protostrap.com/Assets/gv/css/gv.bootstrap-form.css" rel="stylesheet" type="text/css" />
+   <link href='https://fonts.googleapis.com/css?family=Offside' rel='stylesheet'>
+   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+   <link href='https://fonts.googleapis.com/css?family=Dangrek' rel='stylesheet'>
+
 
 
   </head>
-  <body style="background-image: url(assets/foggy_birds.png); background-repeat: repeat;">
+  <body style="background-image: url(assets/foggy_birds.png); background-repeat: repeat; font-family: 'Dangrek','Montserrat'; color: #888f99">
     <script type="text/javascript" src="js/library-script.js">
     </script>
 
@@ -151,30 +155,60 @@
         <div class="modal-body">
           <!-- <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate> -->
               <!-- Book Title -->
-              <div class="form-group">
-                  <label class="control-label" for="field2">Book Title*</label>
-                <div class="controls">
+              <div class="row ">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label" for="field2">Book Title*</label>
+                  <div class="controls">
                     <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
                     <!-- <span id="errId5" class="error"></span> -->
                   </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Author -->
-            <div class="form-group">
-                <label class="control-label" for="field2">Author*</label>
-                <div class="controls">
-                    <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+              <div class="row ">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label" for="field2">Author*</label>
+                    <div class="controls">
+                      <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
                     <!-- <span id="errId5" class="error"></span> -->
+                    </div>
                   </div>
-            </div>
+                </div>
+              </div>
+            <!-- Browse for Book Cover Image-->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Choose Book Cover</label>
+                      <div class="input-group">
+                        <span class="input-group-btn" >
+                          <span class="btn btn-default btn-sm btn-file">
+                            Browse… <input type="file" id="imgInp" >
+                          </span>
+                        </span>
+                          <input type="text" class="form-control" readonly placeholder="Cover file">
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <img class="cover-img-upload"  id='img-upload'/>
+                  </div>
+
+
 
             <div class="row">
               <!-- Number of Pages -->
                <div class="col-md-4">
                  <div class="form-group">
-                    <label class="control-label" for="field4">Number of Pages:</label>
+                    <label class="control-label" for="field4">Pages:</label>
                     <div class="controls">
-                        <span class="k-widget k-numerictextbox form-control" style=""><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value form-control k-input" tabindex="0" aria-disabled="false" aria-readonly="false" style="display: inline-block;" data-parsley-errors-container="#errId6"><input id="field4" value="" type="text" class="form-control k-input" data-role="numeric" data-format="integer" role="spinbutton" aria-valuenow="" aria-disabled="false" aria-readonly="false" data-error-container="#errfield4" style="display: none;" data-parsley-errors-container="#errId6"><span class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span><span id="errId6" class="error">
+                        <span class="k-widget k-numerictextbox form-control" style=""><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value form-control k-input" tabindex="0" aria-disabled="false" aria-readonly="false" style="display: inline-block;" data-parsley-errors-container="#errId6">
+                          <input id="field4" value="" type="text" class="form-control k-input" data-role="numeric" data-format="integer" role="spinbutton" aria-valuenow="" aria-disabled="false" aria-readonly="false" data-error-container="#errfield4" style="display: none;" data-parsley-errors-container="#errId6"><span class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span><span id="errId6" class="error">
                         </span>
                       </div>
                     </div>
@@ -198,32 +232,38 @@
                   </div>
                   <!-- Rating -->
                   <div class="col-md-4">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label class="control-label control-label-left" for="field5">Star Rating:</label>
                         <div class="controls">
                           <select id="field5" class="form-control" data-role="select" data-parsley-errors-container="#errId8">
-                              <option value="Option 1">1 Star - Rotten</option>
+                              <option value="Option 1">1 Star - Rotten</p></option>
                               <option value="Option 2">2 Stars - Bad</option>
                               <option value="Option 3">3 Stars - Average</option>
                               <option value="Option 4">4 Stars - Good</option>
-                              <option value="Option 4">5 Stars - Excellent</option>
+                              <option value="Option 5" style="background-image:url("assets/5-stars-rating.png");"></option>
                           </select>
                           <span id="errId8" class="error"></span>
+                      </div>
+                    </div> -->
+                    <div class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                      </a>
+
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </div>
                   </div>
                 </div><!-- end of row -->
-                <!-- Browse for Book Cover Image-->
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="form-group">
-                        <label class="control-label" for="field17">Upload a Book Cover:</label>
-                          <button id="button8" type="button" class="btn btn-default" name="Book Cover">Browse.</button>
-                        </div>
-                      </div>
+
+
 
                   <!-- Synopsis-->
-                      <div class="col-md-7">
+                  <div class="row">
+                      <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label" for="field17">Synopsis:</label>
                               <div class="controls">
@@ -233,15 +273,20 @@
                         </div>
                       </div>
                     </div>
-
-                    <div class="row">
+                    </div><!-- modal body end-->
+                    <div class="modal-footer ">
+                    <div class="row ">
                       <!-- Queue books to add -->
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                         <div class="form-group">
-                          <label class="control-label" for="field17">Create book queue:</label>
+                          <label class="control-label modal-foot-pos " for="field17">Create queue:</label>
                             <button id="button14" type="button" class="btn btn-default">Queue Book.. </button>
                           </div>
                         </div>
+                      <div class="col-md-2"></div>
+
+
+
                         <!-- Add queued books to library -->
                         <div class="col-md-6">
                           <div class="form-group pull-right">
@@ -250,8 +295,8 @@
                           </div>
                         </div>
                     </div>
-                    <!-- modal body end-->
-                    </div>
+                  </div>
+
                   </form>
                 </div>
               </div>
@@ -306,7 +351,7 @@
 
           <!-- Modal Header -->
           <div class="modal-header">
-            <p class="modal-title">All Books</p>
+            <p class="all-books-header">All Books</p>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
@@ -364,7 +409,20 @@
           <!-- Modal body -->
           <div class="modal-body">
                 <div class="row">
-                  <img class="2001Space-image" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg">
+                  <div class="col-md-6">
+                    <img class="book-sugg-img" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      221 Pages
+                    </div>
+                    <div class="row mt-2">
+                      Published: 1968
+                    </div>
+                    <div class="row mt-1">
+                      <img class="5star-image" src="assets/5-stars-rating.png">
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
                   <p>2001: A Space Odyssey is a 1968 science fiction novel
@@ -374,15 +432,6 @@
                   worked on the book together, but eventually only Clarke
                   ended up as the official author. The story is based in part
                   on various short stories by Clarke</p>
-                </div>
-                <div class="row">
-                  221 Pages
-                </div>
-                <div class="row">
-                  Published: 1968
-                </div>
-                <div class="row">
-                  <img class="5star-image" src="assets/5-stars-rating.png">
                 </div>
           </div>
           <!-- Modal footer -->
@@ -468,20 +517,98 @@
                 <tr>
                   <td>
                     <div class="row">
-                      <img class="A-friend-image" src="assets/a-friend-of-the-earth.jpg">A Friend Of The Earth
+                      <div class="col-md-4">
+                        <img class="auth-sugg-image" src="assets/a-friend-of-the-earth.jpg">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="row">
+                          <p class="text-dark"> A Friend Of The Earth </p>
+                        </div>
+                        <div class="row mt-2">
+                          221 Pages
+                        </div>
+                        <div class="row mt-2">
+                          Published: 1968
+                        </div>
+
+                        <div class="row mt-1">
+                          <img class="5star-image" src="assets/5-stars-rating.png">
+                        </div>
+                      </div>
+                      </div>
+                    <div class="row mt-3">
+                      <p>2001: A Space Odyssey is a 1968 science fiction novel
+                      by British writer Arthur C. Clarke. It was developed
+                      concurrently with Stanley Kubrick's film version and
+                      published after the release of the film. Clarke and Kubrick
+                      worked on the book together, but eventually only Clarke
+                      ended up as the official author. The story is based in part
+                      on various short stories by Clarke</p>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <div class="row">
-                      <img class="Tortilla-image" src="assets/Tortilla-curtain.jpg">The Tortilla Curtain
+                      <div class="col-md-4">
+                        <img class="auth-sugg-image" src="assets/Tortilla-curtain.jpg">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="row">
+                          <p class="text-dark">The Tortilla Curtain </p>
+                        </div>
+                        <div class="row mt-2">
+                          221 Pages
+                        </div>
+                        <div class="row mt-2">
+                          Published: 1968
+                        </div>
+                        <div class="row mt-1">
+                          <img class="5star-image" src="assets/5-stars-rating.png">
+                        </div>
+                      </div>
+                      </div>
+                    <div class="row mt-3">
+                      <p>2001: A Space Odyssey is a 1968 science fiction novel
+                      by British writer Arthur C. Clarke. It was developed
+                      concurrently with Stanley Kubrick's film version and
+                      published after the release of the film. Clarke and Kubrick
+                      worked on the book together, but eventually only Clarke
+                      ended up as the official author. The story is based in part
+                      on various short stories by Clarke</p>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <img class="drop-city-image" src="assets/drop-city.jpg">Drop City
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img class="auth-sugg-image" src="assets/dropCity.jpg">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="row">
+                          <p class="text-dark">Drop City</p>
+                        </div>
+                        <div class="row mt-2">
+                          221 Pages
+                        </div>
+                        <div class="row mt-2">
+                          Published: 1968
+                        </div>
+                        <div class="row mt-1">
+                          <img class="5star-image" src="assets/5-stars-rating.png">
+                        </div>
+                      </div>
+                      </div>
+                    <div class="row mt-3">
+                      <p>2001: A Space Odyssey is a 1968 science fiction novel
+                      by British writer Arthur C. Clarke. It was developed
+                      concurrently with Stanley Kubrick's film version and
+                      published after the release of the film. Clarke and Kubrick
+                      worked on the book together, but eventually only Clarke
+                      ended up as the official author. The story is based in part
+                      on various short stories by Clarke</p>
+                    </div>
                   </td>
                 </tr>
               </tbody>
