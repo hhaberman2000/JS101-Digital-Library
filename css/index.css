@@ -49,14 +49,70 @@ img.library-img {
     width: 50%;
  }
 
+ p.all-books-header {
+   font-weight: bolder;
+ }
+
  img.table-pic {
     width: 40%;
     display: block;
  }
 
+ img.auth-sugg-image {
+   max-height: 120px;
+   max-width: : 100px;
+   display: block;
+}
+ }
+
+img.book-sugg-img {
+  height: 90%;
+  width: 80%;
+  display: block;
+}
+
+img.cover-img-upload {
+  margin: auto;
+  max-height: 120px;
+  max-width: : 100px;
+  display: block;
+}
+
  td {
    width: 100px;
  }
+
+
+ .btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+label.modal-foot-pos {
+  display: flex;
+    justify-content: left;
+}
+
+
+
+#img-upload{
+    width: 20%;
+}
 
 section.container-mod {
   margin: 0% 19.5% 0% 19.5%;
