@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/library-scripts.js"></script>
-    <script type="text/javascript" src="js/jquery=scripts.js"></script>
+    <script type="text/javascript" src="js/library-script.js"></script>
+    <script type="text/javascript" src="js/jquery-scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
@@ -51,7 +51,7 @@
             </div>
           </div>
       </section>
-<!-- Module 2 Top Modal Buttons-->
+<!-- Module 2 Top Modal and search Buttons-->
     <section class="container-mod">
       <div class="container-fluid">
         <div class="row">
@@ -65,6 +65,7 @@
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#remove-books-modal">Remove Books -</button>
               </div>
               <div class="col-md-1"></div>
+              <!-- Search button -->
               <div class="col-md-7 search-btn">
                 <form class="form-inline">
                   <input class="form-control mr-sm-2" type="text" placeholder="Search Books..">
@@ -80,12 +81,12 @@
         <div class="row">
           <div class="col-md-8">
             <img class="library-img" src="assets/too-many-books.gif">
-            <!-- <div class="lib-img-text">Watch your step!<br>I am hoarding Books...
-            </div> -->
+            <div class="lib-img-text">It's time for him to get a <br> My Libray app..
+            </div>
 
           </div>
           <div class="col-md-4 carousel-box">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img class="carousel-pic" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg">
@@ -612,7 +613,52 @@
         </div>
       </div>
   </div>
-  <!-- Book Table -->
+<!-- Edit book title and author modal-->
+<div class="modal" id="edit-books-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Books</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!-- <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate> -->
+            <!-- Remove Book Title -->
+            <div class="form-group">
+                <label class="control-label" for="field100">Edit Title</label>
+              <div class="controls">
+                  <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                  <!-- <span id="errId5" class="error"></span> -->
+                </div>
+            </div>
+
+            <!-- Author -->
+          <div class="form-group">
+              <label class="control-label" for="field101">Edit Author</label>
+              <div class="controls">
+                  <input id="field2" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                  <!-- <span id="errId5" class="error"></span> -->
+                </div>
+          </div>
+
+          <!-- Remove books Button -->
+          <!-- <div class="col-md-6"> -->
+            <div class="form-group pull-right">
+              <button id="button16" type="button" class="btn btn-default">Submit</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Book Table -->
   <section class="container-mod">
     <div class="container-fluid">
       <table class="table table-hover">
@@ -624,6 +670,7 @@
             <th>Pages</th>
             <th>Publish Date</th>
             <th>Rating</th>
+            <th>Edit</th>
             <th style="text-align: right">Remove</th>
           </tr>
         </thead>
@@ -635,6 +682,11 @@
             <td>1138</td>
             <td>1980</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
             <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
@@ -652,6 +704,11 @@
             <td>2001</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
             <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
+            <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
                     <span aria-hidden="true" style="color:red">×</span>
@@ -667,6 +724,11 @@
             <td>260</td>
             <td>1954</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
             <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
@@ -684,6 +746,11 @@
             <td>1950</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
             <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
+            <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
                     <span aria-hidden="true" style="color:red">×</span>
@@ -699,6 +766,11 @@
             <td>221</td>
             <td>1969</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
             <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
@@ -716,6 +788,11 @@
             <td>1939</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
             <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
+            <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
                     <span aria-hidden="true" style="color:red">×</span>
@@ -731,6 +808,11 @@
             <td>290</td>
             <td>1937</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
             <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
@@ -748,6 +830,11 @@
             <td>2000</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
             <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
+            <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
                     <span aria-hidden="true" style="color:red">×</span>
@@ -763,6 +850,11 @@
             <td>310</td>
             <td>2003</td>
             <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
+              </div>
+            </td>
             <td>
               <div class="hover-btn">
                   <button type="button" class="close" data-dismiss="alert">
