@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/library-scripts.js"></script>
+    <script type="text/javascript" src="js/jquery=scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <!-- <link href="http://wenzhixin.net.cn/p/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" /> -->
-
    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet" />
    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.bootstrap.min.css" rel="stylesheet" />
    <link href="http://protostrap.com/Assets/gv/css/gv.bootstrap-form.css" rel="stylesheet" type="text/css" />
@@ -79,9 +79,9 @@
         <div class="container-fluid">
         <div class="row">
           <div class="col-md-8">
-            <img class="library-img" src="assets/hoarders-bookshelf.jpg">
-            <div class="lib-img-text">Watch your step!<br>I am hoarding Books...
-            </div>
+            <img class="library-img" src="assets/too-many-books.gif">
+            <!-- <div class="lib-img-text">Watch your step!<br>I am hoarding Books...
+            </div> -->
 
           </div>
           <div class="col-md-4 carousel-box">
@@ -127,20 +127,20 @@
             <div class="col-md-2 btn-modal">
               <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#show-book-suggestion-modal">Book Suggestions</button>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
             </div>
-            <div class="col-md-2 btn-modal">
+            <div class="col-md-3 btn-modal">
               <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#show-all-authors-modal">Show All Authors</button>
             </div>
-            <div class="col-md-2 btn-modal">
+            <div class="col-md-3 btn-modal">
               <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#author-suggestion-modal">Author Suggestions</button>
             </div>
-            <div class="col-md-1">
-            </div>
+            <!-- <div class="col-md-1">
+            </div> -->
           </div>
         </div>
     </section>
-  <!-- Add Books Modal -->
+<!-- Add Books Modal -->
   <div class="modal" id="add-books-modal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -195,7 +195,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row mt-2">
                     <img class="cover-img-upload"  id='img-upload'/>
                   </div>
 
@@ -231,29 +231,18 @@
                     </div>
                   </div>
                   <!-- Rating -->
-                  <div class="col-md-4">
-                    <!-- <div class="form-group">
-                      <label class="control-label control-label-left" for="field5">Star Rating:</label>
-                        <div class="controls">
-                          <select id="field5" class="form-control" data-role="select" data-parsley-errors-container="#errId8">
-                              <option value="Option 1">1 Star - Rotten</p></option>
-                              <option value="Option 2">2 Stars - Bad</option>
-                              <option value="Option 3">3 Stars - Average</option>
-                              <option value="Option 4">4 Stars - Good</option>
-                              <option value="Option 5" style="background-image:url("assets/5-stars-rating.png");"></option>
-                          </select>
-                          <span id="errId8" class="error"></span>
-                      </div>
-                    </div> -->
+                  <div class="col-md-4" style="margin: 7% 0% 0% 0%">
                     <div class="dropdown show">
-                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                      <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Rating
                       </a>
 
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#"><img src="assets/1-stars-rating.png"></img>Bad</a>
+                        <a class="dropdown-item" href="#"><img src="assets/2-stars-rating.png"></img>Poor</a>
+                        <a class="dropdown-item" href="#"><img src="assets/3-stars-rating.png"></img>Average</a>
+                        <a class="dropdown-item" href="#"><img src="assets/4-stars-rating.png"></img>Good</a>
+                        <a class="dropdown-item" href="#"><img src="assets/5-stars-rating.png"></img>Excellent</a>
                       </div>
                     </div>
                   </div>
@@ -301,7 +290,7 @@
                 </div>
               </div>
             </div>
-  <!-- Remove Books Modal -->
+<!-- Remove Books Modal -->
   <div class="modal" id="remove-books-modal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -344,7 +333,7 @@
         </div>
       </div>
     </div>
-  <!-- Show all books modal -->
+<!-- Show all books modal -->
   <div class="modal" id="show-all-books-modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -397,7 +386,7 @@
         </div>
       </div>
   </div>
-  <!-- Book suggestions modal -->
+<!-- Book suggestions modal -->
   <div class="modal" id="show-book-suggestion-modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -424,7 +413,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin: 0% 2% 0% 2%">
                   <p>2001: A Space Odyssey is a 1968 science fiction novel
                   by British writer Arthur C. Clarke. It was developed
                   concurrently with Stanley Kubrick's film version and
@@ -442,7 +431,7 @@
         </div>
       </div>
     </div>
-  <!-- Show all authors modal -->
+<!-- Show all authors modal -->
   <div class="modal" id="show-all-authors-modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -495,7 +484,7 @@
         </div>
       </div>
   </div>
-  <!-- Author suggestions modal -->
+<!-- Author suggestions modal -->
   <div class="modal" id="author-suggestion-modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -792,7 +781,6 @@
 
     <script src="http://cdn.kendostatic.com/2014.1.318/js/jquery.min.js"></script>
     <script src="http://protostrap.com/Assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- <script src="http://wenzhixin.net.cn/p/bootstrap-table/src/bootstrap-table.js" type="text/javascript"></script> -->
     <script src="http://protostrap.com/Assets/inputmask/js/jquery.inputmask.js" type="text/javascript"></script>
     <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.all.min.js"></script>
     <script src="http://protostrap.com/Assets/parsely/parsley.extend.js" type="text/javascript"></script>

@@ -37,7 +37,7 @@ div.search-btn {
 
 img.library-img {
   height: 400px;
-  width: 586px;
+  width: 600px;
   padding-right: -10%;
   margin-left: -15px;
   box-shadow: 10px 10px 5px grey;
@@ -63,7 +63,7 @@ img.library-img {
    max-width: : 100px;
    display: block;
 }
- }
+
 
 img.book-sugg-img {
   height: 90%;
