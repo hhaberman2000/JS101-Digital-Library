@@ -10,7 +10,8 @@ button.login-button {
 }
 
 p.login-user {
-  color: #1d2630;
+  color: white;
+  font-size: 20px;
   margin-top: 5%;
 }
 p.my-library-styles {
