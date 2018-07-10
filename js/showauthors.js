@@ -1,5 +1,7 @@
-var ShowAuthorsUI = function() {
+var ShowAuthorsUI = function(container) {
+  this.$container = container;
   Library.call(this);
+  return false;
 };
 
 
@@ -7,33 +9,47 @@ var ShowAuthorsUI = function() {
 ShowAuthorsUI.prototype = Object.create(Library.prototype);
 
 ShowAuthorsUI.prototype.init = function () {
-
   this._bindEvents();
-};
-
-ShowAuthorsUI.prototype._bindEvents = function () {
-  $('#show-all-authors-modal').on('click', $.proxy(this._handleModalOpenAuth, this));
-  $('#show-all-authors-modal').on('click', $.proxy(this._handleShowAuthors, this));
-
   return false;
 };
 
-AddBooksUI.prototype._handleModalOpenAuth = function () {
-  this.$container.modal('show');
+ShowAuthorsUI.prototype._bindEvents = function () {
+  // $('#show-all-authors-modal').on('click', $.proxy(this._handleModalOpenAuth, this));
+  $('#show-all-authors-modal').on('click', $.proxy(this._handleShowAuthors, this));
+  return false;
 };
+
+// AddBooksUI.prototype._handleModalOpenAuth = function () {
+//   this.$container.modal('show');
+// };
 
 ShowAuthorsUI.prototype._handleShowAuthors = function () {
- // var authorArray = this.getAuthors();
+  var arrayAuthors = this.getAuthors();
+  console.log(arrayAuthors);
+  if (arrayAuthors.length) {
+    this.$container.modal('show');
+    this.$container.find('.modal-body').html(this._createUlOfAuthors(arrayAuthors));
+  } else {
+    alert('Nothing in library!');
+  }
+  return false;
+  };
 
- var arrayAuthor = this.getAuthors();
- console.log(arrayAuthor);
- for (var i=0; i < arrayAuthor.length; i++) {
-
-   var authorRow = "<l1>"+ arrayAuthor[i] + "</li>";
-   $("#addAuth").append(authorRow);
-   console.log(authorRow);
- };
+ShowAuthorsUI.prototype._createUlOfAuthors = function (arrayAuthors) {
+ var ul = document.createElement("ul");
+ for (var i = 0; i < arrayAuthors.length; i++) {
+   var li = document.createElement("li");
+   $(li).text(arrayAuthors[i]);
+   ul.append(li);
+ }
+ return ul;
 };
+ // for (var i=0; i < arrayAuthor.length; i++) {
+ //   var authorRow = "<l1>"+ arrayAuthor[i] + "</li>";
+ //   $("#addAuth").append(authorRow);
+ //   console.log(authorRow);
+ // };
+// };
 
 $(function(){
   window.gShowAuthorsUI = new ShowAuthorsUI();
