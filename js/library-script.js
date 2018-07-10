@@ -145,7 +145,9 @@ Library.prototype.getAuthors = function () {
     }
     // allAuthorsNoDup = this.removeDuplicates(allAuthors);
     // return allAuthorsNoDup;
-    return this.removeDuplicates(allAuthors);
+    // return this.removeDuplicates(allAuthors);
+
+    return allAuthors;
 };
 
 Library.prototype.getRandomAuthorName = function() {
