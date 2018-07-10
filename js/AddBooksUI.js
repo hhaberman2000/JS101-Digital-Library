@@ -33,7 +33,8 @@ AddBooksUI.prototype._handleQueueBooks = function () {
     author : author,
     numberOfPages : numberOfPages,
     publishDate : new Date(publishDate),
-  });
+    });
+
     console.log(queueBook);
     this.hasBooks = false;
     for ( var i=0; i < window.bookShelf.length; i++) {
@@ -42,11 +43,11 @@ AddBooksUI.prototype._handleQueueBooks = function () {
        return this.hasBooks;
        }
      }
-  this._tempBookShelf.push(queueBook);
-  alert("The book " + bookTitle + " has been added to the queue.");
+     this._tempBookShelf.push(queueBook);
+     alert("The book " + bookTitle + " has been added to the queue.");
 
-  $('#books-in-queue').html(this._tempBookShelf.length + " book(s) in the queue to add" )
-   //return this.hasBooks=true;
+     $('#books-in-queue').html(this._tempBookShelf.length + " book(s) in the queue to add" )
+     //return this.hasBooks=true;
 };
 
 
