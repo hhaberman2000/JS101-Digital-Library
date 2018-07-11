@@ -12,7 +12,7 @@ AddBooksUI.prototype.init = function() {
 };
 
 AddBooksUI.prototype._bindEvents = function () {
-  $('#add-books-modal').on('click', $.proxy(this._handleModalOpen, this));
+  $('#addBooks-btn').on('click', $.proxy(this._handleModalOpen, this));
   $('#add-books-queue').on('click', $.proxy(this._handleQueueBooks, this));
   $('#add-books-button').on('click', $.proxy(this._handleAddBooksLib, this));
 };
@@ -22,9 +22,9 @@ AddBooksUI.prototype._handleModalOpen = function () {
   this.$container.modal('show');
 };
 
-$('#books-in-queue').html("0 book(s) in the queue");
 
 AddBooksUI.prototype._handleQueueBooks = function () {
+  // e.preventDefault();
   var bookTitle = $("#book-title-add-book").val();
   var author = $("#add-book-author").val();
   var numberOfPages = $("#add-book-pages").val();
@@ -45,12 +45,12 @@ AddBooksUI.prototype._handleQueueBooks = function () {
        return this.hasBooks;
        }
      }
-     this._tempBookShelf.push(queueBook);
+     console.log(this._tempBookShelf.push(queueBook));
      alert("The book " + bookTitle + " has been added to the queue.");
      if (this._tempBookShelf.length > 0) {
-       $('#books-in-queue').html(this._tempBookShelf.length + " book(s) in the queue");
+       $('#books-in-queue').html(this._tempBookShelf.length + " book(s) to add");
      } else {
-       $('#books-in-queue').html("0 book(s) in the queue");
+       $('#books-in-queue').html(this._tempBookShelf.length);
      }
 
      //return this.hasBooks=true;
