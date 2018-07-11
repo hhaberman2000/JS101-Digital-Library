@@ -25,7 +25,7 @@
 
       <header class="container-fluid header-style" style="background-image: url(assets/metro-library-2.jpg); background-repeat: repeat;">
         <nav>
-          <div class="row" style="margin: 3% 0% 0% 0%;">
+          <div class="row" style="height: 140px;">
             <div class="col-md-8">
             </div>
             <div class="col-md-2">
@@ -215,7 +215,7 @@
                     </div>
                     <div class="row">
                   <div class="form-group">
-                  <select class="selectpicker" data-style="btn-default">
+                  <select class="selectpicker" data-style="btn-default" id="ratingSelected">
                     <option>1 star</option>
                     <option>2 star</option>
                     <option>3 star</option>
@@ -252,12 +252,11 @@
                         <div class="form-group">
                             <label class="control-label" for="field17">Synopsis:</label>
                               <div class="controls">
-                                  <textarea id="field17" rows="3" class="form-control k-textbox" data-role="textarea" data-parsley-errors-container="#errId9"></textarea>
-                                  <span id="errId9" class="error"></span>
+                                  <textarea id="synopsisText" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
                               </div>
-                        </div>
+                            </div>
+                          </div>
                       </div>
-                    </div>
                     </div><!-- modal body end-->
                     <div class="modal-footer ">
                     <div class="row ">
@@ -276,7 +275,7 @@
                         <div class="col-md-6">
                           <div class="form-group pull-right">
                             <label id="books-in-queue" class="control-label" style="color: red;">0 book(s) to add</label>
-                            <button id="add-books-button" type="button" class="btn btn-outline-secondary">Add Books To Library</button>
+                            <button id="add-books-button" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Add Books To Library</button>
                           </div>
                         </div>
                     </div>
@@ -339,36 +338,6 @@
 
           <!-- Modal body -->
           <div class="modal-body">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Book titles</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>IT</td>
-                </tr>
-                <tr>
-                  <td>Life of PI</td>
-                </tr>
-                <tr>
-                  <td>Lord of the Flies</td>
-                </tr>
-                <tr>
-                  <td>For Whom The Bell Tolls</td>
-                </tr>
-                <tr>
-                  <td>2001 A Space Odyssey</td>
-                </tr>
-                <tr>
-                  <td>The Grapes Of Wrath</td>
-                </tr>
-                <tr>
-                  <td>Of Mice and Men</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
 
         <!-- Modal footer -->
@@ -385,7 +354,7 @@
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <p class="modal-title">2001 A Space Odyssey by Authur C. Clarke</p>
+            <p class="modal-title" id="bookSuggTitle"></p>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <!-- Modal body -->
@@ -396,24 +365,17 @@
                   </div>
                   <div class="col-md-6">
                     <div class="row" id="numOfpages">
-                      221 Pages
+
                     </div>
                     <div class="row mt-2" id="datePub">
-                      Published: 1968
+
                     </div>
-                    <div class="row mt-1">
-                      <img class="5star-image" src="assets/5-stars-rating.png">
+                    <div class="row mt-1" id="rating">
                     </div>
                   </div>
                 </div>
                 <div class="row" style="margin: 0% 2% 0% 2%">
-                  <p>2001: A Space Odyssey is a 1968 science fiction novel
-                  by British writer Arthur C. Clarke. It was developed
-                  concurrently with Stanley Kubrick's film version and
-                  published after the release of the film. Clarke and Kubrick
-                  worked on the book together, but eventually only Clarke
-                  ended up as the official author. The story is based in part
-                  on various short stories by Clarke</p>
+                  <p id="bookSynop"></p>
                 </div>
           </div>
           <!-- Modal footer -->
@@ -626,10 +588,10 @@
 <!-- Book Table -->
   <section class="container-mod">
     <div class="container-fluid">
-      <table class="table table-hover">
+      <table class="table table-hover" id="bookListings">
         <thead>
-          <tr>
-            <th>Cover</th>
+          <!-- <tr>
+
             <th>Title</th>
             <th>Author</th>
             <th>Pages</th>
@@ -637,10 +599,10 @@
             <th>Rating</th>
             <th>Edit</th>
             <th style="text-align: right">Remove</th>
-          </tr>
+          </tr>  -->
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td><img class="table-pic" src="assets/It_cover.jpg"></td>
             <td>IT</td>
             <td>Stephen King</td>
@@ -660,175 +622,8 @@
                   </button>
               </div>
             </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/Life-Of-Pi.jpg"></td>
-            <td>Life of PI</td>
-            <td>Yann Martel</td>
-            <td>280</td>
-            <td>2001</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/LordOfFlies.jpg"></td>
-            <td>Lord of the Flies</td>
-            <td>William Golding</td>
-            <td>260</td>
-            <td>1954</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/ForWhomBellTolls.jpg"></td>
-            <td>For Whom The Bell Tolls </td>
-            <td>Ernest Hemingway</td>
-            <td>320</td>
-            <td>1950</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg"></td>
-            <td>2001 A Space Odyssey </td>
-            <td>Authur C. Clarke</td>
-            <td>221</td>
-            <td>1969</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/JohnSteinbeck_TheGrapesOfWrath.jpg"></td>
-            <td>The Grapes Of Wrath </td>
-            <td>John Steinbeck</td>
-            <td>195</td>
-            <td>1939</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/OfMiceAndMen.jpg"></td>
-            <td>Of Mice and Men </td>
-            <td>John Steinbeck</td>
-            <td>290</td>
-            <td>1937</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/a-friend-of-the-earth.jpg"></td>
-            <td>A Friend Of The Earth </td>
-            <td>T. C. Boyle</td>
-            <td>276</td>
-            <td>2000</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="table-pic" src="assets/drop-city.jpg"></td>
-            <td>Drop City </td>
-            <td>T. C. Boyle</td>
-            <td>310</td>
-            <td>2003</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr>
+          </tr> -->
+
         </tbody>
       </table>
     </div>
@@ -858,6 +653,8 @@
   <script  src="js/ShowAuthorsUI.js"> </script>
   <script  src="js/RemoveBooksUI.js"></script>
   <script  src="js/ShowBooksUI.js"></script>
+  <script  src="js/BookSuggestionsUI.js"></script>
+  <script  src="js/BookDataTable.js"></script>
 
 
     <!-- <script src="http://cdn.kendostatic.com/2014.1.318/js/jquery.min.js"></script> -->

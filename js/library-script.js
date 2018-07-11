@@ -32,9 +32,12 @@ Library.prototype.addBook = function(book) {
         return this.hasBooks;
         }
       }
-    window.bookShelf.push(book);
-    this.setLocalStorage();
-    return this.hasBooks=true;
+      book.publishDate = book.publishDate.getFullYear() +1;
+      window.bookShelf.push(book);
+      this.setLocalStorage();
+      return this.hasBooks=true;
+
+
   };
 
 Library.prototype.removeBookTitle = function(titleToRemove){
@@ -124,7 +127,8 @@ Library.prototype.addBooks = function (addBooksArray) {
          newBooksCounter++;
         }
       }
-     return newBooksCounter;
+      this._handleEventTrigger("objUpdate", {booksAdded: newBooksCounter + " books were added"})
+      return newBooksCounter;
    };
 
 Library.prototype.removeDuplicates = function(arr) {
@@ -145,11 +149,9 @@ Library.prototype.getAuthors = function () {
   for (var i=0; i < window.bookShelf.length; i++) {
       allAuthors.push(window.bookShelf[i].author);
     }
-    // allAuthorsNoDup = this.removeDuplicates(allAuthors);
-    // return allAuthorsNoDup;
-    // return this.removeDuplicates(allAuthors);
 
-    return allAuthors;
+    return this.removeDuplicates(allAuthors);
+
 };
 
 
@@ -183,6 +185,7 @@ Library.prototype.setLocalStorage = function () {
 Library.prototype.getLocalStorage = function () {
   // Purpose: Retrieves books from local storage.
   // Return: true
+  if (localStorage.length) {
   var getBooks = JSON.parse(localStorage.getItem("book"));
    for (var i=0; i < getBooks.length; i++ ) {
      var bookFromStorage = new Book ({
@@ -190,10 +193,15 @@ Library.prototype.getLocalStorage = function () {
         author : getBooks[i].author,
         numberOfPages : getBooks[i].numberOfPages,
         publishDate : new Date(getBooks[i].publishDate),
+        rating : getBooks[i].rating,
+        synopsis : getBooks[i].synopsis,
       });
       window.bookShelf.push(bookFromStorage);
     }
-   return true;
+
+    return true;
+  }
+ return false;
 };
 
 Library.prototype.searchBooks = function (searchString) {
@@ -215,6 +223,14 @@ Library.prototype.searchBooks = function (searchString) {
       }
   return searchResult;
 };
+
+Library.prototype._handleEventTrigger = function(sEvent, oData) {
+  var oData = oData || {};
+  if (sEvent) {
+    var event = new CustomEvent(sEvent, oData);
+    document.dispatchEvent(event);
+  }
+}
 
 // multiple Book Listing
 

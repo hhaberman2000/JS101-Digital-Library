@@ -6,13 +6,13 @@ header.header-style {
 
 button.login-button {
   margin-left: 75%;
-  margin-top: 4%;
+  margin-top: 37%;
 }
 
 p.login-user {
-  color: white;
-  font-size: 20px;
-  margin-top: 5%;
+  color: #f9f8f7;
+  font-size: 23px;
+  margin-top: 37%;
 }
 p.my-library-styles {
   font-size: 40px;
@@ -33,7 +33,7 @@ div.lib-img-text {
 }
 
 div.search-btn {
-  padding: 2.5% 0% 0% 32.75%;
+  padding: 2.5% 0% 0% 35.5%;
 }
 
 img.library-img {
@@ -47,7 +47,9 @@ img.library-img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 175px;
+    float: right;
+
  }
 
  p.all-books-header {

@@ -19,20 +19,17 @@ BookSuggestionsUI.prototype._handleBookSugg = function () {
   var book = this.getRandomBook();
     this.$container.modal('show');
     this.$container.find('.modal-body').html(this._createBookSugg(book));
-  } else {
-    alert('Nothing in library!');
-  }
   return false;
   };
 
 BookSuggestionsUI.prototype._createBookSugg = function (book) {
- var ul = document.createElement("ul");
- for (var i = 0; i < arrayAuthors.length; i++) {
-   var li = document.createElement("li");
-   $(li).text(arrayAuthors[i]);
-   ul.append(li);
- }
- return ul;
+ $('#bookSuggTitle').html(book.bookTitle +" by "+book.author);
+ $('#numOfpages').html(book.numberOfPages + " pages");
+ $('#datePub').html("Published: " + (book.publishDate.getFullYear() + 1));
+ $('#rating').html(book.rating);
+ $('#bookSynop').html(book.synopsis);
+;
+
 };
 
 $(function(){
