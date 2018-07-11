@@ -29,12 +29,16 @@ AddBooksUI.prototype._handleQueueBooks = function () {
   var author = $("#add-book-author").val();
   var numberOfPages = $("#add-book-pages").val();
   var publishDate = $("#add-book-pub-date").val();
+  var rating = $("#ratingSelected").val();
+  var synopsis = $("#synopsisText").val();
 
     var queueBook = new Book( {
     bookTitle : bookTitle,
     author : author,
     numberOfPages : numberOfPages,
     publishDate : new Date(publishDate),
+    rating : rating,
+    synopsis: synopsis,
     });
 
     console.log(queueBook);
