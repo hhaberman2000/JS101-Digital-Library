@@ -43,17 +43,18 @@ Library.prototype.removeBookTitle = function(titleToRemove){
   var remTitleArray = [];
   for ( var i=0; i < window.bookShelf.length; i++) {
      if (window.bookShelf[i].bookTitle.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
+       alert("Book " + window.bookShelf[i].bookTitle + " has been removed.");
        window.bookShelf.splice(i,1);
        localStorage.setItem('book', JSON.stringify(window.bookShelf));
-       console.log("Title" + titleToRemove + "has been removed.");
        remTitleArray.push(window.bookShelf[i]);
        i--;
+
        }
      }
      if (remTitleArray.length > 0) {
       return true;
     } else {
-        console.log("Book title is not in library.");
+        alert("Book title is not in library.");
         return false;
       }
  };
@@ -71,10 +72,11 @@ Library.prototype.removeBookByAuthor = function(authorName){
       }
     }
     if (remBookAuthArray.length > 0) {
-        return true;
+          alert( remBookAuthArray.length + " Book(s) has been removed.")
+          return true;
       } else {
-    console.log("This Author is not in library.");
-    return false;
+          alert("This Author is not in library.");
+          return false;
   }
 };
 
@@ -149,6 +151,18 @@ Library.prototype.getAuthors = function () {
 
     return allAuthors;
 };
+
+
+Library.prototype.getBooks = function () {
+  var allbooks = [];
+  // var allAuthorsNoDup;
+  for (var i=0; i < window.bookShelf.length; i++) {
+      allbooks.push(window.bookShelf[i].bookTitle);
+    }
+
+    return allbooks;
+};
+
 
 Library.prototype.getRandomAuthorName = function() {
  // Purpose: Retrieves a random author name from your books collection

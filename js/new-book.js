@@ -3,6 +3,9 @@ var Book = function(args){
    this.author = args.author;
    this.numberOfPages = args.numberOfPages;
    this.publishDate = new Date(args.publishDate);
+   this.rating = args.rating;
+   this.synopsis = args.synopsis;
+
   }
   var gBook1 = new Book( {
     bookTitle : "IT",
