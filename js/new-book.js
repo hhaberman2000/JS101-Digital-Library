@@ -6,6 +6,10 @@ var Book = function(args){
    this.Rating = args.Rating;
    this.Synopsis = args.Synopsis;
  };
+
+//if(cover === 64 base encoding)
+
+
   var gBook1 = new Book( {
     Title : "IT",
     Author : "Stephen King",
