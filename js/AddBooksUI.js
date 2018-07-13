@@ -1,7 +1,6 @@
 var AddBooksUI = function(container){
   Library.call(this);
   this._tempBookShelf = new Array();
-  // this.bookObj = new Object();
   this.$container = container;
 };
 
@@ -9,6 +8,7 @@ AddBooksUI.prototype = Object.create(Library.prototype);
 //importing from Library
 
 AddBooksUI.prototype.init = function() {
+  console.log("I am init");
   this._bindEvents();
 };
 
@@ -54,7 +54,7 @@ AddBooksUI.prototype._handleQueueBooks = function () {
     var queueBook = this.$container.find("#formentry").serializeArray();
     console.log(queueBook);
       $.each(queueBook, function(i, objProp) {
-          bookObj[objProp.name] = objProp.value;
+          bookObj[objProp.name] = objProp.value;  //bookObj['title'] = 'IT'
           console.log(bookObj);
       });
 
@@ -88,9 +88,6 @@ return this.addBooks(this._tempBookShelf);
 };
 
 
-// AddBooksUI.prototype._addBooksLib = function( ) {
-//   //sdd books to queue
-// }
 
 $(function(){
   window.gAddBooksUI = new AddBooksUI($('#add-books-modal'));

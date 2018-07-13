@@ -42,6 +42,8 @@ DataTable.prototype._updateTable = function (e) {
   $.each(window.bookShelf, function(index, book){
     $tbody.append(_self._createRow(book));
   });
+  $("td:last-of-type").after("<td><button type='button' class='btn btn-info editBtn'>Edit</button></td>");
+  $("td:last-of-type").after("<td><button type='button' class='close removeBtn' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
 };
 
 DataTable.prototype._createHeader = function(book) {
@@ -71,18 +73,48 @@ DataTable.prototype._createRow = function (book) {
   for(var key in book){
 
     var td = document.createElement('td');
-    if (key === "Synopsis") {
-      var synopsisString =book[key];
-      var truncSynopsis = synopsisString.substring(0,50);
-      $(td).attr("title", synopsisString);
-      $(td).text(truncSynopsis);
-      tr.append(td);
-    }
+
+      if (key === "Title"){
+        var title = book[key];
+        $(td).attr("class", "bookToEdit");
+        $(td).text(title);
+        tr.append(td);
+      }
+
+      else if (key === "Author") {
+        var author = book[key];
+        $(td).attr("class", "authorToEdit");
+        $(td).text(author);
+        tr.append(td);
+      }
+
+      else if (key === "Pages") {
+        var pages = book[key];
+        $(td).attr("class", "pagesToEdit");
+        $(td).text(pages);
+        tr.append(td);
+      }
+
       else if (key === "Published"){
-        // console.log(book[key]);
         var publishDate = book[key];
         var yearDate = publishDate.getFullYear();
+        $(td).attr("class", "publishedToEdit");
         $(td).text(yearDate);
+        tr.append(td);
+      }
+
+      else if (key === "Rating"){
+        var pages = book[key];
+        $(td).attr("class", "ratingToEdit");
+        $(td).text(title);
+        tr.append(td);
+      }
+      else if (key === "Synopsis") {
+        var synopsisString =book[key];
+        var truncSynopsis = synopsisString.substring(0,50);
+        $(td).attr("title", synopsisString);
+        $(td).attr("class", "synopsisToEdit");
+        $(td).text(truncSynopsis);
         tr.append(td);
       }
 
@@ -91,10 +123,11 @@ DataTable.prototype._createRow = function (book) {
         tr.append(td);
     }
 
-    $(td).button("Edit");
-    tr.append(td);
 
 }
+console.log("I am here");
+
+
   // }
   // tr.append(document.createElement('td').append(deleteInput));
   return tr;
