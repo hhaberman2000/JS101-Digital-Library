@@ -1,5 +1,5 @@
 
-
+//Add book cover to modal
     	$(document).on('change', '.btn-file :file', function() {
 		var input = $(this),
 			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -33,6 +33,14 @@
 		$("#imgInp").change(function(){
 		    readURL(this);
 		});
+//hover synopsis
+$('.hover').mouseover(function() {
+  $('.text').css("visibility","visible");
+});
+
+$('.hover').mouseout(function() {
+  $('.text').css("visibility","hidden");
+});
 
 
   $(document).ready( function() {

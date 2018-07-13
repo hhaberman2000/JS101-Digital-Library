@@ -25,34 +25,57 @@ AddBooksUI.prototype._handleModalOpen = function () {
 
 AddBooksUI.prototype._handleQueueBooks = function () {
   // e.preventDefault();
-  var bookTitle = $("#book-title-add-book").val();
-  var author = $("#add-book-author").val();
-  var numberOfPages = $("#add-book-pages").val();
-  var publishDate = $("#add-book-pub-date").val();
-  var rating = $("#ratingSelected").val();
-  var synopsis = $("#synopsisText").val();
+  // var Title = $("#book-title-add-book").val();
+  // var author = $("#add-book-author").val();
+  // var Pages = $("#add-book-pages").val();
+  // var Published = $("#add-book-pub-date").val();
+  // var Rating = $("#ratingSelected").val();
+  // var Synopsis = $("#SynopsisText").val();
+  //
+  //   var queueBook = new Book( {
+  //   Title : Title,
+  //   author : author,
+  //   Pages : Pages,
+  //   Published : new Date(Published),
+  //   Rating : Rating,
+  //   Synopsis: Synopsis,
+  //   });
+    // var bookObj = new Book({
+    //     Title : Title,
+    //     author : author,
+    //     Pages : Pages,
+    //     Published : new Date(Published),
+    //     Rating : Rating,
+    //     Synopsis: Synopsis,
+    //     });
 
-    var queueBook = new Book( {
-    bookTitle : bookTitle,
-    author : author,
-    numberOfPages : numberOfPages,
-    publishDate : new Date(publishDate),
-    rating : rating,
-    synopsis: synopsis,
-    });
+    var bookObj = new Object();
+    var queueBook = this.$container.find("#formentry").serializeArray();
+    console.log(queueBook);
+      $.each(queueBook, function(i, objProp) {
+          console.log(objProp);
+          console.log(objProp.name);
+          var Key = objProp.name
+          var Value = objProp.value
+          this.bookObj.append(Key , Value);
+
+      });
 
     console.log(queueBook);
+    console.log(bookObj)
     this.hasBooks = false;
     for ( var i=0; i < window.bookShelf.length; i++) {
-     if (window.bookShelf[i].bookTitle === queueBook.bookTitle) {
+     if (window.bookShelf[i].Title === bookObj.Title) {
        alert("Book title has already been added.");
        return this.hasBooks;
        }
      }
-     console.log(this._tempBookShelf.push(queueBook));
-     alert("The book " + bookTitle + " has been added to the queue.");
+     this._tempBookShelf.push(bookObj);
+     console.log(this._tempBookShelf);
+     //alert("The book " + Title + " has been added to the queue.");
      if (this._tempBookShelf.length > 0) {
        $('#books-in-queue').html(this._tempBookShelf.length + " book(s) to add");
+       console.log(this._tempBookShelf);
      } else {
        $('#books-in-queue').html(this._tempBookShelf.length);
      }
