@@ -1,6 +1,7 @@
 var AuthorSuggestionsUI = function(container) {
   this.$container = container;
   Library.call(this);
+  this._authorBooks = new Array();
 };
 
 AuthorSuggestionsUI.prototype = Object.create(Library.prototype);
@@ -11,18 +12,31 @@ AuthorSuggestionsUI.prototype.init = function () {
 };
 
 AuthorSuggestionsUI.prototype._bindEvents = function () {
-  $('#bookSugg-btn').on('click', $.proxy(this._handleBookSugg, this));
+  $('#authorSugg-btn').on('click', $.proxy(this._handleAuthSugg, this));
   return false;
 };
 
-AuthorSuggestionsUI.prototype._handleBookSugg = function () {
-  var book = this.getRandomBook();
+AuthorSuggestionsUI.prototype._handleAuthSugg = function () {
+  var authorName = this.getRandomAuthorName();
+  console.log(authorName);
     this.$container.modal('show');
-    this.$container.find('.modal-body').html(this._createBookSugg(book));
-  return false;
+    this.$container.find('.modal-body').html(this._createAuthBooks(authorName));
+  return true;
   };
 
+  AuthorSuggestionsUI.prototype._createAuthBooks = function (authorName) {
+    $('#authorPick').html(authorName);
+    this._authorBooks = this.getBooksByAuthor(authorName);
+    var ul = document.createElement("ul");
+      for (var i = 0; i < this._authorBooks.length; i++) {
+        var li = document.createElement("li");
+        $(li).text(this._authorBooks[i].Title);
+        ul.append(li);
+      }
+    return ul;
+   };
+
   $(function(){
-    window.gAuthorSuggestionsUI = new AuthorSuggestionsUI($('#show-book-suggestion-modal'));
+    window.gAuthorSuggestionsUI = new AuthorSuggestionsUI($('#author-suggestion-modal'));
     window.gAuthorSuggestionsUI.init();
   });

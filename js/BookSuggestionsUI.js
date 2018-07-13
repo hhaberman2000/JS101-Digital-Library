@@ -23,11 +23,11 @@ BookSuggestionsUI.prototype._handleBookSugg = function () {
   };
 
 BookSuggestionsUI.prototype._createBookSugg = function (book) {
- $('#bookSuggTitle').html(book.bookTitle +" by "+book.author);
- $('#numOfpages').html(book.numberOfPages + " pages");
- $('#datePub').html("Published: " + (book.publishDate.getFullYear() + 1));
- $('#rating').html(book.rating);
- $('#bookSynop').html(book.synopsis);
+ $('#bookSuggTitle').html(book.Title +" by "+book.Author);
+ $('#numOfpages').html(book.Pages + " pages");
+ $('#datePub').html("Published: " + book.Published);
+ $('#rating').html(book.Rating);
+ $('#bookSynop').html(book.Synopsis);
 ;
 
 };

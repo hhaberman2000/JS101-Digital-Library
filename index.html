@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -126,7 +127,7 @@
               <button type="button" id="author-btn" class="btn btn-secondary">Show All Authors</button>
             </div>
             <div class="col-md-3 btn-modal">
-              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#author-suggestion-modal">Author Suggestions</button>
+              <button type="button" id="authorSugg-btn" class="btn btn-secondary">Author Suggestions</button>
             </div>
             <!-- <div class="col-md-1">
             </div> -->
@@ -137,7 +138,7 @@
   <div class="modal" id="add-books-modal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form" data-parsley-validate novalidate>
+        <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form">
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Add Books</h4>
@@ -152,8 +153,8 @@
                   <div class="form-group">
                     <label class="control-label" for="field2">Book Title*</label>
                   <div class="controls">
-                    <input id="book-title-add-book" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
-                    <!-- <span id="errId5" class="error"></span> -->
+                    <input id="book-title-add-book" type="text" class="form-control k-textbox" data-role="text" name="Title">
+
                   </div>
                   </div>
                 </div>
@@ -165,7 +166,7 @@
                   <div class="form-group">
                     <label class="control-label" for="field2">Author*</label>
                     <div class="controls">
-                      <input id="add-book-author" type="text" class="form-control k-textbox" data-role="text" name="" data-parsley-errors-container="#errId5">
+                      <input id="add-book-author" type="text" class="form-control k-textbox" data-role="text" name="Author" >
 
                     </div>
                   </div>
@@ -179,10 +180,10 @@
                       <div class="input-group">
                         <span class="input-group-btn" >
                           <span class="btn btn-outline-secondary btn-sm btn-file">
-                            Browse… <input type="file" id="imgInp" >
+                            Browse… <input type="file" id="imgInp" name="File">
                           </span>
                         </span>
-                          <input type="text" class="form-control" readonly placeholder="Cover file">
+                          <input type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
                       </div>
                       </div>
                     </div>
@@ -197,14 +198,14 @@
               <!-- Number of Pages -->
               <div class="form-group col-md-3">
                   <label >Pages</label>
-                  <input class="form-control" type="number" id="add-book-pages" style="width: 90px">
+                  <input class="form-control" type="number" name="Pages"  id="add-book-pages" style="width: 90px">
                 </div>
 
                 <!-- Published Date -->
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Published Date</label>
-                    <input class="form-control" type="date" id="add-book-pub-date" style="width: 160px; font-size: 12px">
+                    <input class="form-control" type="date" id="add-book-pub-date" name="Published"  style="height: 38px; width: 160px; font-size: 12px">
                     </div>
                   </div>
 
@@ -215,7 +216,7 @@
                     </div>
                     <div class="row">
                   <div class="form-group">
-                  <select class="selectpicker" data-style="btn-default" id="ratingSelected">
+                  <select class="selectpicker" data-style="btn-default" id="ratingSelected" name="Rating"  style="height: 38px; width: 100px;">
                     <option>1 star</option>
                     <option>2 star</option>
                     <option>3 star</option>
@@ -227,9 +228,6 @@
 
                 </div>
               </div>
-
-
-
 
                   <!-- end of row -->
                 <!-- <div class="dropdown show">
@@ -252,7 +250,7 @@
                         <div class="form-group">
                             <label class="control-label" for="field17">Synopsis:</label>
                               <div class="controls">
-                                  <textarea id="synopsisText" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
+                                  <textarea id="synopsisText" name= "Synopsis" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
                               </div>
                             </div>
                           </div>
@@ -317,7 +315,7 @@
             <!-- Remove books Button -->
             <!-- <div class="col-md-6"> -->
               <div class="form-group pull-right">
-                <button id="rembook-btn-submit" type="button" class="btn btn-outline-secondary">Remove Books</button>
+                <button id="rembook-btn-submit" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Remove Books</button>
               </div>
 
             </div>
@@ -418,20 +416,20 @@
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <p class="modal-title">Author Suggestion</p>
+            <p class="modal-title" id="authorPick"></p>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
           <!-- Modal body -->
           <div class="modal-body">
-            <table class="table table-hover">
+            <table class="table table-hover" id="authorBookListing">
               <thead>
-                <tr>
+                <!-- <tr>
                   <th>Books by T. C. Boyle</th>
-                </tr>
+                </tr> -->
               </thead>
               <tbody>
-                <tr>
+                <!-- <tr>
                   <td>
                     <div class="row">
                       <div class="col-md-4">
@@ -527,7 +525,7 @@
                       on various short stories by Clarke</p>
                     </div>
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -655,6 +653,7 @@
   <script  src="js/ShowBooksUI.js"></script>
   <script  src="js/BookSuggestionsUI.js"></script>
   <script  src="js/BookDataTable.js"></script>
+  <script  src="js/AuthorSuggestionUI.js"></script>
 
 
     <!-- <script src="http://cdn.kendostatic.com/2014.1.318/js/jquery.min.js"></script> -->
