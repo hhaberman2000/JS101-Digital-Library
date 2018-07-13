@@ -1,6 +1,7 @@
 var AddBooksUI = function(container){
   Library.call(this);
   this._tempBookShelf = new Array();
+  // this.bookObj = new Object();
   this.$container = container;
 };
 
@@ -53,24 +54,21 @@ AddBooksUI.prototype._handleQueueBooks = function () {
     var queueBook = this.$container.find("#formentry").serializeArray();
     console.log(queueBook);
       $.each(queueBook, function(i, objProp) {
-          console.log(objProp);
-          console.log(objProp.name);
-          var Key = objProp.name
-          var Value = objProp.value
-          this.bookObj.append(Key , Value);
-
+          bookObj[objProp.name] = objProp.value;
+          console.log(bookObj);
       });
 
-    console.log(queueBook);
-    console.log(bookObj)
+      var book = new Book(bookObj);
+
+    console.log(book);
     this.hasBooks = false;
     for ( var i=0; i < window.bookShelf.length; i++) {
-     if (window.bookShelf[i].Title === bookObj.Title) {
+     if (window.bookShelf[i].Title === book.Title) {
        alert("Book title has already been added.");
        return this.hasBooks;
        }
      }
-     this._tempBookShelf.push(bookObj);
+     this._tempBookShelf.push(book);
      console.log(this._tempBookShelf);
      //alert("The book " + Title + " has been added to the queue.");
      if (this._tempBookShelf.length > 0) {

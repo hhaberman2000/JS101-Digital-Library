@@ -74,6 +74,7 @@ Library.prototype.removeBookByAuthor = function(authorName){
       remBookAuthArray.push(window.bookShelf[i]);
       window.bookShelf.splice(i,1);
       i--;
+      console.log(remBookAuthArray);
       localStorage.setItem('book', JSON.stringify(window.bookShelf));
       }
     }
