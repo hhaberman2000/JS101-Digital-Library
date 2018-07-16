@@ -15,11 +15,10 @@ DataTable.prototype.init = function() {
 
 DataTable.prototype._bindEvents = function () {
 //need to discuss what bind events. Later
-
 };
 
 DataTable.prototype._bindCustomListeners = function () {
- $(document).on('objUpdate', $.proxy(this._updateHeader, this));
+  $(document).on('objUpdate', $.proxy(this._updateHeader, this));
   $(document).on('objUpdate', $.proxy(this._updateTable, this));
 };
 
@@ -36,14 +35,20 @@ DataTable.prototype._updateHeader = function() {
 
 DataTable.prototype._updateTable = function (e) {
   // alert(e.detail.data);
-  var _self = this
+  var _self = this;
   var $tbody = this.$container.find('tbody');
+  var rowCnt =0;
   $tbody.empty();
   $.each(window.bookShelf, function(index, book){
     $tbody.append(_self._createRow(book));
   });
-  $("td:last-of-type").after("<td><button type='button' class='btn btn-info editBtn'>Edit</button></td>");
+
+
+  $("td:last-of-type").after("<td><button type='button)' class='btn btn-info bookToEdit'>Edit</button></td>");
+
+
   $("td:last-of-type").after("<td><button type='button' class='close removeBtn' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
+
 };
 
 DataTable.prototype._createHeader = function(book) {
@@ -53,6 +58,8 @@ DataTable.prototype._createHeader = function(book) {
     $(th).text(key);
     tr.append(th);
 }
+
+
   var th = document.createElement('th');
   $(th).text("Edit");
   tr.append(th);
@@ -65,18 +72,18 @@ return tr;
 
 DataTable.prototype._createRow = function (book) {
   var tr = document.createElement('tr');
+  $(tr).attr("class", "editRow")
   // var deleteInput = document.createElement('input');
   // var att = document.createAttribute("type");
   // att.value = "checkbox";
   // deleteInput.setAttributeNode(att);
-
   for(var key in book){
-
     var td = document.createElement('td');
 
       if (key === "Title"){
         var title = book[key];
         $(td).attr("class", "bookToEdit");
+        $(td).data(key,book[key])
         $(td).text(title);
         tr.append(td);
       }
@@ -84,6 +91,7 @@ DataTable.prototype._createRow = function (book) {
       else if (key === "Author") {
         var author = book[key];
         $(td).attr("class", "authorToEdit");
+        $(td).data(key,book[key])
         $(td).text(author);
         tr.append(td);
       }
@@ -91,7 +99,9 @@ DataTable.prototype._createRow = function (book) {
       else if (key === "Pages") {
         var pages = book[key];
         $(td).attr("class", "pagesToEdit");
-        $(td).text(pages);
+        $(td).attr("type", "number");
+        $(td).data(key,book[key])
+        $(td).html(pages);
         tr.append(td);
       }
 
@@ -99,14 +109,16 @@ DataTable.prototype._createRow = function (book) {
         var publishDate = book[key];
         var yearDate = publishDate.getFullYear();
         $(td).attr("class", "publishedToEdit");
+        $(td).data(key,book[key])
         $(td).text(yearDate);
         tr.append(td);
       }
 
       else if (key === "Rating"){
-        var pages = book[key];
+        var rating = book[key];
         $(td).attr("class", "ratingToEdit");
-        $(td).text(title);
+        $(td).data(key,book[key])
+        $(td).text(rating);
         tr.append(td);
       }
       else if (key === "Synopsis") {
@@ -114,22 +126,18 @@ DataTable.prototype._createRow = function (book) {
         var truncSynopsis = synopsisString.substring(0,50);
         $(td).attr("title", synopsisString);
         $(td).attr("class", "synopsisToEdit");
+        $(td).data(key,book[key])
         $(td).text(truncSynopsis);
         tr.append(td);
       }
 
     else {
         $(td).text(book[key]);
+        $(td).data(key,book[key])
         tr.append(td);
     }
 
-
-}
-console.log("I am here");
-
-
-  // }
-  // tr.append(document.createElement('td').append(deleteInput));
+  }
   return tr;
 };
 
