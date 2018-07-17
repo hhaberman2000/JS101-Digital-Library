@@ -13,8 +13,7 @@ EditBookUI.prototype.init = function() {
 };
 
 EditBookUI.prototype._bindEvents = function () {
-
-  $('.bookToEdit').on('click', $.proxy(this._handleModalOpen, this));
+  // $('.bookToEdit').on('click', $.proxy(this._handleModalOpen, this));
   $('table').on('click', '.bookToEdit', $.proxy(this._handleModalOpen, this));
   $('#submit-edit-button').on('click', $.proxy(this._handleApplyChanges, this));
 };
