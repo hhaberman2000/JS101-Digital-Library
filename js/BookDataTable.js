@@ -14,7 +14,6 @@ DataTable.prototype.init = function() {
 };
 
 DataTable.prototype._bindEvents = function () {
-//need to discuss what bind events. Later
 };
 
 DataTable.prototype._bindCustomListeners = function () {
@@ -24,12 +23,13 @@ DataTable.prototype._bindCustomListeners = function () {
 
 
 DataTable.prototype._updateHeader = function() {
+  console.log("update header");
   var _self = this
   var $thead = this.$container.find('thead');
   $thead.empty();
     if(window.bookShelf.length > 0) {
       var book = window.bookShelf[0];
-    $thead.append(_self._createHeader(book));
+      $thead.append(_self._createHeader(book));
   }
 };
 
@@ -44,14 +44,15 @@ DataTable.prototype._updateTable = function (e) {
   });
 
 
-  $("td:last-of-type").after("<td><button type='button)' class='btn btn-info bookToEdit'>Edit</button></td>");
+  $("td:last-of-type").after("<td><button type='button' class='btn btn-info bookToEdit'>Edit</button></td>");
 
 
-  $("td:last-of-type").after("<td><button type='button' class='close removeBtn' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
+  $("td:last-of-type").after("<td><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
 
 };
 
 DataTable.prototype._createHeader = function(book) {
+  console.log("create header");
   var tr = document.createElement('tr');
   for (var key in book) {
     var th = document.createElement('th');
@@ -66,17 +67,12 @@ DataTable.prototype._createHeader = function(book) {
   var th = document.createElement('th');
   $(th).text("Remove");
   tr.append(th);
-// tr.append(document.createElement('td').append(deleteInput));
-return tr;
+
 };
 
 DataTable.prototype._createRow = function (book) {
   var tr = document.createElement('tr');
-  $(tr).attr("class", "editRow")
-  // var deleteInput = document.createElement('input');
-  // var att = document.createAttribute("type");
-  // att.value = "checkbox";
-  // deleteInput.setAttributeNode(att);
+  $(tr).attr("class", "selectBookRow")
   for(var key in book){
     var td = document.createElement('td');
 

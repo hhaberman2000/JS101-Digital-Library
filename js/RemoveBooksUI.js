@@ -24,11 +24,9 @@ RemoveBooksUI.prototype._handleBookRemoval = function () {
   var bookTitle = $("#removeByTitle").val();
   var author = $("#removeByAuthor").val();
     if(bookTitle) {
-      console.log(author);
       this.removeBookTitle(bookTitle);
     }
     else if (author) {
-      console.log(author);
       this.removeBookByAuthor(author);
     }
     else {
