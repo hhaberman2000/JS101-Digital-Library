@@ -28,7 +28,7 @@ BookSuggestionsUI.prototype._createBookSugg = function (book) {
  $('#datePub').html("Published: " + book.Published);
  $('#rating').html(book.Rating);
  $('#bookSynop').html(book.Synopsis);
-;
+
 
 };
 
