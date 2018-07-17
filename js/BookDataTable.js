@@ -23,7 +23,6 @@ DataTable.prototype._bindCustomListeners = function () {
 
 
 DataTable.prototype._updateHeader = function() {
-  console.log("update header");
   var _self = this
   var $thead = this.$container.find('thead');
   $thead.empty();
@@ -52,7 +51,6 @@ DataTable.prototype._updateTable = function (e) {
 };
 
 DataTable.prototype._createHeader = function(book) {
-  console.log("create header");
   var tr = document.createElement('tr');
   for (var key in book) {
     var th = document.createElement('th');
@@ -67,6 +65,7 @@ DataTable.prototype._createHeader = function(book) {
   var th = document.createElement('th');
   $(th).text("Remove");
   tr.append(th);
+  return tr;
 
 };
 
@@ -131,11 +130,10 @@ DataTable.prototype._createRow = function (book) {
         $(td).text(book[key]);
         $(td).data(key,book[key])
         tr.append(td);
+      }
     }
-
-  }
-  return tr;
-};
+    return tr;
+  };
 
 
 $(function(){

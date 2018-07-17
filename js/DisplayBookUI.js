@@ -18,32 +18,28 @@ DisplayBookUI.prototype._bindEvents = function () {
 DisplayBookUI.prototype._handleDisplayBook = function (e) {
   var x = $(e.currentTarget).children().siblings()[0].innerHTML;
     console.log(x[0]);
-    var bookShow = new Object();
+    var book = new Object();
     for (var i=0; window.bookShelf.length > i; i++) {
     if (window.bookShelf[i].Title === x) {
-      this._index = i;
-      console.log(window.bookShelf[i].Title);
-      bookShow = window.bookShelf[i];
-      console.log(i);
-      i=window.bookShelf.length;
+        this._index = i;
+        book = window.bookShelf[i];
+        i=window.bookShelf.length;
       }
     };
     this.$container.modal('show');
-    this.$container.find('.modal-body').html(this._createBookDisplay(bookShow));
+    this._createBookDisplay(book);
   return false;
   };
 
-DisplayBookUI.prototype._createBookDisplay = function (bookShow) {
- $('#bookSuggTitle').html(book.Title +" by "+book.Author);
- $('#numOfpages').html(book.Pages + " pages");
- $('#datePub').html("Published: " + book.Published);
- $('#rating').html(book.Rating);
- $('#bookSynop').html(book.Synopsis);
-
-
+DisplayBookUI.prototype._createBookDisplay = function (book) {
+ $('#displayBookTitle').html(book.Title +" by "+book.Author);
+ $('#showNumOfpages').html(book.Pages + " pages");
+ $('#showDatePub').html("Published: " + book.Published);
+ $('#showRating').html(book.Rating);
+ $('#showBookSynop').html(book.Synopsis);
 };
 
 $(function(){
-  window.gDisplayBookUI = new DisplayBookUI($('#show-book-suggestion-modal'));
+  window.gDisplayBookUI = new DisplayBookUI($('#display-book-modal'));
   window.gDisplayBookUI.init();
 });

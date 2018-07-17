@@ -12,7 +12,6 @@ BookSuggestionsUI.prototype.init = function () {
 
 BookSuggestionsUI.prototype._bindEvents = function () {
   $('#bookSugg-btn').on('click', $.proxy(this._handleBookSugg, this));
-  $('table').on('click', '.selectBookRow', $.proxy(this._handleBookSugg, this));
 
   return false;
 };
