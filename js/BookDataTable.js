@@ -82,7 +82,7 @@ DataTable.prototype._createRow = function (book) {
 
       if (key === "Title"){
         var title = book[key];
-        $(td).attr("class", "bookToEdit");
+        $(td).attr("class", "titleToEdit");
         $(td).data(key,book[key])
         $(td).text(title);
         tr.append(td);

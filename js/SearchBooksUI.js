@@ -16,22 +16,24 @@ SearchBooksUI.prototype._bindEvents = function () {
 };
 
 SearchBooksUI.prototype._handleBookSearch = function () {
-    var searchInput = $('#searchInput').val();
-    console.log(searchInput);
-    var searchResult = this.searchBooks(searchInput);
-    console.log(searchResult);
+    var searchVal = $('#searchInput').val();
+    var searchResult = this.searchBooks(searchVal);
     this.$container.modal('show');
     this.$container.find('.modal-body').html(this._createSearchOutput(searchResult));
-  return false;
+    return false;
   };
 
 SearchBooksUI.prototype._createSearchOutput = function (searchResult) {
- // $('#searchOutput').html("#searchResult");
- 
-       }
-     return ul;
-
-};
+    console.log(searchResult);
+    $('#resultHeader').html("Found book(s) by "+searchResult[0].Author);
+    var ul = document.createElement("ul");
+      for (var i = 0; i < searchResult.length; i++) {
+        var li = document.createElement("li");
+        $(li).text(searchResult[i].Title);
+        ul.append(li);
+        }
+      return ul;
+    };
 
 $(function(){
   window.gSearchBooksUI = new SearchBooksUI($('#search-books-modal'));
