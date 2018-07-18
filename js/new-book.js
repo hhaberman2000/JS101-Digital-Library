@@ -1,4 +1,5 @@
 var Book = function(args){
+   this.Cover = args.Cover;
    this.Title = args.Title;
    this.Author = args.Author;
    this.Pages = args.Pages;
@@ -7,10 +8,8 @@ var Book = function(args){
    this.Synopsis = args.Synopsis;
  };
 
-//if(cover === 64 base encoding)
-
-
   var gBook1 = new Book( {
+    Cover: "It_cover.jpg "  ,
     Title : "IT",
     Author : "Stephen King",
     Pages: 1138,
@@ -20,6 +19,7 @@ var Book = function(args){
   });
 
   var gBook2= new Book( {
+    Cover:  "Life-Of-Pi.jpg" ,
     Title : "Life of PI",
     Author : "Yann Martel",
     Pages : 280,
@@ -29,6 +29,7 @@ var Book = function(args){
   });
 
   var  gBook3 = new Book( {
+    Cover:  "LordOfFlies.jpg" ,
     Title : "Lord of the Flies",
     Author : "William Golding",
     Pages : 260,
@@ -38,6 +39,7 @@ var Book = function(args){
   });
 
   var gBook4= new Book ({
+    Cover: "ForWhomBellTolls.jpg"  ,
     Title : "For Whom The Bell Tolls",
     Author : "Ernest Hemingway",
     Pages : 320,
@@ -47,6 +49,7 @@ var Book = function(args){
   });
 
   var gBook5= new Book ({
+    Cover:  "2001_A_Space_Odyssey-Arthur_C._Clarke.jpg" ,
     Title : "2001 A Space Odyssey",
     Author : "Authur C. Clarke ",
     Pages : 221,
@@ -56,6 +59,7 @@ var Book = function(args){
   });
 
   var gBook6= new Book ({
+    Cover:  "JohnSteinbeck_TheGrapesOfWrath.jpg" ,
     Title : "The Grapes Of Wrath",
     Author : "John Steinbeck ",
     Pages : 275,
@@ -65,6 +69,7 @@ var Book = function(args){
   });
 
   var gBook7= new Book ({
+    Cover: "OfMiceAndMen.jpg"  ,
     Title : "Of Mice and Men",
     Author : "John Steinbeck ",
     Pages : 195,
@@ -74,6 +79,7 @@ var Book = function(args){
   });
 
   var gBook8= new Book ({
+    Cover: "a-friend-of-the-earth.jpg"  ,
     Title : "A Friend Of The Earth",
     Author : "T. C. Boyle ",
     Pages : 290,
@@ -83,6 +89,7 @@ var Book = function(args){
   });
 
   var gBook9= new Book ({
+    Cover: "drop-city.jpg"  ,
     Title : "Drop City",
     Author : "T. C. Boyle ",
     Pages : 310,
@@ -92,6 +99,7 @@ var Book = function(args){
   });
 
   var gBook10= new Book ({
+    Cover: "Tortilla-curtain.jpg"  ,
     Title : "The Tortilla Curtain",
     Author : "T. C. Boyle ",
     Pages : 366,
@@ -101,6 +109,7 @@ var Book = function(args){
   });
 
   var gBook11= new Book ({
+    Cover: ""  ,
     Title : "The Great Gatsby",
     Author : "F Scott Fitzgerald ",
     Pages : 366,
@@ -110,6 +119,7 @@ var Book = function(args){
   });
 
   var gBook12= new Book ({
+    Cover: "Moby-Dick.jpg" ,
     Title : "Moby Dick",
     Author : "Herman Melville ",
     Pages : 896,
@@ -118,4 +128,4 @@ var Book = function(args){
     Synopsis: "Moby-Dick; or, The Whale is an 1851 novel by American writer Herman Melville. The book is sailor Ishmael's narrative of the obsessive quest of Ahab, captain of the whaling ship Pequod, for revenge on Moby Dick, the white whale that on the ship's previous voyage bit off Ahab's leg at the knee.",
   });
 
-  var addBooksArray = [ gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook11, gBook12];
+  var addBooksArray = [ gBook1, gBook2, gBook3, gBook4, gBook5, gBook6, gBook7, gBook8, gBook9, gBook10, gBook12];

@@ -30,6 +30,7 @@ ShowBooksUI.prototype._handleShowBooks = function () {
    var ul = document.createElement("ul");
    for (var i = 0; i < books.length; i++) {
      var li = document.createElement("li");
+     $(li).attr("class", "selectBookUl");
      $(li).text(books[i]);
      ul.append(li);
    }

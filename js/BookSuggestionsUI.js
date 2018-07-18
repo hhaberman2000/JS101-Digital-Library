@@ -12,7 +12,6 @@ BookSuggestionsUI.prototype.init = function () {
 
 BookSuggestionsUI.prototype._bindEvents = function () {
   $('#bookSugg-btn').on('click', $.proxy(this._handleBookSugg, this));
-  $('table').on('click', '.selectBookRow', $.proxy(this._handleBookSugg, this));
 
   return false;
 };
@@ -25,9 +24,11 @@ BookSuggestionsUI.prototype._handleBookSugg = function () {
   };
 
 BookSuggestionsUI.prototype._createBookSugg = function (book) {
+  console.log(book);
+ $('#book-sugg-img').html("<img src=assets/"+book.Cover+" style='width: 80%''>")
  $('#bookSuggTitle').html(book.Title +" by "+book.Author);
  $('#numOfpages').html(book.Pages + " pages");
- $('#datePub').html("Published: " + book.Published);
+ $('#datePub').html("Published: " + book.Published.getFullYear());
  $('#rating').html(book.Rating);
  $('#bookSynop').html(book.Synopsis);
 
