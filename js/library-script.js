@@ -13,7 +13,6 @@ var Library = function(){ };
 //   }
 // })();
 
-
 Library.prototype.addBook = function(book) {
   // Purpose: Add a book object to your books array.
   // Return:boolean true if it is not already added, false if it is already added.
@@ -27,7 +26,6 @@ Library.prototype.addBook = function(book) {
 
       window.bookShelf.push(book);
       this.setLocalStorage();
-
       this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       return this.hasBooks = true;
   };
@@ -78,7 +76,7 @@ Library.prototype.removeBookByAuthor = function(authorName){
 
     alert("This Author is not in library.");
     return false;
-};
+  };
 
 Library.prototype.getRandomBook = function() {
   // Purpose: Return a random book object from your books array
@@ -127,7 +125,7 @@ Library.prototype.addBooks = function (addBooksArray) {
       }
       this._handleEventTrigger("objUpdate", {booksAdded: newBooksCounter + " books were added"});
       return newBooksCounter;
-   };
+  };
 
 Library.prototype.removeDuplicates = function(arr) {
 // Purpose: remove duplicates out of the array.
@@ -138,7 +136,6 @@ Library.prototype.removeDuplicates = function(arr) {
     return uniqueArray
 }
 
-
 Library.prototype.getAuthors = function () {
 // Purpose: Find the distinct authors’ names from all books in your library.
 // Return: array of strings the names of all distinct authors, empty array if no books exist or if no authors exist.
@@ -147,11 +144,8 @@ Library.prototype.getAuthors = function () {
   for (var i=0; i < window.bookShelf.length; i++) {
       allAuthors.push(window.bookShelf[i].Author);
     }
-
     return this.removeDuplicates(allAuthors);
-
 };
-
 
 Library.prototype.getBooks = function () {
   var allbooks = [];
@@ -232,11 +226,9 @@ Library.prototype.searchBooks = function (searchString) {
        return searchResult;
     }
   }
-      alert("No results found.")
-      e.stopPropagation();
-
-
-  return false;
+    alert("No results found.")
+    e.stopPropagation();
+    return false;
 };
 
 Library.prototype._handleEventTrigger = function(sEvent, oData) {
