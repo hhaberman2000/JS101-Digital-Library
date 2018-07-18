@@ -184,7 +184,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row mt-2">
+                  <div class="row mt-2" id="clearImg">
                     <img class="cover-img-upload"  id='img-upload'/>
                   </div>
 
@@ -262,8 +262,6 @@
                           </div>
                         </div>
                       <div class="col-md-2"></div>
-
-
 
                         <!-- Add queued books to library -->
                         <div class="col-md-6">
@@ -378,8 +376,8 @@
           <!-- Modal body -->
           <div class="modal-body">
                 <div class="row">
-                  <div class="col-md-6">
-                    <img class="book-sugg-img" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg">
+                  <div class="col-md-6" id="book-sugg-img">
+                    <!-- <img class="book-sugg-img" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg"> -->
                   </div>
                   <div class="col-md-6">
                     <div class="row" id="numOfpages">
@@ -392,7 +390,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row" style="margin: 0% 2% 0% 2%">
+                <div class="row" style="margin: 5% 2% 0% 2%">
                   <p id="bookSynop"></p>
                 </div>
           </div>
@@ -442,112 +440,7 @@
 
           <!-- Modal body -->
           <div class="modal-body">
-            <table class="table table-hover" id="authorBookListing">
-              <thead>
-                <!-- <tr>
-                  <th>Books by T. C. Boyle</th>
-                </tr> -->
-              </thead>
-              <tbody>
-                <!-- <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img class="auth-sugg-image" src="assets/a-friend-of-the-earth.jpg">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="row">
-                          <p class="text-dark"> A Friend Of The Earth </p>
-                        </div>
-                        <div class="row mt-2">
-                          221 Pages
-                        </div>
-                        <div class="row mt-2">
-                          Published: 1968
-                        </div>
 
-                        <div class="row mt-1">
-                          <img class="5star-image" src="assets/5-stars-rating.png">
-                        </div>
-                      </div>
-                      </div>
-                    <div class="row mt-3">
-                      <p>2001: A Space Odyssey is a 1968 science fiction novel
-                      by British writer Arthur C. Clarke. It was developed
-                      concurrently with Stanley Kubrick's film version and
-                      published after the release of the film. Clarke and Kubrick
-                      worked on the book together, but eventually only Clarke
-                      ended up as the official author. The story is based in part
-                      on various short stories by Clarke</p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img class="auth-sugg-image" src="assets/Tortilla-curtain.jpg">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="row">
-                          <p class="text-dark">The Tortilla Curtain </p>
-                        </div>
-                        <div class="row mt-2">
-                          221 Pages
-                        </div>
-                        <div class="row mt-2">
-                          Published: 1968
-                        </div>
-                        <div class="row mt-1">
-                          <img class="5star-image" src="assets/5-stars-rating.png">
-                        </div>
-                      </div>
-                      </div>
-                    <div class="row mt-3">
-                      <p>2001: A Space Odyssey is a 1968 science fiction novel
-                      by British writer Arthur C. Clarke. It was developed
-                      concurrently with Stanley Kubrick's film version and
-                      published after the release of the film. Clarke and Kubrick
-                      worked on the book together, but eventually only Clarke
-                      ended up as the official author. The story is based in part
-                      on various short stories by Clarke</p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img class="auth-sugg-image" src="assets/dropCity.jpg">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="row">
-                          <p class="text-dark">Drop City</p>
-                        </div>
-                        <div class="row mt-2">
-                          221 Pages
-                        </div>
-                        <div class="row mt-2">
-                          Published: 1968
-                        </div>
-                        <div class="row mt-1">
-                          <img class="5star-image" src="assets/5-stars-rating.png">
-                        </div>
-                      </div>
-                      </div>
-                    <div class="row mt-3">
-                      <p>2001: A Space Odyssey is a 1968 science fiction novel
-                      by British writer Arthur C. Clarke. It was developed
-                      concurrently with Stanley Kubrick's film version and
-                      published after the release of the film. Clarke and Kubrick
-                      worked on the book together, but eventually only Clarke
-                      ended up as the official author. The story is based in part
-                      on various short stories by Clarke</p>
-                    </div>
-                  </td>
-                </tr> -->
-              </tbody>
-            </table>
           </div>
 
         <!-- Modal footer -->
@@ -708,8 +601,7 @@
           <!-- Modal body -->
           <div class="modal-body">
                 <div class="row">
-                  <div class="col-md-6">
-                    <img class="book-sugg-img" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg">
+                  <div class="col-md-6" id="showAllBookImg">
                   </div>
                   <div class="col-md-6">
                     <div class="row" id="showNumOfpages">
@@ -735,6 +627,44 @@
       </div>
     </div>
 
+    <!-- Display book table modal-->
+    <div class="modal" id="display-book-tbl-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <p class="modal-title" id="displayBookTitle2"></p>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <!-- Modal body -->
+              <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-6" id="showAllBookImg2">
+                      </div>
+                      <div class="col-md-6">
+                        <div class="row" id="showNumOfpages2">
+
+                        </div>
+                        <div class="row mt-2" id="showDatePub2">
+
+                        </div>
+                        <div class="row mt-1" id="showRating2">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" style="margin: 5% 2% 0% 2%">
+                      <p id="showBookSynop2"></p>
+                    </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
 
 
 <!-- Book Table -->
@@ -744,27 +674,6 @@
         <thead>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td><img class="table-pic" src="assets/It_cover.jpg"></td>
-            <td>IT</td>
-            <td>Stephen King</td>
-            <td>1138</td>
-            <td>1980</td>
-            <td><img class="5star-image" src="assets/5-stars-rating.png"></td>
-            <td>
-              <div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-books-modal">Edit</button>
-              </div>
-            </td>
-            <td>
-              <div class="hover-btn">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true" style="color:red">×</span>
-                    <span class="sr-only">Close</span>
-                  </button>
-              </div>
-            </td>
-          </tr> -->
 
         </tbody>
       </table>
@@ -779,7 +688,7 @@
   <script  src="js/bootstrap.min.js"></script>
   <script  src="js/utility.js"></script>
   <script  src="js/library-script.js"></script>
-  <script  src="js/jquery-scripts.js"></script>
+  <script  src="js/BookCoverImg.js"></script>
   <script  src="js/AddBooksUI.js"></script>
   <script  src="js/ShowAuthorsUI.js"> </script>
   <script  src="js/RemoveBooksUI.js"></script>

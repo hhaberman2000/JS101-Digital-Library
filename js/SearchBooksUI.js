@@ -16,10 +16,19 @@ SearchBooksUI.prototype._bindEvents = function () {
 };
 
 SearchBooksUI.prototype._handleBookSearch = function () {
-    var searchVal = $('#searchInput').val();
-    var searchResult = this.searchBooks(searchVal);
-    this.$container.modal('show');
-    this.$container.find('.modal-body').html(this._createSearchOutput(searchResult));
+  // e.stopPropagation();
+  var searchVal = $('#searchInput').val();
+  console.log(searchVal);
+    if (window.bookShelf.length === 0) {
+      alert("Can't do a search for an empty bookshelf.");
+    // return true;
+    } else {
+      // var searchVal = $('#searchInput').val();
+      var searchResult = this.searchBooks(searchVal);
+      this.$container.modal('show');
+      this.$container.find('.modal-body').html(this._createSearchOutput(searchResult));
+  }
+    // e.stopPropagation();
     return false;
   };
 

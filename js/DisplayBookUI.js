@@ -16,7 +16,8 @@ DisplayBookUI.prototype._bindEvents = function () {
 };
 
 DisplayBookUI.prototype._handleDisplayBook = function (e) {
-  var x = $(e.currentTarget).children().siblings()[0].innerHTML;
+  console.log(e);
+  var x = $(e.currentTarget).children().siblings()[1].innerHTML;
     console.log(x[0]);
     var book = new Object();
     for (var i=0; window.bookShelf.length > i; i++) {
@@ -32,14 +33,15 @@ DisplayBookUI.prototype._handleDisplayBook = function (e) {
   };
 
 DisplayBookUI.prototype._createBookDisplay = function (book) {
- $('#displayBookTitle').html(book.Title +" by "+book.Author);
- $('#showNumOfpages').html(book.Pages + " pages");
- $('#showDatePub').html("Published: " + book.Published);
- $('#showRating').html(book.Rating);
- $('#showBookSynop').html(book.Synopsis);
+ $('#showAllBookImg2').html("<img src=assets/"+book.Cover+" style='width: 80%''>")
+ $('#displayBookTitle2').html(book.Title +" by "+book.Author);
+ $('#showNumOfpages2').html(book.Pages + " pages");
+ $('#showDatePub2').html("Published: " + book.Published.getFullYear());
+ $('#showRating2').html(book.Rating);
+ $('#showBookSynop2').html(book.Synopsis);
 };
 
 $(function(){
-  window.gDisplayBookUI = new DisplayBookUI($('#display-book-modal'));
+  window.gDisplayBookUI = new DisplayBookUI($('#display-book-tbl-modal'));
   window.gDisplayBookUI.init();
 });

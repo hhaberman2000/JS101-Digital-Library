@@ -42,26 +42,35 @@ DataTable.prototype._updateTable = function (e) {
     $tbody.append(_self._createRow(book));
   });
 
-
+  // $("td:first-of-type").before("<td><img src=''></td>");
   $("td:last-of-type").after("<td><button type='button' class='btn btn-info bookToEdit'>Edit</button></td>");
-
-
   $("td:last-of-type").after("<td><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
 
 };
 
 DataTable.prototype._createHeader = function(book) {
+
   var tr = document.createElement('tr');
+
   for (var key in book) {
     var th = document.createElement('th');
+
+    if (key === "Title"){
+      $(th).attr("class", "titleToEdit");
+      $(th).text(key);
+      tr.append(th);
+    }
+
     $(th).text(key);
     tr.append(th);
-}
 
+
+}
 
   var th = document.createElement('th');
   $(th).text("Edit");
   tr.append(th);
+
   var th = document.createElement('th');
   $(th).text("Remove");
   tr.append(th);
@@ -75,10 +84,18 @@ DataTable.prototype._createRow = function (book) {
   for(var key in book){
     var td = document.createElement('td');
 
+      if (key === "Cover"){
+        var cover = book[key];
+        console.log(cover);
+        $(td).html("<img class='imgBtn' src=assets/"+cover+" style='width: 140%''>");
+        tr.append(td);
+      }
+
+
       if (key === "Title"){
         var title = book[key];
         $(td).attr("class", "titleToEdit");
-        $(td).data(key,book[key])
+        $(td).data(key,book[key]);
         $(td).text(title);
         tr.append(td);
       }
@@ -86,7 +103,7 @@ DataTable.prototype._createRow = function (book) {
       else if (key === "Author") {
         var author = book[key];
         $(td).attr("class", "authorToEdit");
-        $(td).data(key,book[key])
+        $(td).data(key,book[key]);
         $(td).text(author);
         tr.append(td);
       }
@@ -95,7 +112,7 @@ DataTable.prototype._createRow = function (book) {
         var pages = book[key];
         $(td).attr("class", "pagesToEdit");
         $(td).attr("type", "number");
-        $(td).data(key,book[key])
+        $(td).data(key,book[key]);
         $(td).html(pages);
         tr.append(td);
       }
@@ -104,7 +121,7 @@ DataTable.prototype._createRow = function (book) {
         var publishDate = book[key];
         var yearDate = publishDate.getFullYear();
         $(td).attr("class", "publishedToEdit");
-        $(td).data(key,book[key])
+        $(td).data(key,book[key]);
         $(td).text(yearDate);
         tr.append(td);
       }
@@ -112,25 +129,25 @@ DataTable.prototype._createRow = function (book) {
       else if (key === "Rating"){
         var rating = book[key];
         $(td).attr("class", "ratingToEdit");
-        $(td).data(key,book[key])
+        $(td).data(key,book[key]);
         $(td).text(rating);
         tr.append(td);
       }
       else if (key === "Synopsis") {
         var synopsisString =book[key];
-        var truncSynopsis = synopsisString.substring(0,50);
+        var truncSynopsis = synopsisString.substring(0,120);
         $(td).attr("title", synopsisString);
         $(td).attr("class", "synopsisToEdit");
-        $(td).data(key,book[key])
+        $(td).data(key,book[key]);
         $(td).text(truncSynopsis);
         tr.append(td);
       }
 
-    else {
-        $(td).text(book[key]);
-        $(td).data(key,book[key])
-        tr.append(td);
-      }
+    // else {
+    //     $(td).text(book[key]);
+    //     $(td).data(key,book[key]);
+    //     tr.append(td);
+    //   }
     }
     return tr;
   };

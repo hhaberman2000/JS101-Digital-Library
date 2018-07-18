@@ -15,13 +15,16 @@ RemoveBookTableUI.prototype._bindEvents = function () {
 };
 
 RemoveBookTableUI.prototype._handleBookRemovalBtn = function (e) {
-  var bookTitle = $(e.currentTarget).parent().siblings()[0].innerHTML;
+  console.log(e);
+  e.stopPropagation();
+  var bookTitle = $(e.currentTarget).parent().siblings()[1].innerHTML;
+  console.log(bookTitle);
   for (var i=0; window.bookShelf.length > i; i++) {
     if (window.bookShelf[i].Title === bookTitle) {
         this.removeBookTitle(bookTitle);
       }
     };
-    e.stopPropagation();
+    // e.stopPropagation();
   };
 
 $(function(){

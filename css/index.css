@@ -67,6 +67,17 @@ img.library-img {
    display: block;
 }
 
+td.titleToEdit {
+  padding-left: 5%;
+}
+
+th.titleToEdit {
+  padding-left: 5%;
+}
+td.synopsisToEdit {
+  font-size: 12px;
+}
+
 
 img.book-sugg-img {
   height: 90%;

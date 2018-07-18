@@ -12,7 +12,6 @@ DisplayBookFromModuleUI.prototype.init = function () {
 
 DisplayBookFromModuleUI.prototype._bindEvents = function () {
   $('.modal-body').on('click', '.selectBookUl', $.proxy(this._handleDisplayBook, this));
-  console.log("bind event");
   return false;
 };
 
@@ -34,11 +33,10 @@ DisplayBookFromModuleUI.prototype._handleDisplayBook = function (e) {
   };
 
 DisplayBookFromModuleUI.prototype._createBookDisplayModal = function (book) {
-  console.log("create display for modal");
+ $('#showAllBookImg').html("<img src=assets/"+book.Cover+" style='width: 80%''>")
  $('#displayBookTitle').html(book.Title +" by "+book.Author);
- console.log(book.Title);
  $('#showNumOfpages').html(book.Pages + " pages");
- $('#showDatePub').html("Published: " + book.Published);
+ $('#showDatePub').html("Published: " + book.Published.getFullYear());
  $('#showRating').html(book.Rating);
  $('#showBookSynop').html(book.Synopsis);
 };

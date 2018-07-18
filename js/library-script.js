@@ -189,6 +189,7 @@ Library.prototype.getLocalStorage = function () {
   var getBooks = JSON.parse(localStorage.getItem("book"));
    for (var i=0; i < getBooks.length; i++ ) {
      var bookFromStorage = new Book ({
+        Cover : getBooks[i].Cover,
         Title : getBooks[i].Title,
         Author : getBooks[i].Author,
         Pages : getBooks[i].Pages,
@@ -205,26 +206,37 @@ Library.prototype.getLocalStorage = function () {
 };
 
 Library.prototype.searchBooks = function (searchString) {
+  console.log(searchString);
   var nSS = searchString.toLowerCase();
   var searchResult = [];
   var titleResult = [];
   var authorResult = [];
+  console.log(parseInt(searchString));
+  console.log(Date.parse(parseInt(searchString)));
+  // console.log(window.bookShelf[i].Pages);
 
   for (var i=0; i < window.bookShelf.length; i++) {
     var title = window.bookShelf[i].Title.toLowerCase();
     var author = window.bookShelf[i].Author.toLowerCase();
     var published = window.bookShelf[i].Published;
 
-    if (title.search(nSS) > -1 || author.search(nSS)>-1) {
+    if (title.search(nSS) > -1 || author.search(nSS)> -1) {
       titleResult = this.getBookByTitle(searchString);
       authorResult = this.getBooksByAuthor(searchString);
       searchResult = titleResult.concat(authorResult);
+      return searchResult;
     }
+
     else if (parseInt(searchString) === window.bookShelf[i].Pages || Date.parse(parseInt(searchString)) === Date.parse(published)){
        searchResult.push(window.bookShelf[i]);
+       return searchResult;
     }
   }
-  return searchResult;
+      alert("No results found.")
+      e.stopPropagation();
+
+
+  return false;
 };
 
 Library.prototype._handleEventTrigger = function(sEvent, oData) {
