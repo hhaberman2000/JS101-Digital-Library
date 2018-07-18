@@ -86,8 +86,7 @@ DataTable.prototype._createRow = function (book) {
 
       if (key === "Cover"){
         var cover = book[key];
-        console.log(cover);
-        $(td).html("<img class='imgBtn' src=assets/"+cover+" style='width: 140%''>");
+        $(td).html("<img class='imgBtn' src="+cover+" style='width: 140%''>");
         tr.append(td);
       }
 

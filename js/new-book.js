@@ -14,7 +14,7 @@ var Book = function(args){
     Author : "Stephen King",
     Pages: 1138,
     Published : "01-01-1980",
-    Rating: "3 Stars",
+    Rating: "2 Stars",
     Synopsis: "It is a 1986 horror novel by American author Stephen King. It was his 22nd book, and his 18th novel written under his own name. The story follows the experiences of seven children as they are terrorized by an entity that exploits the fears and phobias of its victims to disguise itself while hunting its prey. 'It' primarily appears in the form of a clown to attract its preferred prey of young children.",
   });
 
@@ -24,7 +24,7 @@ var Book = function(args){
     Author : "Yann Martel",
     Pages : 280,
     Published : "01-01-2001",
-    Rating: "4 Stars",
+    Rating: "3 Stars",
     Synopsis: "Life of Pi is a Canadian fantasy adventure novel by Yann Martel published in 2001. The protagonist is Piscine Molitor 'Pi' Patel, an Indian boy from Pondicherry who explores issues of spirituality and practicality from an early age. He survives 227 days after a shipwreck while stranded on a lifeboat in the Pacific Ocean with a Bengal tiger named Richard Parker.",
   });
 
@@ -44,7 +44,7 @@ var Book = function(args){
     Author : "Ernest Hemingway",
     Pages : 320,
     Published : "01-01-1950",
-    Rating: "4 Stars",
+    Rating: "2 Stars",
     Synopsis: "For Whom the Bell Tolls is a novel by Ernest Hemingway published in 1940. It tells the story of Robert Jordan, a young American in the International Brigades attached to a republican guerrilla unit during the Spanish Civil War. As a dynamiter, he is assigned to blow up a bridge during an attack on the city of Segovia.",
   });
 
@@ -64,7 +64,7 @@ var Book = function(args){
     Author : "John Steinbeck ",
     Pages : 275,
     Published : "01-01-1939",
-    Rating: "4 Stars",
+    Rating: "3 Stars",
     Synopsis: "The Grapes of Wrath is an American realist novel. Set during the Great Depression, the novel focuses on the Joads, a poor family of tenant farmers driven from their Oklahoma home by drought, economic hardship, agricultural industry changes, and bank foreclosures forcing tenant farmers out of work. Due to their nearly hopeless situation, and in part because they are trapped in the Dust Bowl, the Joads set out for California. Along with thousands of other 'Okies', they seek jobs, land, dignity, and a future.",
   });
 
@@ -104,7 +104,7 @@ var Book = function(args){
     Author : "T. C. Boyle ",
     Pages : 366,
     Published : "01-01-1995",
-    Rating: "4 Stars",
+    Rating: "3 Stars",
     Synopsis: "The Tortilla Curtain (1995) is a novel by U.S. author T.C. Boyle about middle-class values, illegal immigration, xenophobia, poverty, and environmental destruction. In 1997 it was awarded the French Prix Médicis Étranger prize for best foreign novel.",
   });
 

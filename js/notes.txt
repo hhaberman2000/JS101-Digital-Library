@@ -1,0 +1,17 @@
+
+new FileReader()
+reader.onload
+readAsDataUrl
+<!-- end of row -->
+<!-- <div class="dropdown show">
+<a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Rating
+</a>
+
+<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <a class="dropdown-item" href="#"><img src="assets/1-stars-rating.png"></img>Bad</a>
+  <a class="dropdown-item" href="#"><img src="assets/2-stars-rating.png"></img>Poor</a>
+  <a class="dropdown-item" href="#"><img src="assets/3-stars-rating.png"></img>Average</a>
+  <a class="dropdown-item" href="#"><img src="assets/4-stars-rating.png"></img>Good</a>
+  <a class="dropdown-item" href="#"><img src="assets/5-stars-rating.png"></img>Excellent</a>
+</div> -->

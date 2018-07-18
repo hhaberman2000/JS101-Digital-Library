@@ -13,8 +13,6 @@
     <link href='https://fonts.googleapis.com/css?family=Dangrek' rel='stylesheet'>
     <script  src="js/new-book.js"></script>
 
-
-
   </head>
   <body style="background-image: url(assets/foggy_birds.png); background-repeat: repeat; font-family: 'Dangrek','Montserrat'; color: #888f99">
     <script type="text/javascript" src="js/library-script.js">
@@ -179,7 +177,7 @@
                             Browse… <input type="file" id="imgInp" name="File">
                           </span>
                         </span>
-                          <input type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
+                          <input id="fileName" type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
                       </div>
                       </div>
                     </div>
@@ -224,21 +222,6 @@
 
                 </div>
               </div>
-
-                  <!-- end of row -->
-                <!-- <div class="dropdown show">
-                  <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Rating
-                  </a>
-
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#"><img src="assets/1-stars-rating.png"></img>Bad</a>
-                    <a class="dropdown-item" href="#"><img src="assets/2-stars-rating.png"></img>Poor</a>
-                    <a class="dropdown-item" href="#"><img src="assets/3-stars-rating.png"></img>Average</a>
-                    <a class="dropdown-item" href="#"><img src="assets/4-stars-rating.png"></img>Good</a>
-                    <a class="dropdown-item" href="#"><img src="assets/5-stars-rating.png"></img>Excellent</a>
-                  </div> -->
-
 
                   <!-- Synopsis-->
                   <div class="row">
@@ -496,7 +479,7 @@
                     <div class="input-group">
                       <span class="input-group-btn" >
                         <span class="btn btn-outline-secondary btn-sm btn-file">
-                          Browse… <input type="file" id="imgInp" name="File">
+                          Browse… <input type="file" id="imgInpEdit">
                         </span>
                       </span>
                         <input type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
@@ -505,10 +488,8 @@
                   </div>
                 </div>
                 <div class="row mt-2">
-                  <img class="cover-img-upload"  id='img-upload'/>
+                  <img id="imgUploadEdit" src="" class="cover-img-upload"/>
                 </div>
-
-
 
           <div class="row">
             <!-- Number of Pages -->
@@ -538,27 +519,13 @@
                   <option>3 star</option>
                   <option>4 star</option>
                   <option>5 star</option>
+
                 </select>
               </div>
               </div>
 
               </div>
             </div>
-
-                <!-- end of row -->
-              <!-- <div class="dropdown show">
-                <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Rating
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#"><img src="assets/1-stars-rating.png"></img>Bad</a>
-                  <a class="dropdown-item" href="#"><img src="assets/2-stars-rating.png"></img>Poor</a>
-                  <a class="dropdown-item" href="#"><img src="assets/3-stars-rating.png"></img>Average</a>
-                  <a class="dropdown-item" href="#"><img src="assets/4-stars-rating.png"></img>Good</a>
-                  <a class="dropdown-item" href="#"><img src="assets/5-stars-rating.png"></img>Excellent</a>
-                </div> -->
-
 
                 <!-- Synopsis-->
                 <div class="row">
@@ -688,7 +655,6 @@
   <script  src="js/bootstrap.min.js"></script>
   <script  src="js/utility.js"></script>
   <script  src="js/library-script.js"></script>
-  <script  src="js/BookCoverImg.js"></script>
   <script  src="js/AddBooksUI.js"></script>
   <script  src="js/ShowAuthorsUI.js"> </script>
   <script  src="js/RemoveBooksUI.js"></script>

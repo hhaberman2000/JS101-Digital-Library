@@ -25,14 +25,12 @@ BookSuggestionsUI.prototype._handleBookSugg = function () {
 
 BookSuggestionsUI.prototype._createBookSugg = function (book) {
   console.log(book);
- $('#book-sugg-img').html("<img src=assets/"+book.Cover+" style='width: 80%''>")
+ $('#book-sugg-img').html("<img src="+book.Cover+" style='width: 80%''>")
  $('#bookSuggTitle').html(book.Title +" by "+book.Author);
  $('#numOfpages').html(book.Pages + " pages");
  $('#datePub').html("Published: " + book.Published.getFullYear());
  $('#rating').html(book.Rating);
  $('#bookSynop').html(book.Synopsis);
-
-
 };
 
 $(function(){

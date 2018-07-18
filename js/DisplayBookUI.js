@@ -33,7 +33,7 @@ DisplayBookUI.prototype._handleDisplayBook = function (e) {
   };
 
 DisplayBookUI.prototype._createBookDisplay = function (book) {
- $('#showAllBookImg2').html("<img src=assets/"+book.Cover+" style='width: 80%''>")
+ $('#showAllBookImg2').html("<img src="+book.Cover+" style='width: 80%''>")
  $('#displayBookTitle2').html(book.Title +" by "+book.Author);
  $('#showNumOfpages2').html(book.Pages + " pages");
  $('#showDatePub2').html("Published: " + book.Published.getFullYear());

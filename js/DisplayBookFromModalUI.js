@@ -33,7 +33,7 @@ DisplayBookFromModuleUI.prototype._handleDisplayBook = function (e) {
   };
 
 DisplayBookFromModuleUI.prototype._createBookDisplayModal = function (book) {
- $('#showAllBookImg').html("<img src=assets/"+book.Cover+" style='width: 80%''>")
+ $('#showAllBookImg').html("<img src="+book.Cover+" style='width: 80%''>")
  $('#displayBookTitle').html(book.Title +" by "+book.Author);
  $('#showNumOfpages').html(book.Pages + " pages");
  $('#showDatePub').html("Published: " + book.Published.getFullYear());
