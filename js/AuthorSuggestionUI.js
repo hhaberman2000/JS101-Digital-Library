@@ -18,7 +18,6 @@ AuthorSuggestionsUI.prototype._bindEvents = function () {
 
 AuthorSuggestionsUI.prototype._handleAuthSugg = function () {
   var authorName = this.getRandomAuthorName();
-  console.log(authorName);
     this.$container.modal('show');
     this.$container.find('.modal-body').html(this._createAuthBooks(authorName));
   return true;

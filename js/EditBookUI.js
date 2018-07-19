@@ -29,11 +29,11 @@ EditBookUI.prototype._handleEditBookCover = function () {
   reader.addEventListener("load", function () {
     preview.src = reader.result;
     _self.encFileEdt = reader.result;
-    console.log(_self.encFileEdt);}, false);
-
+  });
  if (file) {
    reader.readAsDataURL(file);
- }
+  }
+
 };
 
 EditBookUI.prototype._handleModalOpen = function (e) {
@@ -78,8 +78,6 @@ EditBookUI.prototype._handleApplyChanges = function () {
 
   var book = new Book(bookEditObj);
   book.Cover =this.encFileEdt;
-  console.log(this.encFileEdt);
-  console.log(book);
   window.bookShelf[this._index] = book;
   this.setLocalStorage();
   this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});

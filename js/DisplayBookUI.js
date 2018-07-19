@@ -16,9 +16,7 @@ DisplayBookUI.prototype._bindEvents = function () {
 };
 
 DisplayBookUI.prototype._handleDisplayBook = function (e) {
-  console.log(e);
   var x = $(e.currentTarget).children().siblings()[1].innerHTML;
-    console.log(x[0]);
     var book = new Object();
     for (var i=0; window.bookShelf.length > i; i++) {
     if (window.bookShelf[i].Title === x) {
