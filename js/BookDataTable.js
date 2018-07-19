@@ -40,13 +40,11 @@ DataTable.prototype._updateTable = function (e) {
   $.each(window.bookShelf, function(index, book){
     $tbody.append(_self._createRow(book));
   });
-  console.log(book);
   $("td:last-of-type").after("<td><button type='button' class='btn btn-info bookToEdit'>Edit</button></td>");
   $("td:last-of-type").after("<td><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
 };
 
 DataTable.prototype._createHeader = function(book) {
-  console.log(book);
   var tr = document.createElement('tr');
 
   for (var key in book) {
@@ -75,7 +73,6 @@ DataTable.prototype._createHeader = function(book) {
 DataTable.prototype._createRow = function (book) {
   var tr = document.createElement('tr');
   $(tr).attr("class", "selectBookRow")
-  // console.log(book);
 
   for(var key in book){
     var td = document.createElement('td');
@@ -124,7 +121,6 @@ DataTable.prototype._createRow = function (book) {
       }
       else if (key === "Synopsis") {
         var synopsisString = book[key];
-        // console.log(book[key]);
         var truncSynopsis = synopsisString.substring(0,120);
         $(td).attr("title", synopsisString);
         $(td).attr("class", "synopsisToEdit");
