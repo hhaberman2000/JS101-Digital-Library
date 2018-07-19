@@ -32,6 +32,7 @@ RemoveBooksUI.prototype._handleBookRemoval = function () {
     else {
       alert("type something");
     }
+    $("#formEntryRem")[0].reset();
 };
 
 $(function(){

@@ -30,6 +30,7 @@ AuthorSuggestionsUI.prototype._handleAuthSugg = function () {
     var ul = document.createElement("ul");
       for (var i = 0; i < this._authorBooks.length; i++) {
         var li = document.createElement("li");
+        $(li).attr("class", "selectBookUl");
         $(li).text(this._authorBooks[i].Title);
         ul.append(li);
       }
