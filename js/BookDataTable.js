@@ -21,7 +21,6 @@ DataTable.prototype._bindCustomListeners = function () {
   $(document).on('objUpdate', $.proxy(this._updateTable, this));
 };
 
-
 DataTable.prototype._updateHeader = function() {
   var _self = this
   var $thead = this.$container.find('thead');
@@ -33,7 +32,6 @@ DataTable.prototype._updateHeader = function() {
 };
 
 DataTable.prototype._updateTable = function (e) {
-  // alert(e.detail.data);
   var _self = this;
   var $tbody = this.$container.find('tbody');
   var rowCnt =0;
@@ -41,11 +39,8 @@ DataTable.prototype._updateTable = function (e) {
   $.each(window.bookShelf, function(index, book){
     $tbody.append(_self._createRow(book));
   });
-
-  // $("td:first-of-type").before("<td><img src=''></td>");
   $("td:last-of-type").after("<td><button type='button' class='btn btn-info bookToEdit'>Edit</button></td>");
   $("td:last-of-type").after("<td><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
-
 };
 
 DataTable.prototype._createHeader = function(book) {
@@ -60,11 +55,8 @@ DataTable.prototype._createHeader = function(book) {
       $(th).text(key);
       tr.append(th);
     }
-
     $(th).text(key);
     tr.append(th);
-
-
 }
 
   var th = document.createElement('th');
@@ -81,6 +73,7 @@ DataTable.prototype._createHeader = function(book) {
 DataTable.prototype._createRow = function (book) {
   var tr = document.createElement('tr');
   $(tr).attr("class", "selectBookRow")
+
   for(var key in book){
     var td = document.createElement('td');
 
@@ -89,16 +82,13 @@ DataTable.prototype._createRow = function (book) {
         $(td).html("<img class='imgBtn' src="+cover+" style='width: 140%''>");
         tr.append(td);
       }
-
-
-      if (key === "Title"){
+      else if (key === "Title"){
         var title = book[key];
         $(td).attr("class", "titleToEdit");
         $(td).data(key,book[key]);
         $(td).text(title);
         tr.append(td);
       }
-
       else if (key === "Author") {
         var author = book[key];
         $(td).attr("class", "authorToEdit");
@@ -106,7 +96,6 @@ DataTable.prototype._createRow = function (book) {
         $(td).text(author);
         tr.append(td);
       }
-
       else if (key === "Pages") {
         var pages = book[key];
         $(td).attr("class", "pagesToEdit");
@@ -115,7 +104,6 @@ DataTable.prototype._createRow = function (book) {
         $(td).html(pages);
         tr.append(td);
       }
-
       else if (key === "Published"){
         var publishDate = book[key];
         var yearDate = publishDate.getFullYear();
@@ -124,7 +112,6 @@ DataTable.prototype._createRow = function (book) {
         $(td).text(yearDate);
         tr.append(td);
       }
-
       else if (key === "Rating"){
         var rating = book[key];
         $(td).attr("class", "ratingToEdit");
@@ -141,16 +128,9 @@ DataTable.prototype._createRow = function (book) {
         $(td).text(truncSynopsis);
         tr.append(td);
       }
-
-    // else {
-    //     $(td).text(book[key]);
-    //     $(td).data(key,book[key]);
-    //     tr.append(td);
-    //   }
     }
     return tr;
   };
-
 
 $(function(){
   window.gDataTable = new DataTable();

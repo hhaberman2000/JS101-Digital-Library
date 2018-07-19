@@ -19,7 +19,6 @@ Library.prototype.addBook = function(book) {
    this.hasBooks = false;
    for ( var i=0; i < window.bookShelf.length; i++) {
       if (window.bookShelf[i].Title === book.Title) {
-        console.log("Book title has already been added.");
         return this.hasBooks;
         }
       }
@@ -63,7 +62,6 @@ Library.prototype.removeBookByAuthor = function(authorName){
       remBookAuthArray.push(window.bookShelf[i]);
       window.bookShelf.splice(i,1);
       i--;
-      console.log(remBookAuthArray);
       localStorage.setItem('book', JSON.stringify(window.bookShelf));
       }
     }
@@ -115,7 +113,6 @@ Library.prototype.getBooksByAuthor = function (authorString) {
 Library.prototype.addBooks = function (addBooksArray) {
    // Purpose: Takes multiple books, in the form of an array of book objects, and adds the objects to your books array.
    // Return:  number of books successfully added, 0 if no books were added
-   console.log(addBooksArray);
    var newBooksCounter = 0;
    for ( var i=0; i < addBooksArray.length; i++) {
        this.addBook(addBooksArray[i]);
@@ -200,19 +197,17 @@ Library.prototype.getLocalStorage = function () {
 };
 
 Library.prototype.searchBooks = function (searchString) {
-  console.log(searchString);
   var nSS = searchString.toLowerCase();
   var searchResult = [];
   var titleResult = [];
   var authorResult = [];
-  console.log(parseInt(searchString));
-  console.log(Date.parse(parseInt(searchString)));
-  // console.log(window.bookShelf[i].Pages);
 
   for (var i=0; i < window.bookShelf.length; i++) {
     var title = window.bookShelf[i].Title.toLowerCase();
     var author = window.bookShelf[i].Author.toLowerCase();
     var published = window.bookShelf[i].Published;
+    var pages = window.bookShelf[i].Pages;
+    var date = Date.parse(published);
 
     if (title.search(nSS) > -1 || author.search(nSS)> -1) {
       titleResult = this.getBookByTitle(searchString);
@@ -221,7 +216,7 @@ Library.prototype.searchBooks = function (searchString) {
       return searchResult;
     }
 
-    else if (parseInt(searchString) === window.bookShelf[i].Pages || Date.parse(parseInt(searchString)) === Date.parse(published)){
+    else if (parseInt(searchString) === pages || Date.parse(parseInt(searchString)) === date) {
        searchResult.push(window.bookShelf[i]);
        return searchResult;
     }
@@ -239,5 +234,4 @@ Library.prototype._handleEventTrigger = function(sEvent, oData) {
   }
 }
 
-
-  var gLibrary = new Library();
+var gLibrary = new Library();

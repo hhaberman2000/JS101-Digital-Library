@@ -3,7 +3,7 @@ var EditBookUI = function(container){
   this._bookToEdit = new Array();
   this._index = 0;
   this.$container = $(container);
-  this.encFile;
+  this.encFileEdt;
 };
 
 EditBookUI.prototype = Object.create(Library.prototype);
@@ -14,26 +14,22 @@ EditBookUI.prototype.init = function() {
 };
 
 EditBookUI.prototype._bindEvents = function () {
-  // $('.bookToEdit').on('click', $.proxy(this._handleModalOpen, this));
   $('table').on('click', '.bookToEdit', $.proxy(this._handleModalOpen, this));
   $('#submit-edit-button').on('click', $.proxy(this._handleApplyChanges, this));
-  this.$container.find('#imgInpEdit').on('change',$.proxy(this._handleBookCover, this));
+  this.$container.find('#imgInpEdit').on('change',$.proxy(this._handleEditBookCover, this));
 };
 
-
-EditBookUI.prototype._handleBookCover = function () {
-  console.log("just happened");
+EditBookUI.prototype._handleEditBookCover = function () {
+//Loading image into file reader
   var preview = document.querySelector('#imgUploadEdit');
   var file    = document.querySelector('#imgInpEdit').files[0];
   var reader  = new FileReader();
   var _self = this;
 
   reader.addEventListener("load", function () {
-    console.log("load event happened");
-  preview.src = reader.result;
-  _self.encFile = reader.result;
-   // console.log(_self.encFile);
- }, false);
+    preview.src = reader.result;
+    _self.encFileEdt = reader.result;
+    console.log(_self.encFileEdt);}, false);
 
  if (file) {
    reader.readAsDataURL(file);
@@ -41,62 +37,57 @@ EditBookUI.prototype._handleBookCover = function () {
 };
 
 EditBookUI.prototype._handleModalOpen = function (e) {
-  var x = $(e.currentTarget).parent().siblings()[1].innerHTML;
-  console.log(x);
-  var book = new Object();
+  // Using title from the row to select object to edit.
+  var titleRow = $(e.currentTarget).parent().siblings()[1].innerHTML;
+  var bookObjEdt = new Object();
   for (var i=0; window.bookShelf.length > i; i++) {
-    if (window.bookShelf[i].Title === x) {
+    if (window.bookShelf[i].Title === titleRow) {
       this._index = i;
-      console.log(window.bookShelf[i].Title);
-      book = window.bookShelf[i];
-      console.log(i);
+      bookObjEdt = window.bookShelf[i];
       i=window.bookShelf.length;
-      }
-    };
+    }
+  };
 
   this.$container.modal('show');
-  console.log(book);
-  var myDate = book.Published.getFullYear()+"-"+("0"+(book.Published.getMonth()+1)).slice(-2)+"-"+("0"+book.Published.getDate()).slice(-2);
-  $('#imgUploadEdit').attr("src", book.Cover);
-  $('#book-title-edit-book').attr("value", book.Title);
-  $('#edit-book-author').attr("value", book.Author);
-  $('#edit-book-pages').val(book.Pages);
+  // Displaying current values for the book object.
+  var myDate = bookObjEdt.Published.getFullYear()+"-"+("0"+(bookObjEdt.Published.getMonth()+1)).slice(-2)+"-"+("0"+bookObjEdt.Published.getDate()).slice(-2);
+  $('#imgUploadEdit').attr("src", bookObjEdt.Cover);
+  $('#book-title-edit-book').attr("value", bookObjEdt.Title);
+  $('#edit-book-author').attr("value", bookObjEdt.Author);
+  $('#edit-book-pages').val(bookObjEdt.Pages);
   $('#edit-book-pub-date').attr("value", myDate);
-  console.log(book.Published);
-  $('#editRating').attr("value", book.Rating);
-  $('#editSynopsis').val(book.Synopsis);
+  $('#editRating').attr("value", bookObjEdt.Rating);
+  $('#editSynopsis').val(bookObjEdt.Synopsis);
 
   return false;
 };
 
 
-EditBookUI.prototype._handleApplyChanges = function (index) {
+EditBookUI.prototype._handleApplyChanges = function () {
+  // Getting edited values from form input fields.
+  var bookEditObj = new Object();
+  var edtBook = this.$container.find("#formEntryEdit").serializeArray();
+  $.each(edtBook, function(i, objProp) {
+    if(objProp.name === "Pages"){
+      bookEditObj[objProp.name] = Number(objProp.value);
+    } else {
+      bookEditObj[objProp.name] = objProp.value;
+    }
+  });
 
-    var bookEditObj = new Object();
-    var edited_row = this.$container.find("#formEntryEdit").serializeArray();
-      $.each(edited_row, function(i, objProp) {
-          if(objProp.name === "Pages"){
-            bookEditObj[objProp.name] = Number(objProp.value);
-          }
-          else {
-            bookEditObj[objProp.name] = objProp.value;
-          }
-        });
 
-      var book = new Book(bookEditObj);
-      book.Cover = this.encFile;
-      console.log(book);
-      window.bookShelf[this._index]=book;
-      this.setLocalStorage();
-      console.log(window.bookShelf[this._index]);
-      console.log(this._index);
-      this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
-      this._bindEvents();
-    };
-
-    EditBookUI.prototype._handleAddBooksLib = function () {
-    return this.addBooks(this._tempBookShelf);
+  var book = new Book(bookEditObj);
+  book.Cover =this.encFileEdt;
+  console.log(this.encFileEdt);
+  console.log(book);
+  window.bookShelf[this._index] = book;
+  this.setLocalStorage();
+  this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
+  this._bindEvents();
+  // $("#formEntryEdit")[0].reset();
+  return true;
 };
+
 
 
 $(function(){
