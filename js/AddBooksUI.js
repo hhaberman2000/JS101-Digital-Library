@@ -28,7 +28,6 @@ AddBooksUI.prototype._handleBookCover = function () {
   reader.addEventListener("load", function () {
     preview.src = reader.result;
     _self.encFile = reader.result;
-    console.log(_self.encFile);
   }, false);
 
   if (file) {
