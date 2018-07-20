@@ -1,6 +1,7 @@
 var DataTable = function(){
   Library.call(this);
   this.$container = $('#bookListings');
+  this.libraryURL = "http://127.0.0.1:3002/Library";
 };
 
 DataTable.prototype = Object.create(Library.prototype);
@@ -11,6 +12,7 @@ DataTable.prototype.init = function() {
   this._updateTable();
   this._bindEvents();
   this._bindCustomListeners();
+  this._getBooksForTable();
 };
 
 DataTable.prototype._bindEvents = function () {
@@ -19,7 +21,28 @@ DataTable.prototype._bindEvents = function () {
 DataTable.prototype._bindCustomListeners = function () {
   $(document).on('objUpdate', $.proxy(this._updateHeader, this));
   $(document).on('objUpdate', $.proxy(this._updateTable, this));
+  $(document).on('objUpdate', $.proxy(this._getBooksForTable, this));
 };
+
+DataTable.prototype._getBooksForTable = function() {
+  console.log("I am here");
+  $.ajax({
+    url: this.libraryURL,
+    dataType: 'json',
+    type: 'GET',
+    // data
+    success: (data) => {
+      console.log(data);
+      console.log("success");
+      console.log(data.length);
+      for (var i=0; data.length > i; i++)
+        window.bookShelf.push(data[i]);
+    }
+  })
+};
+
+
+
 
 DataTable.prototype._updateHeader = function() {
   var _self = this

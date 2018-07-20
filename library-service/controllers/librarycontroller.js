@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
 // DELETS ALL BOOKS IN THE DATABASE
  router.delete('/:id', function (req, res) {
  console.log('hit');
- Library.findByIDandRemove(req.params.id, function (err, books) {
+ Library.findByIdAndRemove(req.params.id, function (err, books) {
      if (err) return res.status(500).send("There was a problem finding books in library.");
      res.status(200).send(books);
  });

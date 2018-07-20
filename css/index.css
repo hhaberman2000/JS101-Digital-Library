@@ -6,6 +6,11 @@ input.searchInp {
   width: 80px;
 }
 
+li.selectBookUl {
+
+cursor: pointer;
+
+}
 
 header.header-style {
   /* background-image: url("assets/sandpaper.png"); */
