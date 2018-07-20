@@ -2,6 +2,10 @@
   margin: 5%, 0%, 0%, 0%;
 }
 
+input.searchInp {
+  width: 80px;
+}
+
 
 header.header-style {
   /* background-image: url("assets/sandpaper.png"); */
@@ -133,6 +137,6 @@ label.modal-foot-pos {
 }
 
 section.container-mod {
-  margin: 0% 19.5% 0% 19.5%;
+  margin: 0% 12.5% 0% 12.5%;
   /* border: 2px solid red; */
 }
