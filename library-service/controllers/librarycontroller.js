@@ -4,18 +4,20 @@ var Library = require('../Models/Library');
 
 var router = express.Router();
 
-router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // CREATES A NEW BOOK IN LIBRARY
 
 
 router.post('/', function (req, res) {
   Library.create({
-      title : req.body.title,
-      author : req.body.author,
-      pubDate : Date.now(),
-      numPages : req.body.numPages,
-      cover : req.body.cover
+      Cover : req.body.Cover,
+      Title : req.body.Title,
+      Author : req.body.Author,
+      Pages : req.body.Pages,
+      Published : Date.now(),
+      Rating: req.body.Rating,
+      Synopsis: req.body.Synopsis
     },
     function (err, book) {
       if (err) return res.status(500).send("There was a problem adding the information to the database.");
