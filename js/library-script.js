@@ -22,9 +22,18 @@ Library.prototype.addBook = function(book) {
         return this.hasBooks;
         }
       }
-
+      console.log(book);
+          $.ajax({
+            url: window.libraryURL,
+            dataType: 'json',
+            method: 'POST',
+            data: book,
+            success: (data) => {
+            console.log(data);
+            }
+          });
       window.bookShelf.push(book);
-      this.setLocalStorage();
+      // this.setLocalStorage();
       this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       return this.hasBooks = true;
   };
@@ -37,7 +46,7 @@ Library.prototype.removeBookTitle = function(titleToRemove){
      if (window.bookShelf[i].Title.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
        alert("Book " + window.bookShelf[i].Title + " has been removed.");
        window.bookShelf.splice(i,1);
-       localStorage.setItem('book', JSON.stringify(window.bookShelf));
+       // localStorage.setItem('book', JSON.stringify(window.bookShelf));
        remTitleArray.push(window.bookShelf[i]);
        i--;
 
@@ -62,7 +71,7 @@ Library.prototype.removeBookByAuthor = function(authorName){
       remBookAuthArray.push(window.bookShelf[i]);
       window.bookShelf.splice(i,1);
       i--;
-      localStorage.setItem('book', JSON.stringify(window.bookShelf));
+      // localStorage.setItem('book', JSON.stringify(window.bookShelf));
       }
     }
 
@@ -145,13 +154,26 @@ Library.prototype.getAuthors = function () {
 };
 
 Library.prototype.getBooks = function () {
-  var allbooks = [];
+  // var allbooks = [];
   // var allAuthorsNoDup;
-  for (var i=0; i < window.bookShelf.length; i++) {
-      allbooks.push(window.bookShelf[i].Title);
-    }
-
-    return allbooks;
+  // for (var i=0; i < window.bookShelf.length; i++) {
+  //     allbooks.push(window.bookShelf[i].Title);
+  //   }
+    console.log("I am here");
+    $.ajax({
+      url: this.libraryURL,
+      dataType: 'json',
+      type: 'GET',
+      // data
+      success: (data) => {
+        console.log(data);
+        console.log("success");
+        console.log(data.length);
+        window.bookShelf=data;
+        this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
+      }
+    })
+    return true;
 };
 
 
@@ -166,35 +188,35 @@ Library.prototype.getRandomAuthorName = function() {
 }
 
 
-Library.prototype.setLocalStorage = function () {
-  // Purpose: sets added books to local storage.
-  // Return: return true.
-  localStorage.setItem('book', JSON.stringify(window.bookShelf));
-  return true;
-};
+// Library.prototype.setLocalStorage = function () {
+//   // Purpose: sets added books to local storage.
+//   // Return: return true.
+//   localStorage.setItem('book', JSON.stringify(window.bookShelf));
+//   return true;
+// };
 
-Library.prototype.getLocalStorage = function () {
-  // Purpose: Retrieves books from local storage.
-  // Return: true
-  if (localStorage.length) {
-  var getBooks = JSON.parse(localStorage.getItem("book"));
-   for (var i=0; i < getBooks.length; i++ ) {
-     var bookFromStorage = new Book ({
-        Cover : getBooks[i].Cover,
-        Title : getBooks[i].Title,
-        Author : getBooks[i].Author,
-        Pages : getBooks[i].Pages,
-        Published : new Date(getBooks[i].Published),
-        Rating : getBooks[i].Rating,
-        Synopsis : getBooks[i].Synopsis,
-      });
-      window.bookShelf.push(bookFromStorage);
-    }
-
-    return true;
-  }
- return false;
-};
+// Library.prototype.getLocalStorage = function () {
+//   // Purpose: Retrieves books from local storage.
+//   // Return: true
+//   if (localStorage.length) {
+//   var getBooks = JSON.parse(localStorage.getItem("book"));
+//    for (var i=0; i < getBooks.length; i++ ) {
+//      var bookFromStorage = new Book ({
+//         Cover : getBooks[i].Cover,
+//         Title : getBooks[i].Title,
+//         Author : getBooks[i].Author,
+//         Pages : getBooks[i].Pages,
+//         Published : new Date(getBooks[i].Published),
+//         Rating : getBooks[i].Rating,
+//         Synopsis : getBooks[i].Synopsis,
+//       });
+//       window.bookShelf.push(bookFromStorage);
+//     }
+//
+//     return true;
+//   }
+//  return false;
+// };
 
 Library.prototype.searchBooks = function (searchString) {
   var nSS = searchString.toLowerCase();

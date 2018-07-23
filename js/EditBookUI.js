@@ -79,7 +79,7 @@ EditBookUI.prototype._handleApplyChanges = function () {
   var book = new Book(bookEditObj);
   book.Cover =this.encFileEdt;
   window.bookShelf[this._index] = book;
-  this.setLocalStorage();
+  // this.setLocalStorage();
   this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
   this._bindEvents();
   // $("#formEntryEdit")[0].reset();
