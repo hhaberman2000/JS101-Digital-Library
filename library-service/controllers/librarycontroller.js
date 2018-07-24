@@ -25,6 +25,18 @@ router.post('/', function (req, res) {
     });
 });
 
+//Edits a book
+router.put('/:id', function (req, res) {
+console.log('hit');
+console.log(req);
+console.log(req.body);
+Library.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, books) {
+    if (err) return res.status(500).send("There was a problem finding books in library.");
+    res.status(200).send("book");
+  });
+});
+
+
 // RETURNS ALL BOOKS IN THE DATABASE
 router.get('/', function (req, res) {
  console.log('hit');
@@ -39,7 +51,7 @@ router.get('/', function (req, res) {
  console.log('hit');
  Library.findByIdAndRemove(req.params.id, function (err, books) {
      if (err) return res.status(500).send("There was a problem finding books in library.");
-     res.status(200).send(books);
+     res.status(200).send("bookID");
  });
 });
 

@@ -29,58 +29,62 @@ Library.prototype.addBook = function(book) {
             method: 'POST',
             data: book,
             success: (data) => {
+              console.log(data);
+              window.bookShelf.push(data);
+              this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
             }
           });
-      window.bookShelf.push(book);
-      // this.setLocalStorage();
-      this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       return this.hasBooks = true;
   };
+
+  Library.prototype.editBook = function(book) {
+
+    for ( var i=0; i < window.bookShelf.length; i++) {
+      if (window.bookShelf[i].Title === book.Title) {
+        console.log(book);
+        console.log(window.libraryURL + window.bookShelf[i]._id);
+        console.log(window.bookShelf[i]);
+        var edtBook = new Book(book);
+        $.ajax({
+          url: window.libraryURL + window.bookShelf[i]._id,
+          dataType: 'text',
+          method: 'PUT',
+          data: book,
+          success: (data) => {
+            // console.log(data);
+            // console.log(this.addBook(book));
+            window.bookShelf[i] = edtBook;
+
+            this._handleEventTrigger("objUpdate", {booksAdded: "Book was edited"});
+          }
+        });
+
+        return this.hasBooks = true;
+   }
+  }
+};
+
 
 Library.prototype.removeBookTitle = function(titleToRemove){
   // Purpose: Remove book from from the books array by its title.
   // Return:boolean true if the book(s) were removed, false if no books match
-  console.log(titleToRemove);
   for ( var i=0; i < window.bookShelf.length; i++) {
      if (window.bookShelf[i].Title.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
-       var bookID = window.bookShelf[i]._id;
-       console.log(window.bookShelf[i]._id);
+       // var bookID = window.bookShelf[i]._id;
+       console.log(window.libraryURL + window.bookShelf[i]._id);
       $.ajax({
-        url: this.libraryURL,
-        dataType: 'json',
+        url: window.libraryURL + window.bookShelf[i]._id,
+        dataType: 'text',
         type: 'DELETE',
-        data: bookID,
         success: (data) => {
-          console.log(data);
-          console.log("success");
           this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
           }
         })
-      //   window.bookShelf.splice(i,1);
-      // i--;
+        window.bookShelf.splice(i,1);
+      i--;
      }
    }
  };
-
-
- //  var remTitleArray = [];
- //  for ( var i=0; i < window.bookShelf.length; i++) {
- //     if (window.bookShelf[i].Title.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
- //       alert("Book " + window.bookShelf[i].Title + " has been removed.");
- //       window.bookShelf.splice(i,1);
- //       // localStorage.setItem('book', JSON.stringify(window.bookShelf));
- //       remTitleArray.push(window.bookShelf[i]);
- //       i--;
- //       }
- //     }
- //     if (remTitleArray.length > 0) {
- //       this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
- //      return true;
- //    } else {
- //        alert("Book title is not in library.");
- //        return false;
- //      }
- // };
 
 Library.prototype.removeBookByAuthor = function(authorName){
 // // Purpose: Remove a specific book from your books array by the author name.
@@ -89,21 +93,31 @@ Library.prototype.removeBookByAuthor = function(authorName){
 
   for ( var i=0; i < window.bookShelf.length; i++) {
     if (window.bookShelf[i].Author.toLowerCase().search(authorName.toLowerCase())> -1) {
+
+        $.ajax({
+        url: window.libraryURL + window.bookShelf[i]._id,
+        dataType: 'text',
+        type: 'DELETE',
+        // data: bookID,
+        success: (data) => {
+          console.log(data);
+          console.log("success");
+          this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
+          }
+        })
+      }
       remBookAuthArray.push(window.bookShelf[i]);
       window.bookShelf.splice(i,1);
       i--;
-      // localStorage.setItem('book', JSON.stringify(window.bookShelf));
       }
-    }
 
     if (remBookAuthArray.length > 0) {
-      this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
       alert( remBookAuthArray.length + " Book(s) has been removed.")
-      return true;
-    }
 
-    alert("This Author is not in library.");
-    return false;
+    } else {
+      alert("This Author is not in library.");
+
+    }
   };
 
 Library.prototype.getRandomBook = function() {
@@ -191,6 +205,7 @@ Library.prototype.getBooks = function () {
         console.log("success");
         console.log(data.length);
         window.bookShelf=data;
+
         this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       }
     })
@@ -208,36 +223,6 @@ Library.prototype.getRandomAuthorName = function() {
    return authorRand;
 }
 
-
-// Library.prototype.setLocalStorage = function () {
-//   // Purpose: sets added books to local storage.
-//   // Return: return true.
-//   localStorage.setItem('book', JSON.stringify(window.bookShelf));
-//   return true;
-// };
-
-// Library.prototype.getLocalStorage = function () {
-//   // Purpose: Retrieves books from local storage.
-//   // Return: true
-//   if (localStorage.length) {
-//   var getBooks = JSON.parse(localStorage.getItem("book"));
-//    for (var i=0; i < getBooks.length; i++ ) {
-//      var bookFromStorage = new Book ({
-//         Cover : getBooks[i].Cover,
-//         Title : getBooks[i].Title,
-//         Author : getBooks[i].Author,
-//         Pages : getBooks[i].Pages,
-//         Published : new Date(getBooks[i].Published),
-//         Rating : getBooks[i].Rating,
-//         Synopsis : getBooks[i].Synopsis,
-//       });
-//       window.bookShelf.push(bookFromStorage);
-//     }
-//
-//     return true;
-//   }
-//  return false;
-// };
 
 Library.prototype.searchBooks = function (searchString) {
   var nSS = searchString.toLowerCase();

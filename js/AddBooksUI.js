@@ -49,14 +49,8 @@ AddBooksUI.prototype._handleQueueBooks = function (e) {
 
   var book = new Book(bookObj);
 
-  // for ( var i=0; i < window.bookShelf.length; i++) {
-  //   if (window.bookShelf[i].Title === book.Title) {
-  //     alert("Book title has already been added.");
-  //     return this.hasBooks;
-  //     }
-  //   };
-
   book.Cover = this.encFile;
+  console.log(book);
   this._tempBookShelf.push(book);
   alert("The book " + book.Title + " has been added to the queue.");
 
@@ -69,24 +63,10 @@ AddBooksUI.prototype._handleQueueBooks = function (e) {
   return true;
 };
 
-// AddBooksUI.prototype._handleAddBooksLib = function() {
-//     console.log(this._tempBookShelf);
-//     // let formData = this._tempBookShelf;
-//     // console.log(formData);
-//     $.ajax({
-//       url: window.libraryURL,
-//       dataType: 'json',
-//       method: 'POST',
-//       data: this._tempBookShelf,
-//       success: (data) => {
-//       console.log(data);
-//       }
-//     });
-//   };
-
 AddBooksUI.prototype._handleAddBooksLib = function () {
   var tempArr = this._tempBookShelf;
   this._tempBookShelf = [];
+  console.log(tempArr);
   $('#books-in-queue').html("0 book(s) to add");
   return this.addBooks(tempArr);
 };

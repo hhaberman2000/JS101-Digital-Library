@@ -7,12 +7,12 @@ var DataTable = function(){
 DataTable.prototype = Object.create(Library.prototype);
 
 DataTable.prototype.init = function() {
-  // this.getLocalStorage();
+  this.getBooks();
   this._updateHeader();
   this._updateTable();
   this._bindEvents();
   this._bindCustomListeners();
-  this.getBooks();
+
 };
 
 DataTable.prototype._bindEvents = function () {
@@ -24,34 +24,15 @@ DataTable.prototype._bindCustomListeners = function () {
   // $(document).on('objUpdate', $.proxy(this._getBooksForTable, this));
 };
 
-// DataTable.prototype._getBooksForTable = function() {
-//   console.log("I am getting books");
-//   console.log(window.bookShelf);
-//   $.ajax({
-//     url: this.libraryURL,
-//     dataType: 'json',
-//     type: 'GET',
-//     // data
-//     success: (data) => {
-//       console.log(data);
-//       console.log("success");
-//       console.log(data.length);
-//       for (var i=0; data.length > i; i++)
-//         window.bookShelf.push(data[i]);
-//     }
-//   })
-// };
-
-
 DataTable.prototype._updateHeader = function() {
-  console.log("I am updating header");
+  // console.log("I am updating header");
   var _self = this
   var $thead = this.$container.find('thead');
   $thead.empty();
-    console.log(window.bookShelf.length);
+    // console.log(window.bookShelf.length);
     if(window.bookShelf.length > 0) {
       var book = window.bookShelf[0];
-      console.log(book);
+      // console.log(book);
       $thead.append(_self._createHeader(book));
   }
 };
@@ -65,7 +46,6 @@ DataTable.prototype._updateTable = function (e) {
   $.each(window.bookShelf, function(index, book){
     $tbody.append(_self._createRow(book));
   });
-  console.log(book);
   $("td:last-of-type").after("<td><button type='button' class='btn btn-info bookToEdit'>Edit</button></td>");
   $("td:last-of-type").after("<td><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
 };
@@ -76,8 +56,10 @@ DataTable.prototype._createHeader = function(book) {
   for (var key in book) {
     var th = document.createElement('th');
 
-    if (key == "_id" || key == "__v") {
+    // if (key == "_id" || key == "__v") {
+    if (key === "_id" || key === "__v") {
       }
+    // else if (){}
       else {
           if (key === "Title"){
             $(th).attr("class", "titleToEdit");
@@ -103,7 +85,6 @@ DataTable.prototype._createHeader = function(book) {
 DataTable.prototype._createRow = function (book) {
   var tr = document.createElement('tr');
   $(tr).attr("class", "selectBookRow")
-  console.log(book);
   for(var key in book){
     var td = document.createElement('td');
 
@@ -138,12 +119,7 @@ DataTable.prototype._createRow = function (book) {
       }
       else if (key === "Published"){
         var publishDate = new Date(book[key]);
-
-        console.log(publishDate);
-        // var parseDate = publishDate.getFullYear()+"-"+("0"+(publishDate.getMonth()+1)).slice(-2)+"-"+("0"+publishDate.getDate()).slice(-2);
-        var parseDate = ("0"+(publishDate.getMonth()+1)).slice(-2)+"-"+("0"+publishDate.getDate()).slice(-2)+"-"+publishDate.getFullYear();
-        console.log(publishDate);
-        // var yearDate = publishDate.getFullYear();
+        var parseDate = ("0"+(publishDate.getMonth()+1)).slice(-2)+"/"+("0"+publishDate.getDate()).slice(-2)+"/"+publishDate.getFullYear();
         $(td).attr("class", "publishedToEdit");
         $(td).data(key,book[key]);
         $(td).text(parseDate);
