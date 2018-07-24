@@ -21,9 +21,11 @@ RemoveBooksUI.prototype._handleModalOpen = function () {
 };
 
 RemoveBooksUI.prototype._handleBookRemoval = function () {
+  console.log("handleBookRemoval");
   var bookTitle = $("#removeByTitle").val();
   var author = $("#removeByAuthor").val();
     if(bookTitle) {
+      console.log(bookTitle);
       this.removeBookTitle(bookTitle);
     }
     else if (author) {

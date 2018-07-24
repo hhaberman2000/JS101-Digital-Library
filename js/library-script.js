@@ -29,7 +29,6 @@ Library.prototype.addBook = function(book) {
             method: 'POST',
             data: book,
             success: (data) => {
-            console.log(data);
             }
           });
       window.bookShelf.push(book);
@@ -41,25 +40,47 @@ Library.prototype.addBook = function(book) {
 Library.prototype.removeBookTitle = function(titleToRemove){
   // Purpose: Remove book from from the books array by its title.
   // Return:boolean true if the book(s) were removed, false if no books match
-  var remTitleArray = [];
+  console.log(titleToRemove);
   for ( var i=0; i < window.bookShelf.length; i++) {
      if (window.bookShelf[i].Title.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
-       alert("Book " + window.bookShelf[i].Title + " has been removed.");
-       window.bookShelf.splice(i,1);
-       // localStorage.setItem('book', JSON.stringify(window.bookShelf));
-       remTitleArray.push(window.bookShelf[i]);
-       i--;
-
-       }
+       var bookID = window.bookShelf[i]._id;
+       console.log(window.bookShelf[i]._id);
+      $.ajax({
+        url: this.libraryURL,
+        dataType: 'json',
+        type: 'DELETE',
+        data: bookID,
+        success: (data) => {
+          console.log(data);
+          console.log("success");
+          this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
+          }
+        })
+      //   window.bookShelf.splice(i,1);
+      // i--;
      }
-     if (remTitleArray.length > 0) {
-       this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
-      return true;
-    } else {
-        alert("Book title is not in library.");
-        return false;
-      }
+   }
  };
+
+
+ //  var remTitleArray = [];
+ //  for ( var i=0; i < window.bookShelf.length; i++) {
+ //     if (window.bookShelf[i].Title.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
+ //       alert("Book " + window.bookShelf[i].Title + " has been removed.");
+ //       window.bookShelf.splice(i,1);
+ //       // localStorage.setItem('book', JSON.stringify(window.bookShelf));
+ //       remTitleArray.push(window.bookShelf[i]);
+ //       i--;
+ //       }
+ //     }
+ //     if (remTitleArray.length > 0) {
+ //       this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
+ //      return true;
+ //    } else {
+ //        alert("Book title is not in library.");
+ //        return false;
+ //      }
+ // };
 
 Library.prototype.removeBookByAuthor = function(authorName){
 // // Purpose: Remove a specific book from your books array by the author name.
