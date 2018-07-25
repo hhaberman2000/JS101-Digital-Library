@@ -53,29 +53,15 @@ Library.prototype.addBook = function(book) {
           method: 'PUT',
           data: book,
           success: (data) => {
-            // console.log(data);
-            // console.log(this.addBook(book));
-            if (ChgBook.Title != window.bookShelf[i].Title) {
-              window.bookShelf[i].Title = ChgBook.Title;
-
-            } else if (ChgBook.Author != window.bookShelf[i].Author)  {
-              window.bookShelf[i].Author = ChgBook.Author;
-
-            } else if (ChgBook.Pages != window.bookShelf[i].Pages) {
-              window.bookShelf[i].Pages = ChgBook.Pages;
-
-            } else if (ChgBook.Published != window.bookShelf[i].Published) {
-              window.bookShelf[i].Published = ChgBook.Published;
-
-            } else if (ChgBook.Rating != window.bookShelf[i].Rating) {
-              window.bookShelf[i].Rating = ChgBook.Rating;
-
-            } else if (ChgBook.Synopsis != window.bookShelf[i].Synopsis) {
-              window.bookShelf[i].Synopsis = ChgBook.Synopsis;
-
-            } else if (ChgBook.Cover != window.bookShelf[i].Cover) {
-              window.bookShelf[i].Cover = ChgBook.Cover;
-            }
+            window.bookShelf[i].Title = ChgBook.Title;
+            window.bookShelf[i].Author = ChgBook.Author;
+            window.bookShelf[i].Pages = ChgBook.Pages;
+            window.bookShelf[i].Published = ChgBook.Published;
+            window.bookShelf[i].Rating = ChgBook.Rating;
+            window.bookShelf[i].Synopsis = ChgBook.Synopsis;
+            window.bookShelf[i].Cover = ChgBook.Cover
+            window.bookShelf[i].Cover = ChgBook.Cover;
+            console.log(window.bookShelf);
             this._handleEventTrigger("objUpdate", {booksAdded: "Book was edited"});
             this._bindEvents();
           }
