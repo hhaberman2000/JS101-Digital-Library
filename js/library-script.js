@@ -38,39 +38,31 @@ Library.prototype.addBook = function(book) {
   };
 
   Library.prototype.editBook = function(book) {
-    console.log("i am editBook");
-    console.log(window.bookShelf.length);
+
     for ( var i=0; i < window.bookShelf.length; i++) {
       if (window.bookShelf[i].Title === book.Title) {
-        console.log(book);
-        console.log(window.libraryURL + window.bookShelf[i]._id);
-        console.log(window.bookShelf[i]);
+
         var ChgBook = new Book(book);
-        console.log(ChgBook);
         $.ajax({
           url: window.libraryURL + window.bookShelf[i]._id,
-          dataType: 'text',
+          dataType: 'json',
           method: 'PUT',
           data: book,
           success: (data) => {
-            window.bookShelf[i].Title = ChgBook.Title;
-            window.bookShelf[i].Author = ChgBook.Author;
-            window.bookShelf[i].Pages = ChgBook.Pages;
-            window.bookShelf[i].Published = ChgBook.Published;
-            window.bookShelf[i].Rating = ChgBook.Rating;
-            window.bookShelf[i].Synopsis = ChgBook.Synopsis;
-            window.bookShelf[i].Cover = ChgBook.Cover
-            window.bookShelf[i].Cover = ChgBook.Cover;
-            console.log(window.bookShelf);
+            window.bookShelf[i].Title = data.Title;
+            window.bookShelf[i].Author = data.Author;
+            window.bookShelf[i].Pages = data.Pages;
+            window.bookShelf[i].Published = data.Published;
+            window.bookShelf[i].Rating = data.Rating;
+            window.bookShelf[i].Synopsis = data.Synopsis;
+            window.bookShelf[i].Cover = data.Cover
             this._handleEventTrigger("objUpdate", {booksAdded: "Book was edited"});
-            this._bindEvents();
           }
         });
-
         return this.hasBooks = true;
-   }
-  }
-};
+      }
+    }
+  };
 
 
 Library.prototype.removeBookTitle = function(titleToRemove){
@@ -134,7 +126,23 @@ Library.prototype.getRandomBook = function() {
   if (window.bookShelf.length === 0) {
     return null;
     }
-    return window.bookShelf[Math.floor(Math.random() * window.bookShelf.length)];
+    var randBook = window.bookShelf[Math.floor(Math.random() * window.bookShelf.length)];
+    console.log(randBook);
+    $.ajax({
+      url: window.libraryURL + randBook._id,
+      dataType: 'json',
+      type: 'GET',
+      success: (data) => {
+        console.log(data);
+        alert("Found random book ''"+data.Title+"'' in Mongo: "+data._id);
+        console.log("success");
+
+        // this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
+      }
+    })
+
+    // return window.bookShelf[Math.floor(Math.random() * window.bookShelf.length)];
+    return randBook;
   };
 
 Library.prototype.getBookByTitle = function(titleString) {
@@ -197,12 +205,8 @@ Library.prototype.getAuthors = function () {
 };
 
 Library.prototype.getBooks = function () {
-  // var allbooks = [];
-  // var allAuthorsNoDup;
-  // for (var i=0; i < window.bookShelf.length; i++) {
-  //     allbooks.push(window.bookShelf[i].Title);
-  //   }
     console.log("I am here");
+    // var booksArray = [];
     $.ajax({
       url: this.libraryURL,
       dataType: 'json',
@@ -217,7 +221,7 @@ Library.prototype.getBooks = function () {
         this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       }
     })
-    return true;
+  return false;
 };
 
 

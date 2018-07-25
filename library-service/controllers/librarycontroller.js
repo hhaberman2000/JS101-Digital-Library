@@ -32,7 +32,7 @@ console.log(req);
 console.log(req.body);
 Library.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, books) {
     if (err) return res.status(500).send("There was a problem finding books in library.");
-    res.status(200).send("book");
+    res.status(200).send(books);
   });
 });
 
@@ -45,6 +45,17 @@ router.get('/', function (req, res) {
      res.status(200).send(books);
  });
 });
+
+//Return random book by
+router.get('/:id', function (req, res) {
+ console.log('hit');
+ Library.findById(req.params.id, function (err, books) {
+     if (err) return res.status(500).send("There was a problem finding books in library.");
+     console.log(books);
+     res.status(200).send(books);
+ });
+});
+
 
 // DELETS ALL BOOKS IN THE DATABASE
  router.delete('/:id', function (req, res) {

@@ -68,10 +68,10 @@ EditBookUI.prototype._handleModalOpen = function (e) {
 };
 
 
-EditBookUI.prototype._handleApplyChanges = function (e) {
+EditBookUI.prototype._handleApplyChanges =  function (e) {
   // Getting edited values from form input fields.
-  // e.stopPropagation();
-  _self = this;
+ // e.stopPropagation();
+
   var book = new Object();
   var edtBook = this.$container.find("#formEntryEdit").serializeArray();
   $.each(edtBook, function(i, objProp) {
@@ -84,13 +84,11 @@ EditBookUI.prototype._handleApplyChanges = function (e) {
   book.Cover = $('#imgUploadEdit').attr("src");
   console.log(book);
 
-  async function waitOnUpdate (state) {
-    await state.editBook(book);
-}
-  waitOnUpdate(_self);
+
+     this.editBook(book);
 
   // this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
-  this._bindEvents();
+  // this._bindEvents();
   // e.stopPropagation();
   // $("#formEntryEdit")[0].reset();
   return true;

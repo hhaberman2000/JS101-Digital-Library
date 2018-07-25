@@ -31,10 +31,11 @@ DisplayBookUI.prototype._handleDisplayBook = function (e) {
   };
 
 DisplayBookUI.prototype._createBookDisplay = function (book) {
+  var datePub = new Date(book.Published);
  $('#showAllBookImg2').html("<img src="+book.Cover+" style='width: 80%''>")
  $('#displayBookTitle2').html(book.Title +" by "+book.Author);
  $('#showNumOfpages2').html(book.Pages + " pages");
- $('#showDatePub2').html("Published: " + book.Published.getFullYear());
+ $('#showDatePub2').html("Published: " + datePub.getFullYear());
  $('#showRating2').html(book.Rating);
  $('#showBookSynop2').html(book.Synopsis);
 };
