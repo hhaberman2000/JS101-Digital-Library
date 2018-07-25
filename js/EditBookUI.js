@@ -68,8 +68,9 @@ EditBookUI.prototype._handleModalOpen = function (e) {
 };
 
 
-EditBookUI.prototype._handleApplyChanges = function () {
+EditBookUI.prototype._handleApplyChanges = function (e) {
   // Getting edited values from form input fields.
+  e.stopPropagation();
   var book = new Object();
   var edtBook = this.$container.find("#formEntryEdit").serializeArray();
   $.each(edtBook, function(i, objProp) {
@@ -82,16 +83,9 @@ EditBookUI.prototype._handleApplyChanges = function () {
   book.Cover = $('#imgUploadEdit').attr("src");
   console.log(book);
   this.editBook(book);
-  // this.addBook(book);
-  // for ( var i=0; i < window.bookShelf.length; i++) {
-  //     if (window.bookShelf[i].Title === book.Title) {
-  //         var edtBook = window.bookShelf[i];
-  //         console.log(edtBook);
-  //         this.editBook(edtBook);
-  //       }
-  //     }
   this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
   this._bindEvents();
+  // e.stopPropagation();
   // $("#formEntryEdit")[0].reset();
   return true;
 };

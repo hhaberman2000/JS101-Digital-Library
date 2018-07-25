@@ -38,13 +38,15 @@ Library.prototype.addBook = function(book) {
   };
 
   Library.prototype.editBook = function(book) {
-
+    console.log("i am editBook");
+    console.log(window.bookShelf.length);
     for ( var i=0; i < window.bookShelf.length; i++) {
       if (window.bookShelf[i].Title === book.Title) {
         console.log(book);
         console.log(window.libraryURL + window.bookShelf[i]._id);
         console.log(window.bookShelf[i]);
-        var edtBook = new Book(book);
+        var ChgBook = new Book(book);
+        console.log(ChgBook);
         $.ajax({
           url: window.libraryURL + window.bookShelf[i]._id,
           dataType: 'text',
@@ -53,9 +55,29 @@ Library.prototype.addBook = function(book) {
           success: (data) => {
             // console.log(data);
             // console.log(this.addBook(book));
-            window.bookShelf[i] = edtBook;
+            if (ChgBook.Title != window.bookShelf[i].Title) {
+              window.bookShelf[i].Title = ChgBook.Title;
 
+            } else if (ChgBook.Author != window.bookShelf[i].Author)  {
+              window.bookShelf[i].Author = ChgBook.Author;
+
+            } else if (ChgBook.Pages != window.bookShelf[i].Pages) {
+              window.bookShelf[i].Pages = ChgBook.Pages;
+
+            } else if (ChgBook.Published != window.bookShelf[i].Published) {
+              window.bookShelf[i].Published = ChgBook.Published;
+
+            } else if (ChgBook.Rating != window.bookShelf[i].Rating) {
+              window.bookShelf[i].Rating = ChgBook.Rating;
+
+            } else if (ChgBook.Synopsis != window.bookShelf[i].Synopsis) {
+              window.bookShelf[i].Synopsis = ChgBook.Synopsis;
+
+            } else if (ChgBook.Cover != window.bookShelf[i].Cover) {
+              window.bookShelf[i].Cover = ChgBook.Cover;
+            }
             this._handleEventTrigger("objUpdate", {booksAdded: "Book was edited"});
+            this._bindEvents();
           }
         });
 
