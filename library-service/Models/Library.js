@@ -5,6 +5,7 @@ var LibrarySchema = new mongoose.Schema({
   Author: String,
   Pages: Number,
   Published: Date,
+  Rating: String,
   Synopsis: String,
 });
 mongoose.model('Library', LibrarySchema);

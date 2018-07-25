@@ -1,6 +1,6 @@
 // Not Singleton
 var bookShelf = new Array();
-var libraryURL ='http://127.0.0.1:3002/Library';
+var libraryURL ='http://127.0.0.1:3002/Library/';
 
 
 //Singleton

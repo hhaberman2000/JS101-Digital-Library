@@ -7,7 +7,7 @@ var Book = function(args){
    this.Rating = args.Rating;
    this.Synopsis = args.Synopsis;
    this._id = args._id;
-   this._v = args._v;
+   this.__v = args.__v;
  };
 
   // var gBook1 = new Book( {
