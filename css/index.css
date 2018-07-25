@@ -91,6 +91,10 @@ td.synopsisToEdit {
   font-size: 12px;
 }
 
+th.synopHeadToEdit {
+
+  padding: 0% 11% 0% 1%;
+}
 
 img.book-sugg-img {
   height: 90%;

@@ -65,6 +65,10 @@ DataTable.prototype._createHeader = function(book) {
             $(th).attr("class", "titleToEdit");
             $(th).text(key);
             tr.append(th);
+          } else if (key === "Synopsis"){
+              $(th).attr("class", "synopHeadToEdit");
+              $(th).text(key);
+              tr.append(th);
           }
           $(th).text(key);
           tr.append(th);
@@ -134,11 +138,11 @@ DataTable.prototype._createRow = function (book) {
       }
       else if (key === "Synopsis") {
         var synopsisString = book[key];
-        var truncSynopsis = synopsisString.substring(0,120);
+        var truncSynopsis = synopsisString.substring(0,100);
         $(td).attr("title", synopsisString);
         $(td).attr("class", "synopsisToEdit");
         $(td).data(key,book[key]);
-        $(td).text(truncSynopsis);
+        $(td).text(truncSynopsis+ " :READ MORE");
         tr.append(td);
       }
      }

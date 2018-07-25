@@ -26,7 +26,6 @@ SearchBooksUI.prototype._handleBookSearch = function () {
       this.$container.modal('show');
       this.$container.find('.modal-body').html(this._createSearchOutput(searchResult));
     }
-
     return false;
   };
 
