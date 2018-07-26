@@ -12,6 +12,8 @@ SearchBooksUI.prototype.init = function () {
 
 SearchBooksUI.prototype._bindEvents = function () {
   $('#searchBtn').on('click', $.proxy(this._handleBookSearch, this));
+  this.$container.on('hidden.bs.modal', $.proxy(this._clearSearchField, this));
+
   return false;
 };
 
@@ -26,6 +28,7 @@ SearchBooksUI.prototype._handleBookSearch = function () {
       this.$container.modal('show');
       this.$container.find('.modal-body').html(this._createSearchOutput(searchResult));
     }
+
     return false;
   };
 
@@ -39,7 +42,13 @@ SearchBooksUI.prototype._createSearchOutput = function (searchResult) {
       ul.append(li);
       }
     return ul;
+
   };
+
+  SearchBooksUI.prototype._clearSearchField = function () {
+    $(".srchForm")[0].reset();
+
+  }
 
 $(function(){
   window.gSearchBooksUI = new SearchBooksUI($('#search-books-modal'));
