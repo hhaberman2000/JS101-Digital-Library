@@ -47,7 +47,7 @@ DataTable.prototype._updateTable = function (e) {
     $tbody.append(_self._createRow(book));
   });
   $("td:last-of-type").after("<td><button type='button' class='btn btn-info bookToEdit'>Edit</button></td>");
-  $("td:last-of-type").after("<td><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
+  $("td:last-of-type").after("<td class='remBtn'><button type='button' class='close bookToRemove' data-dismiss='alert'><span aria-hidden='true' style='color:red'>×</span><span class='sr-only'>Close</span></button></td>");
 };
 
 DataTable.prototype._createHeader = function(book) {

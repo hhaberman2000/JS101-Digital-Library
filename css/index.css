@@ -4,6 +4,7 @@
 
 input.searchInp {
   width: 80px;
+  margin: 0% 0% 0% -0%;
 }
 
 li.selectBookUl {
@@ -18,22 +19,41 @@ header.header-style {
 }
 
 button.login-button {
-  margin-left: 75%;
-  margin-top: 37%;
+  margin-left: 70%;
+  margin-top: 55%;
 }
 
 p.login-user {
   color: #f9f8f7;
   font-size: 23px;
-  margin-top: 37%;
+  margin: 24% 0% 0% 20%;
 }
 p.my-library-styles {
   font-size: 40px;
-  margin: 2% 0% 3% 0%;
+  margin: 25% 0% 3% 0%;
+}
+
+td.remBtn {
+  padding: 1.5% 5% 0% 0%;
+}
+
+.catcher-pic {
+  width: 80%;
+  padding: 12% 0% 0% 30%;
+  /* margin: 1% 0% 0% 0%; */
+}
+
+.iread-pic {
+  height: 160px;
+  width: 160px;
 }
 
 div.btn-modal {
 margin: 3% 0% 2% 0%;
+}
+
+button.btn-modal-auth {
+  margin: 0% 0% 0% 20%;
 }
 
 div.lib-img-text {
@@ -45,22 +65,39 @@ div.lib-img-text {
     font-size: 35px;
 }
 
-div.search-btn {
+div.search-btn-grp {
   padding: 2.5% 0% 0% 35.5%;
 }
 
+button.search-btn {
+
+  /* margin: 0% 0% 0% 18%; */
+  float: right;
+}
+
+form.srchForm {
+
+margin: 0% 0% 0% 15%;
+
+}
+
 img.library-img {
-  height: 400px;
-  width: 600px;
-  padding-right: -10%;
-  margin-left: -15px;
+  display: block;
+  /* height: 400px;
+  width: 950px; */
+  /* padding-left: 10%;  */
+  margin-left: auto;
+  margin-right: auto;
+  /* height: */
+  width: 90%;
   box-shadow: 10px 10px 5px grey;
 }
  img.carousel-pic {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 175px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 3% 0% 0% 0%;
+    width: 70px;
     float: right;
 
  }
@@ -80,12 +117,10 @@ img.library-img {
    display: block;
 }
 
-td.titleToEdit {
-  padding-left: 5%;
-}
+
 
 th.titleToEdit {
-  padding-left: 5%;
+  /* padding-left: 5%; */
 }
 td.synopsisToEdit {
   font-size: 12px;
@@ -93,7 +128,7 @@ td.synopsisToEdit {
 
 th.synopHeadToEdit {
 
-  padding: 0% 11% 0% 1%;
+  padding: 0% 11% 1.25% 1%;
 }
 
 img.book-sugg-img {
@@ -146,6 +181,6 @@ label.modal-foot-pos {
 }
 
 section.container-mod {
-  margin: 0% 12.5% 0% 12.5%;
+  margin: 0% 14.5% 0% 12.5%;
   /* border: 2px solid red; */
 }

@@ -90,7 +90,7 @@ Library.prototype.removeBookByAuthor = function(authorName){
 // // Purpose: Remove a specific book from your books array by the author name.
 // // Return: booleantrue if the book(s) were removed, false if no books match.
   var remBookAuthArray = [];
-
+  console.log(authorName);
   for ( var i=0; i < window.bookShelf.length; i++) {
     if (window.bookShelf[i].Author.toLowerCase().search(authorName.toLowerCase())> -1) {
 
@@ -105,11 +105,12 @@ Library.prototype.removeBookByAuthor = function(authorName){
           this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
           }
         })
-      }
+
       remBookAuthArray.push(window.bookShelf[i]);
       window.bookShelf.splice(i,1);
       i--;
       }
+    }
 
     if (remBookAuthArray.length > 0) {
       alert( remBookAuthArray.length + " Book(s) has been removed.")

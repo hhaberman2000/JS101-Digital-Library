@@ -68,7 +68,7 @@ EditBookUI.prototype._handleModalOpen = function (e) {
 };
 
 
-EditBookUI.prototype._handleApplyChanges =  function (e) {
+EditBookUI.prototype._handleApplyChanges =  async function (e) {
   // Getting edited values from form input fields.
  // e.stopPropagation();
 
@@ -85,7 +85,7 @@ EditBookUI.prototype._handleApplyChanges =  function (e) {
   console.log(book);
 
 
-     this.editBook(book);
+     await this.editBook(book);
 
   // this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
   // this._bindEvents();
