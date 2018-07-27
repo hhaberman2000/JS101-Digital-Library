@@ -198,7 +198,6 @@ Library.prototype.getAuthors = function () {
 // Purpose: Find the distinct authors’ names from all books in your library.
 // Return: array of strings the names of all distinct authors, empty array if no books exist or if no authors exist.
   var allAuthors = [];
-  // var allAuthorsNoDup;
   for (var i=0; i < window.bookShelf.length; i++) {
       allAuthors.push(window.bookShelf[i].Author);
     }
@@ -206,19 +205,12 @@ Library.prototype.getAuthors = function () {
 };
 
 Library.prototype.getBooks = function () {
-    console.log("I am here");
-    // var booksArray = [];
     $.ajax({
       url: this.libraryURL,
       dataType: 'json',
       type: 'GET',
-      // data
       success: (data) => {
-        console.log(data);
-        console.log("success");
-        console.log(data.length);
         window.bookShelf=data;
-
         this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       }
     })
@@ -240,31 +232,27 @@ Library.prototype.getRandomAuthorName = function() {
 Library.prototype.searchBooks = function (searchString) {
   var nSS = searchString.toLowerCase();
   var searchResult = [];
-  var titleResult = [];
-  var authorResult = [];
 
   for (var i=0; i < window.bookShelf.length; i++) {
     var title = window.bookShelf[i].Title.toLowerCase();
     var author = window.bookShelf[i].Author.toLowerCase();
     var published = window.bookShelf[i].Published;
     var pages = window.bookShelf[i].Pages;
-    var date = Date.parse(published);
+    var date = published.toString().toLowerCase();
 
-    if (title.search(nSS) > -1 || author.search(nSS)> -1) {
-      titleResult = this.getBookByTitle(searchString);
-      authorResult = this.getBooksByAuthor(searchString);
-      searchResult = titleResult.concat(authorResult);
-      return searchResult;
+    if (title.search(nSS) > -1) {
+      searchResult.push(window.bookShelf[i]);
+      console.log(searchResult);
     }
-
-    else if (parseInt(searchString) === pages || Date.parse(parseInt(searchString)) === date) {
+    else if (author.search(nSS)> -1) {
+      searchResult.push(window.bookShelf[i]);
+      console.log(searchResult);
+    }
+    else if (parseInt(searchString) === pages || date.search(nSS)> -1) {
        searchResult.push(window.bookShelf[i]);
-       return searchResult;
     }
   }
-    alert("No results found.")
-    e.stopPropagation();
-    return false;
+    return searchResult;
 };
 
 Library.prototype._handleEventTrigger = function(sEvent, oData) {

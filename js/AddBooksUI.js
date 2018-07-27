@@ -22,6 +22,9 @@ AddBooksUI.prototype._bindEvents = function () {
 AddBooksUI.prototype._handleBookCover = function () {
   var preview = document.querySelector('#img-upload');
   var file    = document.querySelector('input[type=file]').files[0];
+  var file_name = file.name;
+  console.log(file_name);
+  $("#fileName").val(file_name);
   var reader  = new FileReader();
   var _self = this;
 
@@ -37,6 +40,8 @@ AddBooksUI.prototype._handleBookCover = function () {
 
 AddBooksUI.prototype._handleModalOpen = function () {
   this.$container.modal('show');
+  console.log(this.file_name);
+
 };
 
 

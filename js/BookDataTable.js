@@ -96,7 +96,7 @@ DataTable.prototype._createRow = function (book) {
 
       if (key === "Cover"){
         var cover = book[key];
-        $(td).html("<img class='imgBtn' src="+cover+" style='width: 90%''>");
+        $(td).html("<img class='imgBtn' src="+cover+" style='width: 60%''>");
         tr.append(td);
       }
       else if (key === "Title"){
@@ -138,7 +138,7 @@ DataTable.prototype._createRow = function (book) {
       }
       else if (key === "Synopsis") {
         var synopsisString = book[key];
-        var truncSynopsis = synopsisString.substring(0,100);
+        var truncSynopsis = synopsisString.substring(0,90);
         $(td).attr("title", synopsisString);
         $(td).attr("class", "synopsisToEdit");
         $(td).data(key,book[key]);

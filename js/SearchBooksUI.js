@@ -33,7 +33,7 @@ SearchBooksUI.prototype._handleBookSearch = function () {
   };
 
 SearchBooksUI.prototype._createSearchOutput = function (searchResult) {
-  $('#resultHeader').html("Found book(s) by "+searchResult[0].Author);
+  $('#resultHeader').html("Found "+searchResult.length+" book(s)");
   var ul = document.createElement("ul");
     for (var i = 0; i < searchResult.length; i++) {
       var li = document.createElement("li");
