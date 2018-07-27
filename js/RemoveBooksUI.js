@@ -24,17 +24,21 @@ RemoveBooksUI.prototype._handleBookRemoval = function () {
   console.log("handleBookRemoval");
   var bookTitle = $("#removeByTitle").val();
   var author = $("#removeByAuthor").val();
-    if(bookTitle) {
+
+  if (bookTitle && author) {
+    alert("Only one field can be submitted")
+  }
+  else if(bookTitle) {
       console.log(bookTitle);
       this.removeBookTitle(bookTitle);
-    }
-    else if (author) {
+  }
+  else if (author) {
       this.removeBookByAuthor(author);
-    }
-    else {
-      alert("type something");
-    }
-    $("#formEntryRem")[0].reset();
+  }
+  else {
+    alert("Please enter a title or author to remove.");
+  }
+  $("#formEntryRem")[0].reset();
 };
 
 $(function(){

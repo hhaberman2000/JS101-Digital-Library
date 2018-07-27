@@ -18,13 +18,11 @@
     <header class="container-fluid header-style" >
       <nav>
         <div class="row" style="height: 100px;">
-          <div class="col-md-9" style="background-image: url(assets/metro-library-2.jpg); background-repeat: repeat;">
-          </div>
-          <div class="col-md-1">
-            <button type="button" class="login-button">Logout</button>
+          <div class="col-md-10" style="background-image: url(assets/metro-library-2.jpg); background-repeat: repeat;">
           </div>
           <div class="col-md-2">
             <p class="login-user">Welcome Hal!</p>
+            <button type="button" class="login-button">Logout</button>
           </div>
         </div>
       </nav>
@@ -91,11 +89,14 @@
               <button type="button" class="btn btn-info" id="removeBooks-btn">Remove Books -</button>
             </div>
             <!-- Search button -->
-            <div class="col-md-8 search-btn-grp">
-              <form class="form-inline srchForm">
-                <input class="form-control mr-sm-2 searchInp" id="searchInput"  type="text" placeholder="Search Books..">
-                <button class="btn btn-outline-success my-2 my-sm-0 search-btn" id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
-              </form>
+            <div class="col-md-6 search-btn-grp ">
+              <form class="form-inline srchForm searchInp">
+                <input class="form-control mr-sm-2" id="searchInput"  type="text" placeholder="Search Books..">
+                </form>
+              </div>
+              <div class="col-md-2 search-btn">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
+              </div>
             </div>
           </div>
         </div>
@@ -179,7 +180,7 @@
           </div>
     <!-- Browse for Book Cover Image-->
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
               <div class="form-group">
                 <label>Choose Book Cover</label>
                 <div class="input-group">
@@ -192,12 +193,12 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row mt-2" id="clearImg">
-            <img class="cover-img-upload"  id='img-upload'/>
+            <div class="col-md-4 mt-2" id="clearImg">
+              <img class="cover-img-upload"  id='img-upload'/>
+            </div>
           </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 3%">
           <!-- Number of Pages -->
           <div class="form-group col-md-3">
               <label >Pages</label>
@@ -480,24 +481,24 @@
           </div>
         </div>
       <!-- Browse for Book Cover Image-->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Choose Book Cover</label>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label>Choose Book Cover</label>
                 <div class="input-group">
                   <span class="input-group-btn" >
                     <span class="btn btn-outline-secondary btn-sm btn-file">
                       Browse… <input type="file" id="imgInpEdit">
                     </span>
                   </span>
-                    <input type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
-                </div>
+                  <input type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
                 </div>
               </div>
             </div>
-            <div class="row mt-2">
+            <div class="col-md-4 mt-2">
               <img id="imgUploadEdit" src="" class="cover-img-upload"/>
             </div>
+          </div>
 
       <div class="row">
         <!-- Number of Pages -->
