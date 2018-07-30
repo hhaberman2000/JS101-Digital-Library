@@ -1,5 +1,6 @@
 //Not Singleton
-var Library = function(){ };
+var Library = function(){
+};
 
 //Singleton
 // (function ()  {
@@ -14,55 +15,54 @@ var Library = function(){ };
 // })();
 
 Library.prototype.addBook = function(book) {
-  // Purpose: Add a book object to your books array.
-  // Return:boolean true if it is not already added, false if it is already added.
-   this.hasBooks = false;
-   for ( var i=0; i < window.bookShelf.length; i++) {
-      if (window.bookShelf[i].Title === book.Title) {
-        return this.hasBooks;
-        }
+// Purpose: Add a book object to your books array.
+// Return:boolean true if it is not already added, false if it is already added.
+ this.hasBooks = false;
+ for ( var i=0; i < window.bookShelf.length; i++) {
+    if (window.bookShelf[i].Title === book.Title) {
+      alert("This Title has already been added to the bookshelf.")
+      return this.hasBooks;
       }
-      console.log(book);
-          $.ajax({
-            url: window.libraryURL,
-            dataType: 'json',
-            method: 'POST',
-            data: book,
-            success: (data) => {
-              console.log(data);
-              window.bookShelf.push(data);
-              this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
-            }
-          });
-      return this.hasBooks = true;
-  };
-
-  Library.prototype.editBook = function(book) {
-
-    for ( var i=0; i < window.bookShelf.length; i++) {
-      if (window.bookShelf[i].Title === book.Title) {
-
-        var ChgBook = new Book(book);
-        $.ajax({
-          url: window.libraryURL + window.bookShelf[i]._id,
-          dataType: 'json',
-          method: 'PUT',
-          data: book,
-          success: (data) => {
-            window.bookShelf[i].Title = data.Title;
-            window.bookShelf[i].Author = data.Author;
-            window.bookShelf[i].Pages = data.Pages;
-            window.bookShelf[i].Published = data.Published;
-            window.bookShelf[i].Rating = data.Rating;
-            window.bookShelf[i].Synopsis = data.Synopsis;
-            window.bookShelf[i].Cover = data.Cover
-            this._handleEventTrigger("objUpdate", {booksAdded: "Book was edited"});
-          }
-        });
-        return this.hasBooks = true;
-      }
+  }
+  $.ajax({
+    url: window.libraryURL,
+    dataType: 'json',
+    method: 'POST',
+    data: book,
+    success: (data) => {
+      window.bookShelf.push(data);
+      this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
     }
-  };
+  });
+  return this.hasBooks = true;
+};
+
+Library.prototype.editBook = function(book) {
+
+  for ( var i=0; i < window.bookShelf.length; i++) {
+    if (window.bookShelf[i].Title === book.Title) {
+
+      var ChgBook = new Book(book);
+      $.ajax({
+        url: window.libraryURL + window.bookShelf[i]._id,
+        dataType: 'json',
+        method: 'PUT',
+        data: book,
+        success: (data) => {
+          window.bookShelf[i].Title = data.Title;
+          window.bookShelf[i].Author = data.Author;
+          window.bookShelf[i].Pages = data.Pages;
+          window.bookShelf[i].Published = data.Published;
+          window.bookShelf[i].Rating = data.Rating;
+          window.bookShelf[i].Synopsis = data.Synopsis;
+          window.bookShelf[i].Cover = data.Cover
+          this._handleEventTrigger("objUpdate", {booksAdded: "Book was edited"});
+        }
+      });
+      return this.hasBooks = true;
+    }
+  }
+};
 
 
 Library.prototype.removeBookTitle = function(titleToRemove){
@@ -70,8 +70,6 @@ Library.prototype.removeBookTitle = function(titleToRemove){
   // Return:boolean true if the book(s) were removed, false if no books match
   for ( var i=0; i < window.bookShelf.length; i++) {
      if (window.bookShelf[i].Title.toLowerCase().search(titleToRemove.toLowerCase())> -1) {
-       // var bookID = window.bookShelf[i]._id;
-       console.log(window.libraryURL + window.bookShelf[i]._id);
       $.ajax({
         url: window.libraryURL + window.bookShelf[i]._id,
         dataType: 'text',
@@ -90,18 +88,14 @@ Library.prototype.removeBookByAuthor = function(authorName){
 // // Purpose: Remove a specific book from your books array by the author name.
 // // Return: booleantrue if the book(s) were removed, false if no books match.
   var remBookAuthArray = [];
-  console.log(authorName);
   for ( var i=0; i < window.bookShelf.length; i++) {
     if (window.bookShelf[i].Author.toLowerCase().search(authorName.toLowerCase())> -1) {
-
         $.ajax({
         url: window.libraryURL + window.bookShelf[i]._id,
         dataType: 'text',
         type: 'DELETE',
         // data: bookID,
         success: (data) => {
-          console.log(data);
-          console.log("success");
           this._handleEventTrigger("objUpdate", {booksAdded: "Book was removed"});
           }
         })
@@ -128,21 +122,14 @@ Library.prototype.getRandomBook = function() {
     return null;
     }
     var randBook = window.bookShelf[Math.floor(Math.random() * window.bookShelf.length)];
-    console.log(randBook);
     $.ajax({
       url: window.libraryURL + randBook._id,
       dataType: 'json',
       type: 'GET',
       success: (data) => {
-        console.log(data);
         alert("Found random book ''"+data.Title+"'' in Mongo: "+data._id);
-        console.log("success");
-
-        // this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
       }
     })
-
-    // return window.bookShelf[Math.floor(Math.random() * window.bookShelf.length)];
     return randBook;
   };
 
@@ -172,26 +159,26 @@ Library.prototype.getBooksByAuthor = function (authorString) {
   };
 
 Library.prototype.addBooks = function (addBooksArray) {
-   // Purpose: Takes multiple books, in the form of an array of book objects, and adds the objects to your books array.
-   // Return:  number of books successfully added, 0 if no books were added
-   var newBooksCounter = 0;
-   for ( var i=0; i < addBooksArray.length; i++) {
-       this.addBook(addBooksArray[i]);
-       if (this.hasBooks) {
-         newBooksCounter++;
-        }
+// Purpose: Takes multiple books, in the form of an array of book objects, and adds the objects to your books array.
+ // Return:  number of books successfully added, 0 if no books were added
+ var newBooksCounter = 0;
+ for ( var i=0; i < addBooksArray.length; i++) {
+     this.addBook(addBooksArray[i]);
+     if (this.hasBooks) {
+       newBooksCounter++;
       }
-      this._handleEventTrigger("objUpdate", {booksAdded: newBooksCounter + " books were added"});
-      return newBooksCounter;
-  };
+    }
+    this._handleEventTrigger("objUpdate", {booksAdded: newBooksCounter + " books were added"});
+    return newBooksCounter;
+};
 
 Library.prototype.removeDuplicates = function(arr) {
 // Purpose: remove duplicates out of the array.
 // Return: unique array with distinct authors
   var uniqueArray = arr.filter(function(elem, index, self) {
-        return index == self.indexOf(elem);
-    });
-    return uniqueArray
+    return index == self.indexOf(elem);
+  });
+  return uniqueArray
 }
 
 Library.prototype.getAuthors = function () {
@@ -199,22 +186,22 @@ Library.prototype.getAuthors = function () {
 // Return: array of strings the names of all distinct authors, empty array if no books exist or if no authors exist.
   var allAuthors = [];
   for (var i=0; i < window.bookShelf.length; i++) {
-      allAuthors.push(window.bookShelf[i].Author);
+    allAuthors.push(window.bookShelf[i].Author);
     }
     return this.removeDuplicates(allAuthors);
 };
 
 Library.prototype.getBooks = function () {
-    $.ajax({
-      url: this.libraryURL,
-      dataType: 'json',
-      type: 'GET',
-      success: (data) => {
-        window.bookShelf=data;
-        this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
-      }
-    })
-  return false;
+  $.ajax({
+    url: this.libraryURL,
+    dataType: 'json',
+    type: 'GET',
+    success: (data) => {
+      window.bookShelf=data;
+      this._handleEventTrigger("objUpdate", {booksAdded: "Book was added"});
+    }
+  })
+return false;
 };
 
 
