@@ -14,7 +14,6 @@ RemoveBooksUI.prototype._bindEvents = function () {
   $('#rembook-btn-submit').on('click', $.proxy(this._handleBookRemoval, this));
 };
 
-
 RemoveBooksUI.prototype._handleModalOpen = function () {
   this.$container.modal('show');
 };

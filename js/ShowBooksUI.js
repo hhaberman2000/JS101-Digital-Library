@@ -17,7 +17,6 @@ ShowBooksUI.prototype._bindEvents = function () {
 
 ShowBooksUI.prototype._handleShowBooks = function () {
   var books = window.bookShelf;
-  console.log(books);
   if (books.length) {
     this.$container.modal('show');
     this.$container.find('.modal-body').html(this._createUlOfBooks(books));
@@ -28,9 +27,6 @@ ShowBooksUI.prototype._handleShowBooks = function () {
   };
 
   ShowBooksUI.prototype._createUlOfBooks = function (books) {
-    console.log(books);
-    console.log(books.length);
-    console.log(books.Title);
    var ul = document.createElement("ul");
    for (var i = 0; i < books.length; i++) {
      var li = document.createElement("li");
