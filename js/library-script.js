@@ -229,11 +229,10 @@ Library.prototype.searchBooks = function (searchString) {
 
     if (title.search(nSS) > -1) {
       searchResult.push(window.bookShelf[i]);
-      console.log(searchResult);
+
     }
     else if (author.search(nSS)> -1) {
       searchResult.push(window.bookShelf[i]);
-      console.log(searchResult);
     }
     else if (parseInt(searchString) === pages || date.search(nSS)> -1) {
        searchResult.push(window.bookShelf[i]);

@@ -63,7 +63,6 @@ EditBookUI.prototype._handleModalOpen = function (e) {
   return false;
 };
 
-
 EditBookUI.prototype._handleApplyChanges =  async function (e) {
   var book = new Object();
   var edtBook = this.$container.find("#formEntryEdit").serializeArray();
@@ -75,8 +74,7 @@ EditBookUI.prototype._handleApplyChanges =  async function (e) {
     }
   });
   book.Cover = $('#imgUploadEdit').attr("src");
-  console.log(book);
-     await this.editBook(book);
+  await this.editBook(book);
   return true;
 };
 

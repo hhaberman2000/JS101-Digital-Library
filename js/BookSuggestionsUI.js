@@ -17,7 +17,6 @@ BookSuggestionsUI.prototype._bindEvents = function () {
 
 BookSuggestionsUI.prototype._handleBookSugg = function () {
     book = this.getRandomBook();
-    console.log(book._id);
     this.$container.modal('show');
     this.$container.find('.modal-body').html(this._createBookSugg(book));
     return false;

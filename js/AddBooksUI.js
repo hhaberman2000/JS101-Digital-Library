@@ -49,7 +49,7 @@ AddBooksUI.prototype._handleQueueBooks = function (e) {
     });
   var book = new Book(bookObj);
 
-  book.Cover = this.encFile;
+  book.Cover = $('#img-upload').attr("src");
 
   for ( var i=0; i < window.bookShelf.length; i++) {
      if (window.bookShelf[i].Title === book.Title) {
