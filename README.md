@@ -1,6 +1,6 @@
 # Techtonic-Capstone-Digital-Library-Project
 
-On thwe development branch, commit a95403c546bfdaf7d9e2f1cdfcb36a48fb21afa7 is working version for code review.
+On the development branch, commit a95403c546bfdaf7d9e2f1cdfcb36a48fb21afa7 is working version for code review.
 It has made it through test with all modals and required functionality and validations. Book objects can be added, 
 removed, edited and searched. Random selections can be made and linked to Mongo DB. Currently, all bugs have been 
 worked out. 
