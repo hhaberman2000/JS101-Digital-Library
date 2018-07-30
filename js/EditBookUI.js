@@ -21,28 +21,25 @@ EditBookUI.prototype._bindEvents = function () {
 };
 
 EditBookUI.prototype._handleEditBookCover = function () {
-//Loading image into file reader
-console.log("cover here");
   var preview = document.querySelector('#imgUploadEdit');
   var file    = document.querySelector('#imgInpEdit').files[0];
+  var file_name = file.name;
+  $("#fileNameEdt").val(file_name);
   var reader  = new FileReader();
   var _self = this;
 
   reader.addEventListener("load", function () {
     preview.src = reader.result;
     _self.encFileEdt = reader.result
-
   });
+
  if (file) {
    reader.readAsDataURL(file);
   }
-console.log(_self.encFileEdt);
 };
 
 EditBookUI.prototype._handleModalOpen = function (e) {
-  // Using title from the row to select object to edit.
   var titleRow = $(e.currentTarget).parent().siblings()[1].innerHTML;
-  // var bookObjEdt = new Object();
   for (var i=0; window.bookShelf.length > i; i++) {
     if (window.bookShelf[i].Title === titleRow) {
       this._index = i;
@@ -51,7 +48,6 @@ EditBookUI.prototype._handleModalOpen = function (e) {
     }
 
   };
-
   this.$container.modal('show');
 
   var pubDate = new Date(this.bookObj.Published);
@@ -69,9 +65,6 @@ EditBookUI.prototype._handleModalOpen = function (e) {
 
 
 EditBookUI.prototype._handleApplyChanges =  async function (e) {
-  // Getting edited values from form input fields.
- // e.stopPropagation();
-
   var book = new Object();
   var edtBook = this.$container.find("#formEntryEdit").serializeArray();
   $.each(edtBook, function(i, objProp) {
@@ -83,14 +76,7 @@ EditBookUI.prototype._handleApplyChanges =  async function (e) {
   });
   book.Cover = $('#imgUploadEdit').attr("src");
   console.log(book);
-
-
      await this.editBook(book);
-
-  // this._handleEventTrigger("objUpdate", {booksAdded: "Book was Edited"});
-  // this._bindEvents();
-  // e.stopPropagation();
-  // $("#formEntryEdit")[0].reset();
   return true;
 };
 

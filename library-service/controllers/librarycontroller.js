@@ -7,8 +7,6 @@ var router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // CREATES A NEW BOOK IN LIBRARY
-
-
 router.post('/', function (req, res) {
   Library.create({
       Cover : req.body.Cover,
@@ -58,11 +56,11 @@ router.get('/:id', function (req, res) {
 
 
 // DELETS ALL BOOKS IN THE DATABASE
- router.delete('/:id', function (req, res) {
+router.delete('/:id', function (req, res) {
  console.log('hit');
  Library.findByIdAndRemove(req.params.id, function (err, books) {
-     if (err) return res.status(500).send("There was a problem finding books in library.");
-     res.status(200).send("bookID");
+    if (err) return res.status(500).send("There was a problem finding books in library.");
+    res.status(200).send("bookID");
  });
 });
 

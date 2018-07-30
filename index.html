@@ -10,7 +10,6 @@
     <link href='https://fonts.googleapis.com/css?family=Offside' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Dangrek' rel='stylesheet'>
-    <!-- <script  src="js/new-book.js"></script> -->
 
   </head>
   <body style="background-image: url(assets/foggy_birds.png); background-repeat: repeat; font-family: 'Dangrek','Montserrat'; color: #888f99">
@@ -93,10 +92,10 @@
               <form class="form-inline srchForm searchInp">
                 <input class="form-control mr-sm-2" id="searchInput"  type="text" placeholder="Search Books..">
                 </form>
-              </div>
-              <div class="col-md-2 search-btn">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
-              </div>
+            </div>
+            <div class="col-md-2 search-btn">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
+            </div>
             </div>
           </div>
         </div>
@@ -107,14 +106,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <!-- <img class="library-img" src="assets/too-many-books.gif"> -->
             <img class="library-img" src="assets/in-the-aisle-digital-libraries.jpg">
-
-            <!-- <div class="lib-img-text">It's time for him to get a <br> My Libray app.. -->
-            </div>
-
           </div>
-
         </div>
       </div>
     </section>
@@ -142,537 +135,532 @@
         </div>
     </section>
 <!-- Add Books Modal -->
-  <div class="modal" id="add-books-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Add Books</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <!-- Book Title -->
-          <div class="row ">
-            <div class="col-md-12">
-              <div class="form-group">
-                  <label class="control-label" for="field2">Book Title*</label>
-                <div class="controls">
-                  <input id="book-title-add-book" type="text" class="form-control k-textbox" data-role="text" name="Title">
-                </div>
-              </div>
-            </div>
+    <div class="modal" id="add-books-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="/action_page.php ../submit" id="formentry" class="form-horizontal" role="form">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add Books</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
-          <!-- Author -->
-          <div class="row ">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label class="control-label" for="field2">Author*</label>
-                <div class="controls">
-                  <input id="add-book-author" type="text" class="form-control k-textbox" data-role="text" name="Author" >
-
-                </div>
-              </div>
-            </div>
-          </div>
-    <!-- Browse for Book Cover Image-->
-          <div class="row">
-            <div class="col-md-8">
-              <div class="form-group">
-                <label>Choose Book Cover</label>
-                <div class="input-group">
-                  <span class="input-group-btn" >
-                    <span class="btn btn-outline-secondary btn-sm btn-file">
-                      Browse… <input type="file" id="imgInp" name="File">
-                    </span>
-                  </span>
-                  <input id="fileName" type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mt-2" id="clearImg">
-              <img class="cover-img-upload"  id='img-upload'/>
-            </div>
-          </div>
-
-        <div class="row" style="margin-top: 3%">
-          <!-- Number of Pages -->
-          <div class="form-group col-md-3">
-              <label >Pages</label>
-              <input class="form-control" type="number" name="Pages"  id="add-book-pages" style="width: 90px">
-            </div>
-
-            <!-- Published Date -->
-            <div class="col-md-5">
-              <div class="form-group">
-                <label>Published Date</label>
-                <input class="form-control" type="date" id="add-book-pub-date" name="Published"  style="height: 38px; width: 160px; font-size: 12px; margin: 0% 0% 0% 10%">
-                </div>
-              </div>
-
-              <!-- Rating -->
-              <div class="col-md-4">
-                <div class="row">
-                <label>Rating</label>
-                </div>
-                <div class="row">
-              <div class="form-group">
-              <select class="selectpicker" data-style="btn-default" id="ratingSelected" name="Rating"  style="height: 38px; width: 130px; margin: 0% 0% 0% 15%">
-                <option>1 Star</option>
-                <option>2 Stars</option>
-                <option>3 Stars</option>
-                <option>4 Stars</option>
-                <option>5 Stars</option>
-              </select>
-            </div>
-            </div>
-
-            </div>
-          </div>
-
-          <!-- Synopsis-->
-          <div class="row">
+          <!-- Modal body -->
+          <div class="modal-body">
+            <!-- Book Title -->
+            <div class="row ">
               <div class="col-md-12">
                 <div class="form-group">
-                    <label class="control-label" for="field17">Synopsis:</label>
-                      <div class="controls">
-                          <textarea id="synopsisText" name= "Synopsis" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div><!-- modal body end-->
-            <div class="modal-footer ">
-            <div class="row ">
-              <!-- Queue books to add -->
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label class="control-label">Create queue:</label>
-                    <button id="add-books-queue" type="button" class="btn btn-outline-secondary">Queue Book.. </button>
-                  </div>
-                </div>
-              <div class="col-md-2"></div>
-
-                <!-- Add queued books to library -->
-                <div class="col-md-6">
-                  <div class="form-group pull-right">
-                    <label id="books-in-queue" class="control-label" style="color: red;">0 book(s) to add</label>
-                    <button id="add-books-button" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Add Books To Library</button>
+                    <label class="control-label" for="field2">Book Title*</label>
+                  <div class="controls">
+                    <input id="book-title-add-book" type="text" class="form-control k-textbox" data-role="text" name="Title">
                   </div>
                 </div>
               </div>
             </div>
-
-          </form>
-        </div>
-      </div>
-    </div>
-
-<!-- Remove Books Modal -->
-  <div class="modal" id="remove-books-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form action="/action_page.php ../submit" id="formEntryRem" class="form-horizontal" role="form" data-parsley-validate novalidate>
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Remove Books</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <!-- Remove Book Title -->
-          <div class="form-group">
-              <label class="control-label">Remove By Title</label>
-            <div class="controls">
-                <input id="removeByTitle" type="text" class="form-control k-textbox" data-role="text">
-              </div>
-          </div>
 
             <!-- Author -->
-          <div class="form-group">
-              <label class="control-label">Remove By Author</label>
-              <div class="controls">
-                  <input id="removeByAuthor" type="text" class="form-control k-textbox" data-role="text">
+            <div class="row ">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label" for="field2">Author*</label>
+                  <div class="controls">
+                    <input id="add-book-author" type="text" class="form-control k-textbox" data-role="text" name="Author" >
+
+                  </div>
                 </div>
-          </div>
-
-          <!-- Remove books Button -->
-          <!-- <div class="col-md-6"> -->
-            <div class="form-group pull-right">
-              <button id="rembook-btn-submit" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Remove Books</button>
-            </div>
-
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
-<!-- Search Books Modal -->
- <div class="modal" id="search-books-modal">
-   <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title" id="resultHeader"></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-      <!-- Search Results -->
-            <p id="#searchOutput"></p>;
-      </div>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-   </div>
-  </div>
-<!-- Show all books modal -->
-  <div class="modal" id="show-all-books-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <p class="all-books-header">All Books</p>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <p id="searchOutput"></p>
-        </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-
-      </div>
-    </div>
-  </div>
-<!-- Book suggestions modal -->
-  <div class="modal" id="show-book-suggestion-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <p class="modal-title" id="bookSuggTitle"></p>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6" id="book-sugg-img">
-              <!-- <img class="book-sugg-img" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg"> -->
-            </div>
-            <div class="col-md-6">
-              <div class="row" id="numOfpages">
-
-              </div>
-              <div class="row mt-2" id="datePub">
-
-              </div>
-              <div class="row mt-1" id="rating">
               </div>
             </div>
-          </div>
-          <div class="row" style="margin: 5% 2% 0% 2%">
-            <p id="bookSynop"></p>
-          </div>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-<!-- Show all authors modal -->
-  <div class="modal fade" id="show-all-authors-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <p class="modal-title">All Authors</p>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <ul id="addAuth">
-          </ul>
-        </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-
-      </div>
-    </div>
-  </div>
-<!-- Author suggestions modal -->
-  <div class="modal" id="author-suggestion-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <p class="modal-title" id="authorPick"></p>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-
-      </div>
-    </div>
-  </div>
-<!-- Edit book title and author modal-->
-<div class="modal" id="edit-books-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form action="/action_page.php ../submit" id="formEntryEdit" class="form-horizontal" role="form" data-parsley-validate novalidate>
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Edit Book</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <!-- Book Title -->
-        <div class="row ">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label" for="field2">Book Title*</label>
-            <div class="controls">
-              <input id="book-title-edit-book" type="text" class="form-control k-textbox" data-role="text" name="Title">
-            </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Author -->
-        <div class="row ">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label" for="field2">Author*</label>
-              <div class="controls">
-                <input id="edit-book-author" type="text" class="form-control k-textbox" data-role="text" name="Author" >
-
-              </div>
-            </div>
-          </div>
-        </div>
       <!-- Browse for Book Cover Image-->
-          <div class="row">
-            <div class="col-md-8">
-              <div class="form-group">
-                <label>Choose Book Cover</label>
-                <div class="input-group">
-                  <span class="input-group-btn" >
-                    <span class="btn btn-outline-secondary btn-sm btn-file">
-                      Browse… <input type="file" id="imgInpEdit">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label>Choose Book Cover</label>
+                  <div class="input-group">
+                    <span class="input-group-btn" >
+                      <span class="btn btn-outline-secondary btn-sm btn-file">
+                        Browse… <input type="file" id="imgInp" name="File">
+                      </span>
                     </span>
-                  </span>
-                  <input type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
+                    <input id="fileName" type="text" class="form-control" readonly placeholder="Cover file" name=Cover>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4 mt-2">
-              <img id="imgUploadEdit" src="" class="cover-img-upload"/>
-            </div>
-          </div>
-
-      <div class="row">
-        <!-- Number of Pages -->
-        <div class="form-group col-md-3">
-            <label >Pages</label>
-            <input class="form-control" type="number" name="Pages"  id="edit-book-pages" style="width: 90px">
-          </div>
-
-          <!-- Published Date -->
-          <div class="col-md-5">
-            <div class="form-group">
-              <label>Published Date</label>
-              <input class="form-control" type="date" id="edit-book-pub-date" name="Published"  style="height: 38px; width: 160px; font-size: 12px">
+              <div class="col-md-4 mt-2" id="clearImg">
+                <img class="cover-img-upload"  id='img-upload'/>
               </div>
             </div>
 
-            <!-- Rating -->
-            <div class="col-md-4">
-              <div class="row">
-              <label>Rating</label>
+          <div class="row" style="margin-top: 3%">
+            <!-- Number of Pages -->
+            <div class="form-group col-md-3">
+                <label >Pages</label>
+                <input class="form-control" type="number" name="Pages"  id="add-book-pages" style="width: 90px">
               </div>
-              <div class="row">
-            <div class="form-group">
-            <select class="selectpicker" data-style="btn-default" id="editRating" name="Rating"  style="height: 38px; width: 100px;">
-              <option>1 star</option>
-              <option>2 star</option>
-              <option>3 star</option>
-              <option>4 star</option>
-              <option>5 star</option>
 
-            </select>
-          </div>
-          </div>
+              <!-- Published Date -->
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Published Date</label>
+                  <input class="form-control" type="date" id="add-book-pub-date" name="Published"  style="height: 38px; width: 160px; font-size: 12px; margin: 0% 0% 0% 10%">
+                  </div>
+                </div>
 
-          </div>
-        </div>
+                <!-- Rating -->
+                <div class="col-md-4">
+                  <div class="row">
+                  <label>Rating</label>
+                  </div>
+                  <div class="row">
+                <div class="form-group">
+                <select class="selectpicker" data-style="btn-default" id="ratingSelected" name="Rating"  style="height: 38px; width: 130px; margin: 0% 0% 0% 15%">
+                  <option>1 Star</option>
+                  <option>2 Stars</option>
+                  <option>3 Stars</option>
+                  <option>4 Stars</option>
+                  <option>5 Stars</option>
+                </select>
+              </div>
+              </div>
 
-        <!-- Synopsis-->
-        <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                  <label class="control-label" for="field17">Synopsis:</label>
-                    <div class="controls">
-                        <textarea id="editSynopsis" name= "Synopsis" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
+              </div>
+            </div>
+
+            <!-- Synopsis-->
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <label class="control-label" for="field17">Synopsis:</label>
+                        <div class="controls">
+                            <textarea id="synopsisText" name= "Synopsis" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div><!-- modal body end-->
+              <div class="modal-footer ">
+              <div class="row ">
+                <!-- Queue books to add -->
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Create queue:</label>
+                      <button id="add-books-queue" type="button" class="btn btn-outline-secondary">Queue Book.. </button>
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+
+                  <!-- Add queued books to library -->
+                  <div class="col-md-6">
+                    <div class="form-group pull-right">
+                      <label id="books-in-queue" class="control-label" style="color: red;">0 book(s) to add</label>
+                      <button id="add-books-button" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Add Books To Library</button>
                     </div>
                   </div>
                 </div>
-            </div>
-          </div><!-- modal body end-->
-          <div class="modal-footer ">
-          <div class="row ">
+              </div>
 
-              <!-- Click button to submit changes -->
-              <div class="col-md-6">
-                <div class="form-group pull-right">
-                  <label class="control-label" >Click when done:</label>
-                  <button id="submit-edit-button" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Apply Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+<!-- Remove Books Modal -->
+    <div class="modal" id="remove-books-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="/action_page.php ../submit" id="formEntryRem" class="form-horizontal" role="form" data-parsley-validate novalidate>
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Remove Books</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <!-- Remove Book Title -->
+            <div class="form-group">
+                <label class="control-label">Remove By Title</label>
+              <div class="controls">
+                  <input id="removeByTitle" type="text" class="form-control k-textbox" data-role="text">
+              </div>
+            </div>
+
+              <!-- Author -->
+            <div class="form-group">
+                <label class="control-label">Remove By Author</label>
+                <div class="controls">
+                    <input id="removeByAuthor" type="text" class="form-control k-textbox" data-role="text">
                 </div>
-              </div>
-          </div>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-<!-- Display book modal-->
-<div class="modal" id="display-book-modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <p class="modal-title" id="displayBookTitle"></p>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="row" style="margin: 0% 0% 0% 2%">
-            <div class="col-md-6" id="showAllBookImg">
             </div>
-            <div class="col-md-6">
-              <div class="row" id="showNumOfpages">
-              </div>
-              <div class="row mt-2" id="showDatePub">
-              </div>
-              <div class="row mt-1" id="showRating">
-              </div>
-            </div>
-          </div>
-          <div class="row" style="margin: 5% 2% 0% 5%">
-            <p id="showBookSynop"></p>
-          </div>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-    <!-- Display book table modal-->
-  <div class="modal" id="display-book-tbl-modal">
+            <!-- Remove books Button -->
+              <div class="form-group pull-right">
+                <button id="rembook-btn-submit" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Remove Books</button>
+              </div>
+
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+<!-- Search Books Modal -->
+     <div class="modal" id="search-books-modal">
+       <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="resultHeader"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+          <!-- Search Results -->
+                <p id="#searchOutput"></p>;
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+       </div>
+      </div>
+<!-- Show all books modal -->
+      <div class="modal" id="show-all-books-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <p class="all-books-header">All Books</p>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <p id="searchOutput"></p>
+            </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+
+          </div>
+        </div>
+      </div>
+<!-- Book suggestions modal -->
+    <div class="modal" id="show-book-suggestion-modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <!-- Modal Header -->
-        <div class="modal-header">
-          <p class="modal-title" id="displayBookTitle2"></p>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+          <div class="modal-header">
+            <p class="modal-title" id="bookSuggTitle"></p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
           <!-- Modal body -->
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6" id="showAllBookImg2">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6" id="book-sugg-img">
+                <!-- <img class="book-sugg-img" src="assets/2001_A_Space_Odyssey-Arthur_C._Clarke.jpg"> -->
+              </div>
+              <div class="col-md-6">
+                <div class="row" id="numOfpages">
+
+                </div>
+                <div class="row mt-2" id="datePub">
+
+                </div>
+                <div class="row mt-1" id="rating">
+                </div>
+              </div>
             </div>
-            <div class="col-md-6">
-              <div class="row" id="showNumOfpages2">
-
-              </div>
-              <div class="row mt-2" id="showDatePub2">
-
-              </div>
-              <div class="row mt-1" id="showRating2">
-              </div>
+            <div class="row" style="margin: 5% 2% 0% 2%">
+              <p id="bookSynop"></p>
             </div>
           </div>
-          <div class="row" style="margin: 5% 2% 0% 2%">
-            <p id="showBookSynop2"></p>
-          </div>
-        </div>
           <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+
         </div>
       </div>
     </div>
-  </div>
+<!-- Show all authors modal -->
+    <div class="modal fade" id="show-all-authors-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
 
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title">All Authors</p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
 
+          <!-- Modal body -->
+          <div class="modal-body">
+            <ul id="addAuth">
+            </ul>
+          </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+
+        </div>
+      </div>
+    </div>
+<!-- Author suggestions modal -->
+    <div class="modal" id="author-suggestion-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title" id="authorPick"></p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+
+        </div>
+      </div>
+    </div>
+<!-- Edit book title and author modal-->
+    <div class="modal" id="edit-books-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="/action_page.php ../submit" id="formEntryEdit" class="form-horizontal" role="form" data-parsley-validate novalidate>
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Book</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <!-- Book Title -->
+            <div class="row ">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label" for="field2">Book Title*</label>
+                <div class="controls">
+                  <input id="book-title-edit-book" type="text" class="form-control k-textbox" data-role="text" name="Title">
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Author -->
+            <div class="row ">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label" for="field2">Author*</label>
+                  <div class="controls">
+                    <input id="edit-book-author" type="text" class="form-control k-textbox" data-role="text" name="Author" >
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- Browse for Book Cover Image-->
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Choose Book Cover</label>
+                    <div class="input-group">
+                      <span class="input-group-btn" >
+                        <span class="btn btn-outline-secondary btn-sm btn-file">
+                          Browse… <input type="file" id="imgInpEdit">
+                        </span>
+                      </span>
+                      <input type="text" ID="fileNameEdt" class="form-control" readonly placeholder="Cover file" name=Cover>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                  <img id="imgUploadEdit" src="" class="cover-img-upload"/>
+                </div>
+              </div>
+
+          <div class="row">
+            <!-- Number of Pages -->
+            <div class="form-group col-md-3">
+                <label >Pages</label>
+                <input class="form-control" type="number" name="Pages"  id="edit-book-pages" style="width: 90px">
+              </div>
+
+              <!-- Published Date -->
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Published Date</label>
+                  <input class="form-control" type="date" id="edit-book-pub-date" name="Published"  style="height: 38px; width: 160px; font-size: 12px">
+                  </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="col-md-4">
+                  <div class="row">
+                  <label>Rating</label>
+                  </div>
+                  <div class="row">
+                <div class="form-group">
+                <select class="selectpicker" data-style="btn-default" id="editRating" name="Rating"  style="height: 38px; width: 100px;">
+                  <option>1 star</option>
+                  <option>2 star</option>
+                  <option>3 star</option>
+                  <option>4 star</option>
+                  <option>5 star</option>
+
+                </select>
+              </div>
+              </div>
+
+              </div>
+            </div>
+
+            <!-- Synopsis-->
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <label class="control-label" for="field17">Synopsis:</label>
+                        <div class="controls">
+                            <textarea id="editSynopsis" name= "Synopsis" rows="3" class="form-control k-textbox" data-role="textarea"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div><!-- modal body end-->
+              <div class="modal-footer ">
+              <div class="row ">
+
+                  <!-- Click button to submit changes -->
+                  <div class="col-md-6">
+                    <div class="form-group pull-right">
+                      <label class="control-label" >Click when done:</label>
+                      <button id="submit-edit-button" type="button" class="btn btn-outline-secondary" data-dismiss="modal">Apply Changes</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+<!-- Display book modal-->
+    <div class="modal" id="display-book-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <p class="modal-title" id="displayBookTitle"></p>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row" style="margin: 0% 0% 0% 2%">
+                <div class="col-md-6" id="showAllBookImg">
+                </div>
+                <div class="col-md-6">
+                  <div class="row" id="showNumOfpages">
+                  </div>
+                  <div class="row mt-2" id="showDatePub">
+                  </div>
+                  <div class="row mt-1" id="showRating">
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="margin: 5% 2% 0% 5%">
+                <p id="showBookSynop"></p>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Display book table modal-->
+    <div class="modal" id="display-book-tbl-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+          <div class="modal-header">
+            <p class="modal-title" id="displayBookTitle2"></p>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+            <!-- Modal body -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6" id="showAllBookImg2">
+              </div>
+              <div class="col-md-6">
+                <div class="row" id="showNumOfpages2">
+
+                </div>
+                <div class="row mt-2" id="showDatePub2">
+
+                </div>
+                <div class="row mt-1" id="showRating2">
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin: 5% 2% 0% 2%">
+              <p id="showBookSynop2"></p>
+            </div>
+          </div>
+            <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- Book Table -->
-  <section class="container-mod">
-    <div class="container-fluid">
-      <p style="font-size: 20px">My Bookshelf</p>
-      <table class="table table-hover" id="bookListings">
-        <thead>
-        </thead>
-        <tbody>
+    <section class="container-mod">
+      <div class="container-fluid">
+        <p style="font-size: 20px">My Bookshelf</p>
+        <table class="table table-hover" id="bookListings">
+          <thead>
+          </thead>
+          <tbody>
 
-        </tbody>
-      </table>
-    </div>
-  </section>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-  <!-- <script  src="js/new-book.js"></script> -->
-  <!-- <script  src="js/popper.min.js"></script> -->
+    <script  src="js/jquery-3.3.1.js"></script>
+    <script  src="js/jquery-3.3.1.min.js"></script>
+    <script  src="js/bootstrap.js"></script>
+    <script  src="js/bootstrap.min.js"></script>
+    <script  src="js/new-book.js"></script>
+    <script  src="js/utility.js"></script>
+    <script  src="js/library-script.js"></script>
+    <script  src="js/AddBooksUI.js"></script>
+    <script  src="js/ShowAuthorsUI.js"> </script>
+    <script  src="js/RemoveBooksUI.js"></script>
+    <script  src="js/ShowBooksUI.js"></script>
+    <script  src="js/BookSuggestionsUI.js"></script>
+    <script  src="js/BookDataTable.js"></script>
+    <script  src="js/AuthorSuggestionUI.js"></script>
+    <script  src="js/EditBookUI.js"></script>
+    <script  src="js/searchBooksUI.js"></script>
+    <script  src="js/RemoveBookTableUI.js"></script>
+    <script  src="js/DisplayBookUI.js"></script>
+    <script  src="js/DisplayBookFromModalUI.js"></script>
 
-  <script  src="js/jquery-3.3.1.js"></script>
-  <script  src="js/jquery-3.3.1.min.js"></script>
-  <script  src="js/bootstrap.js"></script>
-  <script  src="js/bootstrap.min.js"></script>
-  <script  src="js/new-book.js"></script>
-  <script  src="js/utility.js"></script>
-  <script  src="js/library-script.js"></script>
-  <script  src="js/AddBooksUI.js"></script>
-  <script  src="js/ShowAuthorsUI.js"> </script>
-  <script  src="js/RemoveBooksUI.js"></script>
-  <script  src="js/ShowBooksUI.js"></script>
-  <script  src="js/BookSuggestionsUI.js"></script>
-  <script  src="js/BookDataTable.js"></script>
-  <script  src="js/AuthorSuggestionUI.js"></script>
-  <script  src="js/EditBookUI.js"></script>
-  <script  src="js/searchBooksUI.js"></script>
-  <script  src="js/RemoveBookTableUI.js"></script>
-  <script  src="js/DisplayBookUI.js"></script>
-  <script  src="js/DisplayBookFromModalUI.js"></script>
   </body>
 </html>

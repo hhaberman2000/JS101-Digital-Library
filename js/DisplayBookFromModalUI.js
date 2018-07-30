@@ -19,7 +19,7 @@ DisplayBookFromModuleUI.prototype._handleDisplayBook = function (e) {
   var bookTitle = e.currentTarget.innerHTML;
   var book = new Object();
   for (var i=0; window.bookShelf.length > i; i++) {
-  if (window.bookShelf[i].Title === bookTitle) {
+    if (window.bookShelf[i].Title === bookTitle) {
       this._index = i;
       book = window.bookShelf[i];
       i=window.bookShelf.length;

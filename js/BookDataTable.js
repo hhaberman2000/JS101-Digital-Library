@@ -12,7 +12,6 @@ DataTable.prototype.init = function() {
   this._updateTable();
   this._bindEvents();
   this._bindCustomListeners();
-
 };
 
 DataTable.prototype._bindEvents = function () {
@@ -21,18 +20,14 @@ DataTable.prototype._bindEvents = function () {
 DataTable.prototype._bindCustomListeners = function () {
   $(document).on('objUpdate', $.proxy(this._updateHeader, this));
   $(document).on('objUpdate', $.proxy(this._updateTable, this));
-  // $(document).on('objUpdate', $.proxy(this._getBooksForTable, this));
 };
 
 DataTable.prototype._updateHeader = function() {
-  // console.log("I am updating header");
   var _self = this
   var $thead = this.$container.find('thead');
   $thead.empty();
-    // console.log(window.bookShelf.length);
     if(window.bookShelf.length > 0) {
       var book = window.bookShelf[0];
-      // console.log(book);
       $thead.append(_self._createHeader(book));
   }
 };
@@ -56,10 +51,8 @@ DataTable.prototype._createHeader = function(book) {
   for (var key in book) {
     var th = document.createElement('th');
 
-    // if (key == "_id" || key == "__v") {
     if (key === "_id" || key === "__v") {
       }
-    // else if (){}
       else {
           if (key === "Title"){
             $(th).attr("class", "titleToEdit");

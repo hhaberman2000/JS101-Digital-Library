@@ -16,7 +16,6 @@ ShowAuthorsUI.prototype._bindEvents = function () {
 };
 
 ShowAuthorsUI.prototype._handleShowAuthors = function () {
-
   var arrayAuthors = this.getAuthors();
   if (arrayAuthors.length) {
     this.$container.modal('show');
@@ -25,16 +24,16 @@ ShowAuthorsUI.prototype._handleShowAuthors = function () {
     alert('Nothing in library!');
   }
   return false;
-  };
+};
 
 ShowAuthorsUI.prototype._createUlOfAuthors = function (arrayAuthors) {
- var ul = document.createElement("ul");
- for (var i = 0; i < arrayAuthors.length; i++) {
-   var li = document.createElement("li");
-   $(li).text(arrayAuthors[i]);
-   ul.append(li);
- }
- return ul;
+  var ul = document.createElement("ul");
+  for (var i = 0; i < arrayAuthors.length; i++) {
+    var li = document.createElement("li");
+    $(li).text(arrayAuthors[i]);
+    ul.append(li);
+  }
+  return ul;
 };
 
 $(function(){

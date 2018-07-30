@@ -10,7 +10,6 @@ RemoveBooksUI.prototype.init = function () {
 };
 
 RemoveBooksUI.prototype._bindEvents = function () {
-  // this.$container.find('#removeBooks-btn').on('click', $.proxy(this._handleModalOpen, this));
   $('#removeBooks-btn').on('click', $.proxy(this._handleModalOpen, this));
   $('#rembook-btn-submit').on('click', $.proxy(this._handleBookRemoval, this));
 };
@@ -21,7 +20,6 @@ RemoveBooksUI.prototype._handleModalOpen = function () {
 };
 
 RemoveBooksUI.prototype._handleBookRemoval = function () {
-  console.log("handleBookRemoval");
   var bookTitle = $("#removeByTitle").val();
   var author = $("#removeByAuthor").val();
 
@@ -29,11 +27,10 @@ RemoveBooksUI.prototype._handleBookRemoval = function () {
     alert("Only one field can be submitted")
   }
   else if(bookTitle) {
-      console.log(bookTitle);
-      this.removeBookTitle(bookTitle);
+    this.removeBookTitle(bookTitle);
   }
   else if (author) {
-      this.removeBookByAuthor(author);
+    this.removeBookByAuthor(author);
   }
   else {
     alert("Please enter a title or author to remove.");

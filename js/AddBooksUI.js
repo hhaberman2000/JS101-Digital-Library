@@ -6,7 +6,6 @@ var AddBooksUI = function(container){
 };
 
 AddBooksUI.prototype = Object.create(Library.prototype);
-//importing from Library
 
 AddBooksUI.prototype.init = function() {
   this._bindEvents();
@@ -23,7 +22,6 @@ AddBooksUI.prototype._handleBookCover = function () {
   var preview = document.querySelector('#img-upload');
   var file    = document.querySelector('input[type=file]').files[0];
   var file_name = file.name;
-  console.log(file_name);
   $("#fileName").val(file_name);
   var reader  = new FileReader();
   var _self = this;
